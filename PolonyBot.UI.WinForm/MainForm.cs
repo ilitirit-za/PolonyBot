@@ -1,24 +1,14 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
 using System.Configuration;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
-using Discord;
-using Discord.Commands;
 using log4net;
 using log4net.Config;
 using log4net.Core;
 using log4net.Layout;
-using Polony.Logging;
-
+using Polony.UI.WinForm.Logging;
 using Color = System.Drawing.Color;
 
-namespace Polony
+namespace Polony.UI.WinForm
 {
     public partial class MainForm : Form
     {
@@ -30,7 +20,8 @@ namespace Polony
             InitializeComponent();
 
             ConfigureLogging();
-            _bot = new PolonyBot(_log, ConfigurationManager.ConnectionStrings["DbConnectionString"].ConnectionString);
+            _bot = new PolonyBot(_log);
+
             _bot.Initialize(Properties.Settings.Default.BotToken);
             _bot.Connect();
         }
@@ -84,8 +75,18 @@ namespace Polony
 
         private void MainForm_FormClosed(object sender, FormClosedEventArgs e)
         {
-            _bot.Disconnect();
-            notifyIcon.Visible = false;
+            try
+            {
+                _bot.Disconnect();
+            }
+            catch (Exception ex)
+            {
+                _log.Error(ex.Message);
+            }
+            finally
+            { 
+                notifyIcon.Visible = false;
+            }
         }
 
         private void MainForm_Resize(object sender, EventArgs e)
@@ -106,6 +107,11 @@ namespace Polony
             this.WindowState = FormWindowState.Normal;
             this.ShowInTaskbar = true;
             notifyIcon.Visible = false;
+        }
+
+        private void rtfLog_TextChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }

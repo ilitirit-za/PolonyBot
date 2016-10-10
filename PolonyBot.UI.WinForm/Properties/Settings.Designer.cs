@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace Polony.Properties {
+namespace Polony.UI.WinForm.Properties {
     
     
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
@@ -26,18 +26,18 @@ namespace Polony.Properties {
         [global::System.Configuration.ApplicationScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("185541633243217920")]
-        public ulong ServerId {
+        public string ServerId {
             get {
-                return ((ulong)(this["ServerId"]));
+                return ((string)(this["ServerId"]));
             }
         }
         
         [global::System.Configuration.ApplicationScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("229951183882551303")]
-        public ulong DanisenChannelId {
+        public string DanisenChannelId {
             get {
-                return ((ulong)(this["DanisenChannelId"]));
+                return ((string)(this["DanisenChannelId"]));
             }
         }
         
@@ -53,9 +53,9 @@ namespace Polony.Properties {
         [global::System.Configuration.ApplicationScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("%")]
-        public char DefaultPrefix {
+        public string DefaultPrefix {
             get {
-                return ((char)(this["DefaultPrefix"]));
+                return ((string)(this["DefaultPrefix"]));
             }
         }
     }

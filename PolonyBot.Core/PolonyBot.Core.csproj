@@ -6,10 +6,10 @@
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <ProjectGuid>{19652C1F-16D2-4BE7-A9FA-F96B700A7D65}</ProjectGuid>
-    <OutputType>WinExe</OutputType>
+    <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Polony</RootNamespace>
-    <AssemblyName>PolonyBot</AssemblyName>
+    <RootNamespace>Polony.Core</RootNamespace>
+    <AssemblyName>Polony.Core</AssemblyName>
     <TargetFrameworkVersion>v4.6</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
@@ -60,7 +60,13 @@
     <PlatformTarget>AnyCPU</PlatformTarget>
     <ErrorReport>prompt</ErrorReport>
     <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
-    <Prefer32Bit>true</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup>
+    <SignAssembly>false</SignAssembly>
+  </PropertyGroup>
+  <PropertyGroup>
+    <AssemblyOriginatorKeyFile>
+    </AssemblyOriginatorKeyFile>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="Discord.Net, Version=0.9.5.0, Culture=neutral, processorArchitecture=MSIL">
@@ -114,16 +120,8 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Dal\DanisenDao.cs" />
-    <Compile Include="Logging\RichTextBoxAppender.cs" />
     <Compile Include="PeriodicTask.cs" />
     <Compile Include="PolonyBot.cs" />
-    <Compile Include="MainForm.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="MainForm.Designer.cs">
-      <DependentUpon>MainForm.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Properties\Settings.Designer.cs">
       <AutoGen>True</AutoGen>
@@ -132,13 +130,6 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="App.config" />
-    <Content Include="App.Release.config">
-      <DependentUpon>App.config</DependentUpon>
-    </Content>
-    <Content Include="App.Test.config">
-      <DependentUpon>App.config</DependentUpon>
-    </Content>
     <Content Include="PolonyBot.mdf">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
@@ -146,9 +137,6 @@
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
       <DependentUpon>PolonyBot.mdf</DependentUpon>
     </Content>
-    <None Include="log4net.config">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
@@ -156,12 +144,14 @@
     </None>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="polonius.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <EmbeddedResource Include="MainForm.resx">
-      <DependentUpon>MainForm.cs</DependentUpon>
-    </EmbeddedResource>
+    <Content Include="app.config" />
+    <Content Include="app.Release.config">
+      <DependentUpon>app.config</DependentUpon>
+      <SubType>Designer</SubType>
+    </Content>
+    <Content Include="app.Test.config">
+      <DependentUpon>app.config</DependentUpon>
+    </Content>
   </ItemGroup>
   <ItemGroup>
     <BootstrapperPackage Include=".NETFramework,Version=v4.6">

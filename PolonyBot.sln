@@ -1,11 +1,13 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 14
-VisualStudioVersion = 14.0.25123.0
+VisualStudioVersion = 14.0.25420.1
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PolonyBot", "PolonyBot\PolonyBot.csproj", "{19652C1F-16D2-4BE7-A9FA-F96B700A7D65}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PolonyBot.Core", "PolonyBot.Core\PolonyBot.Core.csproj", "{19652C1F-16D2-4BE7-A9FA-F96B700A7D65}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PolonyBot.Domain.Danisen", "PolonyBot.Domain.Danisen\PolonyBot.Domain.Danisen.csproj", "{5C420E77-ED6B-4EB2-98A9-E5D1F766D917}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PolonyBot.UI.WinForm", "PolonyBot.UI.WinForm\PolonyBot.UI.WinForm.csproj", "{E0A74F34-2ED6-4917-9A21-92BA65FF1458}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -26,6 +28,12 @@ Global
 		{5C420E77-ED6B-4EB2-98A9-E5D1F766D917}.Release|Any CPU.Build.0 = Release|Any CPU
 		{5C420E77-ED6B-4EB2-98A9-E5D1F766D917}.Test|Any CPU.ActiveCfg = Test|Any CPU
 		{5C420E77-ED6B-4EB2-98A9-E5D1F766D917}.Test|Any CPU.Build.0 = Test|Any CPU
+		{E0A74F34-2ED6-4917-9A21-92BA65FF1458}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E0A74F34-2ED6-4917-9A21-92BA65FF1458}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E0A74F34-2ED6-4917-9A21-92BA65FF1458}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E0A74F34-2ED6-4917-9A21-92BA65FF1458}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E0A74F34-2ED6-4917-9A21-92BA65FF1458}.Test|Any CPU.ActiveCfg = Test|Any CPU
+		{E0A74F34-2ED6-4917-9A21-92BA65FF1458}.Test|Any CPU.Build.0 = Test|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

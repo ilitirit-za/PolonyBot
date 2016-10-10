@@ -1,4 +1,6 @@
 ﻿using System;
+using System.Collections.Specialized;
+using System.Configuration;
 using System.Globalization;
 using System.Linq;
 using System.Reflection;
@@ -21,12 +23,23 @@ namespace Polony
         private DanisenDao _dao;
         private string _botToken;
         private readonly ILog _logger;
+        private readonly ulong _serverId;
+        private readonly ulong _danisenChannelId;
         private Server _server;
 
-        public PolonyBot(ILog logger, string dbConnectionString)
+        private readonly char _defaultPrefix;
+
+        public PolonyBot(ILog logger)
         {
             _logger = logger;
 
+            var config = ConfigurationManager.OpenExeConfiguration(Assembly.GetExecutingAssembly().Location);
+
+            _serverId = Convert.ToUInt64(config.AppSettings.Settings["ServerId"].Value);
+            _danisenChannelId = Convert.ToUInt64(config.AppSettings.Settings["DanisenChannelId"].Value);
+            _defaultPrefix = config.AppSettings.Settings["DefaultPrefix"].Value[0];
+
+            var dbConnectionString = config.ConnectionStrings.ConnectionStrings["DbConnectionString"].ConnectionString;
             // Inject this
             var daoLogger = LogManager.GetLogger(typeof(DanisenDao));
             _dao = new DanisenDao(daoLogger, dbConnectionString);
@@ -48,7 +61,7 @@ namespace Polony
             _logger.Info("Creating command service...");
             var commandService = new CommandService(new CommandServiceConfigBuilder
             {
-                PrefixChar = Properties.Settings.Default.DefaultPrefix,
+                PrefixChar = _defaultPrefix,
                 AllowMentionPrefix = false,
                 CustomPrefixHandler = m => 0,
                 HelpMode = HelpMode.Disabled,
@@ -136,7 +149,7 @@ namespace Polony
 
         private async Task DisplayHelpText(CommandEventArgs e)
         {
-            var prefix = Properties.Settings.Default.DefaultPrefix;
+            var prefix = _defaultPrefix;
             var helpMessage =
                 "The following commands are supported by PolonyBot (anything in square brackets is optional):" + Environment.NewLine +
                 $"{prefix}h[elp]           - Display this message" + Environment.NewLine +
@@ -742,7 +755,7 @@ namespace Polony
 
             await Task.Delay(2000);
 
-            _server = _client.GetServer(Properties.Settings.Default.ServerId);
+            _server = _client.GetServer(_serverId);
             
             _logger.Info("PolonyBot connected");
         }
@@ -766,7 +779,7 @@ namespace Polony
             get
             {
                 return _danisenChannel ??
-                    (_danisenChannel = _server.GetChannel(Properties.Settings.Default.DanisenChannelId));
+                    (_danisenChannel = _server.GetChannel(_danisenChannelId));
             }
 
         }

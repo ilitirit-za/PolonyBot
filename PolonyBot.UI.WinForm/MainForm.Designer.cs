@@ -1,4 +1,4 @@
-﻿namespace Polony
+﻿namespace Polony.UI.WinForm
 {
     partial class MainForm
     {
@@ -53,6 +53,7 @@
             this.rtfLog.Size = new System.Drawing.Size(765, 546);
             this.rtfLog.TabIndex = 0;
             this.rtfLog.Text = "";
+            this.rtfLog.TextChanged += new System.EventHandler(this.rtfLog_TextChanged);
             // 
             // MainForm
             // 

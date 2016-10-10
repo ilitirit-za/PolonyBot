@@ -9,7 +9,7 @@ using log4net.Appender;
 using log4net.Core;
 using log4net.Util;
 
-namespace Polony.Logging
+namespace Polony.UI.WinForm.Logging
 {
     /// <summary>
     /// Description of RichTextBoxAppender.
