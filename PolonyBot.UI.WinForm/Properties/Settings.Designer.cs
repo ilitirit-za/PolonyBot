@@ -22,41 +22,5 @@ namespace Polony.UI.WinForm.Properties {
                 return defaultInstance;
             }
         }
-        
-        [global::System.Configuration.ApplicationScopedSettingAttribute()]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("185541633243217920")]
-        public string ServerId {
-            get {
-                return ((string)(this["ServerId"]));
-            }
-        }
-        
-        [global::System.Configuration.ApplicationScopedSettingAttribute()]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("229951183882551303")]
-        public string DanisenChannelId {
-            get {
-                return ((string)(this["DanisenChannelId"]));
-            }
-        }
-        
-        [global::System.Configuration.ApplicationScopedSettingAttribute()]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("MjMzOTIyMDE3MDYwMDYxMTg1.Ctkglw.gGqG8fbrFKtSyNEZykHRoVfGSjY")]
-        public string BotToken {
-            get {
-                return ((string)(this["BotToken"]));
-            }
-        }
-        
-        [global::System.Configuration.ApplicationScopedSettingAttribute()]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("%")]
-        public string DefaultPrefix {
-            get {
-                return ((string)(this["DefaultPrefix"]));
-            }
-        }
     }
 }

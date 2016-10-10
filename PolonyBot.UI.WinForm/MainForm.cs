@@ -21,8 +21,6 @@ namespace Polony.UI.WinForm
 
             ConfigureLogging();
             _bot = new PolonyBot(_log);
-
-            _bot.Initialize(Properties.Settings.Default.BotToken);
             _bot.Connect();
         }
 

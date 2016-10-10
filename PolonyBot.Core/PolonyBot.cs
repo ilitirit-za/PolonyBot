@@ -38,17 +38,21 @@ namespace Polony
             _serverId = Convert.ToUInt64(config.AppSettings.Settings["ServerId"].Value);
             _danisenChannelId = Convert.ToUInt64(config.AppSettings.Settings["DanisenChannelId"].Value);
             _defaultPrefix = config.AppSettings.Settings["DefaultPrefix"].Value[0];
-
+            _botToken = config.AppSettings.Settings["BotToken"].Value;
+            
             var dbConnectionString = config.ConnectionStrings.ConnectionStrings["DbConnectionString"].ConnectionString;
             // Inject this
             var daoLogger = LogManager.GetLogger(typeof(DanisenDao));
             _dao = new DanisenDao(daoLogger, dbConnectionString);
+
+            
+            Initialize();
         }
 
         private readonly CancellationToken _taskCancellationToken = new CancellationToken();
-        public async Task Initialize(string botToken)
+        public async Task Initialize()
         {
-            _botToken = botToken;
+            
             InitCommandService();
 
             _logger.Info("PolonyBot initialised");
