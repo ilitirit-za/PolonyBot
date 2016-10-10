@@ -1,0 +1,18 @@
+﻿<?xml version='1.0' encoding='utf-8'?>
+<SettingsFile xmlns="http://schemas.microsoft.com/VisualStudio/2004/01/settings" CurrentProfile="(Default)" GeneratedClassNamespace="Polony.Properties" GeneratedClassName="Settings">
+  <Profiles />
+  <Settings>
+    <Setting Name="ServerId" Type="System.UInt64" Scope="Application">
+      <Value Profile="(Default)">185541633243217920</Value>
+    </Setting>
+    <Setting Name="DanisenChannelId" Type="System.UInt64" Scope="Application">
+      <Value Profile="(Default)">229951183882551303</Value>
+    </Setting>
+    <Setting Name="BotToken" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">MjMzOTIyMDE3MDYwMDYxMTg1.Ctkglw.gGqG8fbrFKtSyNEZykHRoVfGSjY</Value>
+    </Setting>
+    <Setting Name="DefaultPrefix" Type="System.Char" Scope="Application">
+      <Value Profile="(Default)">%</Value>
+    </Setting>
+  </Settings>
+</SettingsFile>
