@@ -243,7 +243,8 @@ ModelManifest.xml
 
 # Release/Test configuration
 App.Test.config 
-App.Release.config 
+App.Release.config
+App.Debug.config
 
 # Key files
 *.pfx

@@ -29,6 +29,11 @@
     <IsWebBootstrapper>false</IsWebBootstrapper>
     <UseApplicationTrust>false</UseApplicationTrust>
     <BootstrapperEnabled>true</BootstrapperEnabled>
+    <UpdateAssemblyVersion>False</UpdateAssemblyVersion>
+    <UpdateAssemblyFileVersion>True</UpdateAssemblyFileVersion>
+    <UpdateAssemblyInfoVersion>True</UpdateAssemblyInfoVersion>
+    <AssemblyFileVersionSettings>None.YearStamp.DayOfYearStamp.TimeStamp</AssemblyFileVersionSettings>
+    <AssemblyInfoVersionSettings>None.YearStamp.DayOfYearStamp.TimeStamp</AssemblyInfoVersionSettings>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <PlatformTarget>AnyCPU</PlatformTarget>
@@ -120,6 +125,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Dal\DanisenDao.cs" />
+    <Compile Include="IPlugin.cs" />
     <Compile Include="PeriodicTask.cs" />
     <Compile Include="PolonyBot.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -130,11 +136,8 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="PolonyBot.mdf">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
+    <Content Include="PolonyBot.mdf" />
     <Content Include="PolonyBot_log.ldf">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
       <DependentUpon>PolonyBot.mdf</DependentUpon>
     </Content>
     <None Include="packages.config" />
@@ -145,9 +148,11 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="app.config" />
+    <Content Include="app.Debug.config">
+      <DependentUpon>app.config</DependentUpon>
+    </Content>
     <Content Include="app.Release.config">
       <DependentUpon>app.config</DependentUpon>
-      <SubType>Designer</SubType>
     </Content>
     <Content Include="app.Test.config">
       <DependentUpon>app.config</DependentUpon>

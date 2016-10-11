@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Configuration;
+using System.Threading.Tasks;
 using System.Windows.Forms;
 using log4net;
 using log4net.Config;
@@ -120,6 +121,11 @@ namespace Polony.UI.WinForm
         private void btnDisconnect_Click(object sender, EventArgs e)
         {
             _bot.Disconnect();
+        }
+
+        private async void btnScores_Click(object sender, EventArgs e)
+        {
+            await _bot.ExecuteCommand("SCORES");
         }
     }
 }

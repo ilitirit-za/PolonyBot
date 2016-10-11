@@ -34,6 +34,7 @@
             this.rtfLog = new System.Windows.Forms.RichTextBox();
             this.btnConnect = new System.Windows.Forms.Button();
             this.btnDisconnect = new System.Windows.Forms.Button();
+            this.btnScores = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // notifyIcon
@@ -77,11 +78,22 @@
             this.btnDisconnect.UseVisualStyleBackColor = true;
             this.btnDisconnect.Click += new System.EventHandler(this.btnDisconnect_Click);
             // 
+            // btnScores
+            // 
+            this.btnScores.Location = new System.Drawing.Point(12, 12);
+            this.btnScores.Name = "btnScores";
+            this.btnScores.Size = new System.Drawing.Size(88, 23);
+            this.btnScores.TabIndex = 3;
+            this.btnScores.Text = "Display Scores";
+            this.btnScores.UseVisualStyleBackColor = true;
+            this.btnScores.Click += new System.EventHandler(this.btnScores_Click);
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(789, 570);
+            this.Controls.Add(this.btnScores);
             this.Controls.Add(this.btnDisconnect);
             this.Controls.Add(this.btnConnect);
             this.Controls.Add(this.rtfLog);
@@ -100,5 +112,6 @@
         private System.Windows.Forms.RichTextBox rtfLog;
         private System.Windows.Forms.Button btnConnect;
         private System.Windows.Forms.Button btnDisconnect;
+        private System.Windows.Forms.Button btnScores;
     }
 }

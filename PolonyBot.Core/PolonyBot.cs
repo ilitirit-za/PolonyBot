@@ -18,6 +18,7 @@ namespace Polony
 {
     public class PolonyBot : IDisposable
     {
+        private static Random _random = new Random();
         private readonly DiscordClient _client = new DiscordClient();
 
         private DanisenDao _dao;
@@ -435,14 +436,15 @@ namespace Polony
             if (String.IsNullOrWhiteSpace(opponentCode))
                 opponentCode = playerCode;
 
+            // Implies no player or opponent - display challenges
             if (String.IsNullOrWhiteSpace(opponentCode))
             {
-                var recentChallenges = _dao.GetChallenges(e.User.Id.ToString(), gameAlias);
+                var recentChallenges = _dao.GetChallenges(e.User.Id.ToString(), gameAlias).OrderBy(o => o.ChallengeStatus);
                 var message = "Recent challenges:" + Environment.NewLine;
                 foreach (var challenge in recentChallenges)
                 {
                     message +=
-                        $"{challenge.PlayerOne.Player.Name} [{challenge.PlayerOne.Character}] vs {challenge.PlayerTwo.Player.Name} [{challenge.PlayerTwo.Character}] " +
+                        $"{challenge.ChallengeId}: {challenge.PlayerOne.Player.Name} [{challenge.PlayerOne.Character}] vs {challenge.PlayerTwo.Player.Name} [{challenge.PlayerTwo.Character}] " +
                         $"in {challenge.DanisenLeague.Game.ShortName}: {challenge.ChallengeStatus}{Environment.NewLine}" ;
                 }
 
@@ -460,16 +462,22 @@ namespace Polony
                 return;
             }
 
+            if (opponentCode == "*")
+            {
+                await ChallengeRandomPlayer(e, league, playerCode);
+                return;
+            }
+
             int numericPlayerCode = 0;
-            if (!Int32.TryParse(playerCode, out numericPlayerCode))
+            if (!Int32.TryParse(playerCode, out numericPlayerCode) && playerCode != "*")
             {
                 await e.User.SendMessage($"**{playerCode}** is not a valid player code!");
                 return;
             }
 
             var playerOne = playerCode.Equals(opponentCode)
-                ? _dao.GetRegisteredPlayers(gameAlias).FirstOrDefault(p => p.Player.DiscordUserId.Equals(e.User.Id.ToString()))
-                : _dao.GetRegisteredPlayers(gameAlias).FirstOrDefault(p => p.Player.DiscordUserId.Equals(e.User.Id.ToString()) && p.RegistrationCode == numericPlayerCode);
+                ? GetFirstRegisteredCharacter(e, gameAlias)
+                : GetRegisteredCharacter(e, gameAlias, numericPlayerCode);
 
             if (playerOne == null)
             {
@@ -534,13 +542,20 @@ namespace Polony
                 return;
             }
 
+            await RecordChallenge(e, playerOne, playerTwo, league, gameAlias);
+        }
+
+        private async Task RecordChallenge(CommandEventArgs e, DanisenRegistration playerOne, DanisenRegistration playerTwo,
+            DanisenLeague league, string gameAlias)
+        {
             var challengeId = 0;
             _dao.IssueChallenge(playerOne, playerTwo, out challengeId);
             await e.User.SendMessage($"Challenge issued!  Your Challenge ID is {challengeId}");
             var p2Id = Convert.ToUInt64(playerTwo.Player.DiscordUserId);
             var opponent = _server.Users.First(u => u.Id == p2Id);
 
-            var challengeDetails = $"You have been challenged by **{playerOne.Player.Name}** ({playerOne.Rank.Name})!" + Environment.NewLine +
+            var challengeDetails = $"You have been challenged by **{playerOne.Player.Name}** ({playerOne.Rank.Name})!" +
+                                   Environment.NewLine +
                                    "```" +
                                    $"Game: {playerOne.DanisenLeague.Game.Name}" + Environment.NewLine +
                                    $"ChallengeId: {challengeId}" + Environment.NewLine;
@@ -556,11 +571,76 @@ namespace Polony
             await opponent.SendMessage(challengeDetails);
 
             if (league.MultipleCharactersAllowed)
-                await DanisenChannel.SendMessage($"**{playerOne.Player.Name}** challenged **{playerTwo.Player.Name}** to a **{gameAlias}** match!");
+                await
+                    DanisenChannel.SendMessage(
+                        $"**{playerOne.Player.Name}** challenged **{playerTwo.Player.Name}** to a **{gameAlias}** match!");
             else
                 await DanisenChannel.SendMessage($"**{playerOne.Player.Name}** challenged **{playerTwo.Player.Name}** " +
-                                            $"to a **{playerOne.Character}** vs **{playerTwo.Character}** match in **{gameAlias}**!");
+                                                 $"to a **{playerOne.Character}** vs **{playerTwo.Character}** match in **{gameAlias}**!");
         }
+
+        private async Task ChallengeRandomPlayer(CommandEventArgs e, DanisenLeague league, string playerCode)
+        {
+            var gameAlias = league.Game.ShortName;
+
+            var playerOne = default(DanisenRegistration);
+            if (playerCode != "*")
+            {
+                int numericPlayerCode = 0;
+                if (!Int32.TryParse(playerCode, out numericPlayerCode) && playerCode != "*")
+                {
+                    await e.User.SendMessage($"**{playerCode}** is not a valid player code!");
+                    return;
+                }
+
+                playerOne = GetRegisteredCharacter(e, gameAlias, numericPlayerCode);
+            }
+            else
+            {
+                playerOne = GetFirstRegisteredCharacter(e, gameAlias);
+            }
+
+            var opponents = _dao.GetRegisteredPlayers(gameAlias)
+                .Where(p => p.Player.DiscordUserId != playerOne.Player.DiscordUserId)
+                .Where(p => p.Rank.Level <= playerOne.Rank.UpperChallengeLimit)
+                .Where(p => p.Rank.Level >= playerOne.Rank.LowerChallengeLimit);
+
+            // Check if there is an outstanding challenge:
+            var challenges = _dao.GetChallenges(playerOne.Player.DiscordUserId, gameAlias);
+            var challengedOpponents = challenges
+                .Where(c =>
+                        c.ChallengeStatus != "COMPLETE" && c.ChallengeStatus != "REJECTED" &&
+                        c.ChallengeStatus != "EXPIRED")
+                .Select(
+                    c => c.PlayerOne.Player.DiscordUserId != playerOne.Player.DiscordUserId ? c.PlayerOne : c.PlayerTwo);
+
+            var eligibleOpponents = opponents.Except(challengedOpponents).ToList();
+
+            if (!eligibleOpponents.Any())
+            {
+                await e.User.SendMessage($"Sorry, there are no eligible opponents available!");
+                return;
+            }
+
+            // Pick a random, eligible opponent
+            var number = _random.Next(eligibleOpponents.Count);
+            var playerTwo = eligibleOpponents[number];
+
+            await RecordChallenge(e, playerOne, playerTwo, league, gameAlias);
+
+            return;
+        }
+
+        private DanisenRegistration GetRegisteredCharacter(CommandEventArgs e, string gameAlias, int numericPlayerCode)
+        {
+            return _dao.GetRegisteredPlayers(gameAlias).FirstOrDefault(p => p.Player.DiscordUserId.Equals(e.User.Id.ToString()) && p.RegistrationCode == numericPlayerCode);
+        }
+
+        private DanisenRegistration GetFirstRegisteredCharacter(CommandEventArgs e, string gameAlias)
+        {
+            return _dao.GetRegisteredPlayers(gameAlias).FirstOrDefault(p => p.Player.DiscordUserId.Equals(e.User.Id.ToString()));
+        }
+
         private string InterpretChallengeStatus(DanisenChallenge challenge)
         {
             if (challenge.ChallengeStatus == "ISSUED")
@@ -767,6 +847,17 @@ namespace Polony
             _logger.Info("PolonyBot disconnecting...");
             await _client.Disconnect();
             _logger.Info("PolonyBot disconnected");
+        }
+
+
+        public async Task ExecuteCommand(string command, params string [] arguments)
+        {
+            command = (command ?? "").ToUpper();
+
+            if (command == "SCORES")
+            {
+                await DisplayScores();
+            }
         }
 
         private void _client_MessageReceived(object sender, MessageEventArgs e)
