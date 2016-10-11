@@ -111,5 +111,15 @@ namespace Polony.UI.WinForm
         {
 
         }
+
+        private void btnConnect_Click(object sender, EventArgs e)
+        {
+            _bot.Connect();
+        }
+
+        private void btnDisconnect_Click(object sender, EventArgs e)
+        {
+            _bot.Disconnect();
+        }
     }
 }

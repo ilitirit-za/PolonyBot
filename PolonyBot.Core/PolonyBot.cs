@@ -752,11 +752,9 @@ namespace Polony
         {
             _logger.Info("Attempting to connect...");
 
-            // Configure the client to use a Bot token, and use our token
             await _client.Connect(_botToken, TokenType.Bot);
 
-            _client.Log.Info("Connect", "PolonyBot connected");
-
+            // Wait till the server becomes available
             await Task.Delay(2000);
 
             _server = _client.GetServer(_serverId);
@@ -766,8 +764,9 @@ namespace Polony
 
         public async void Disconnect()
         {
+            _logger.Info("PolonyBot disconnecting...");
             await _client.Disconnect();
-            _client.Log.Info("Disconnect", "PolonyBot disconnected");
+            _logger.Info("PolonyBot disconnected");
         }
 
         private void _client_MessageReceived(object sender, MessageEventArgs e)
@@ -785,7 +784,6 @@ namespace Polony
                 return _danisenChannel ??
                     (_danisenChannel = _server.GetChannel(_danisenChannelId));
             }
-
         }
 
         public void Dispose()
