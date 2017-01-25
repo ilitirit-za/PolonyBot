@@ -18,16 +18,18 @@ namespace Polony
 {
     public class PolonyBot : IDisposable
     {
-        private static Random _random = new Random();
+        private static readonly Random _random = new Random();
         private readonly DiscordClient _client = new DiscordClient();
 
         private DanisenDao _dao;
-        private string _botToken;
+        private Server _server;
+
+        private readonly string _botToken;
         private readonly ILog _logger;
         private readonly ulong _serverId;
         private readonly ulong _danisenChannelId;
-        private Server _server;
-
+        private readonly TimeSpan _displayScoresTimeSpan;
+        
         private readonly char _defaultPrefix;
 
         public PolonyBot(ILog logger)
@@ -40,12 +42,24 @@ namespace Polony
             _danisenChannelId = Convert.ToUInt64(config.AppSettings.Settings["DanisenChannelId"].Value);
             _defaultPrefix = config.AppSettings.Settings["DefaultPrefix"].Value[0];
             _botToken = config.AppSettings.Settings["BotToken"].Value;
-            
+
+            try
+            {
+                var intervalSetting = config.AppSettings.Settings["DisplayScoresInterval"].Value.Split(':');
+                _displayScoresTimeSpan = new TimeSpan(int.Parse(intervalSetting[0]),
+                           int.Parse(intervalSetting[1]),
+                           int.Parse(intervalSetting[2]));
+            }
+            catch (Exception e)
+            {
+                _logger.Error("While trying to determine score display interval: " + e.Message);
+                _displayScoresTimeSpan = TimeSpan.FromHours(12);
+            }
+
             var dbConnectionString = config.ConnectionStrings.ConnectionStrings["DbConnectionString"].ConnectionString;
             // Inject this
             var daoLogger = LogManager.GetLogger(typeof(DanisenDao));
             _dao = new DanisenDao(daoLogger, dbConnectionString);
-
             
             Initialize();
         }
@@ -58,7 +72,7 @@ namespace Polony
 
             _logger.Info("PolonyBot initialised");
 
-            await PeriodicTask.Run(async () => await DisplayScores(), new TimeSpan(12, 0, 0), _taskCancellationToken);
+            await PeriodicTask.Run(async () => await DisplayScores(), _displayScoresTimeSpan, _taskCancellationToken);
         }
 
         private void InitCommandService()
