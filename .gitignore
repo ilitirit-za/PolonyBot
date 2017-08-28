@@ -242,9 +242,9 @@ ModelManifest.xml
 .fake/
 
 # Release/Test configuration
-App.Test.config 
-App.Release.config
-App.Debug.config
+app.Test.config 
+app.Release.config
+app.Debug.config
 
 # Key files
 *.pfx
