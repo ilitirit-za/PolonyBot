@@ -1,0 +1,1010 @@
+==2-1 combo==
+
+''See:'' [[w:Combo (computer and video games)#2-1 combo|Combo]]
+2-1 combo (an abbreviation for two-in-one combo, also known as an interrupt combo or special cancel) is a combo which takes advantage of the fact that after executing a normal attack in certain games, the player is able to immediately interrupt the animation of the normal to execute a special attack without having to wait for the former to finish.
+
+== 1980==
+
+This is a term in CVS 2 that refers to when the opponent has 3 characters left while the player only has one, and the player manages to still defeat the opponent.
+
+==360==
+
+The act of moving the joystick from the forward position in a circle going down, backward, up and then forward again, in a 360° arc. Most games allow a shortcut that involves stopping this circular motion at the  input instead. It is most commonly used in very short-range grappling attacks in older games.
+
+Although documented as a 360° special move, [[w:Zangief|Zangief]]'s ''Spinning Piledriver'' -- the first fighting game 360 -- can be realized with a 270° rotation.  This rotation can be started either clockwise from forward to up, or counter-clockwise from backward to up.
+
+== 50/50 ==
+
+A kind of mixup, that gives a player effectively 2 offensive options, which can't be defended against both at the same time, thus giving the player a 50% chance of successful hit in case of proper execution.
+
+==Abare==
+
+From Japanese verb ''abareru'', meaning "to run amok" or "to rage violently." Playing aggressively. Usually trying to land pokes when pressured, wakeups, and in between the opponent's attacks.
+
+==Absolute Block== 
+A type of blocking scheme in a fighting game where once you block a string of hits that combo together, letting go of block will not make you stop blocking until the hits no longer combo. Vampire Savior is an example of a fighting game that has absolute blocking. 
+
+==Advanced Blocking==
+
+An ''advanced block'' is a block that is made to improve on normal blocking. This kind of blocking generally has a good deal of advantages over normal blocking, at the cost at being either more difficult to execute or having some sort of cost related to it.
+
+The first game to use this concept was SNK's ''[[w:World Heroes 2|World Heroes 2]]''.  Notable advanced blocks include the  '''Thrust Block''' from ''[[w:Weapon Lord|Weapon Lord]]'',  '''Parry''' from the ''[[w:Street Fighter III|Street Fighter III]]'' series, the '''Just Defend''' from ''[[w:Fatal Fury|Garou: Mark of the Wolves]]'', the '''Guard Impact''' from the ''[[w:Soul Calibur|Soul Calibur]]'' series, and the '''Faultless Defense''' & '''Instant Block''' from the ''[[w:Guilty Gear|Guilty Gear]]'' series.
+
+Another recent example is the '''Breaker''' in newer [[w:Mortal Kombat|Mortal Kombat]] games, which takes 2 bars of super away in exchange for an instant counter.
+
+==Aerial Rave==
+
+''[[w:Marvel vs. Capcom series|Marvel vs. Capcom]]'' series terminology for a chain combo that is performed while a character is airborne, either linked from a ground attack or started while jumping. The main difference between an ''Aerial Rave'' and a ''juggle'' is that in Aerial Raves, both characters are airborne, while during a juggle the attacking character is on the ground and the attacked character is airborne.
+
+This term originates from [[w:Devil May Cry 3|Devil May Cry 3]] as the name of an attack where, after Dante or Vergil launch an enemy into the air, they follows them up and attacks them with mid-air sword slashes.
+
+==Aggression==
+
+Aggression represents the forward displacement and measure of additional reach that is created by a character's attack.
+
+==Anti-Air==
+
+An attack done from the ground serving the purpose of attacking an opponent who is in the air. Moves of this kind generally enjoy high [[#Priority|priority]] or are upper-body invincible.
+
+==Air to Air==
+A move performed in the air against your opponent's aerial move.
+==Armor==
+
+Normally, when a character executing a move gets hit, the move gets interrupted. The concept of Armor refers to the quality of a move by which a character executing the move can sustain a number of such hits before the move gets interrupted. Typically, the Armor is limited to one hit. If a character gets hit twice, while executing a move with one hit Armor, the move stops. In some games, damage is still taken by the player, their health being decreased appropiately once the move is completed.
+
+==Armor Mode==
+A feature exclusive of the ''The King Of Fighters'' series. Armor Mode is activated by pressing BCD. It costs 3 stocks to use, and when activated, the character will pose momentarily and flash yellow for a short period of time (indicated by the timer at the top of the screen). During this time there is no Power Gauge and you cannot amass Power Gauge energy or stocks. Even though the Power Gauge disappears, players can use the Guard Cancel Attack or Guard Cancel Slide (in either direction) as many times as they want. 
+
+While in Armor Mode, all attacks inflict more damage (A little less than in '''Counter Mode'''). Characters also take less damage from attacks. Furthermore, the Dodge Attack will knock down an opponent, just like the Body Blow Attack (Guard Cancel CD attack). Another feature of Armor Mode is that your character takes no damage from blocking special moves, DMs, or SDMs. Although DMs or SDMs can't be used, your character cannot be hit out of an attack--an opponent's attack can still push him/her back, but he/she will continue his/her
+attack instead of going into "hit" animation. This doesn't apply
+to certain attacks that knock down to the ground or up into the air, though.
+
+Once this mode ends, the Power Gauge will not reappear for a few seconds, and the character will still be unable to collect energy / stocks until it reappears.
+
+==Armor Breaking Move== 
+An attack in Street Fighter 4 that can crush armored moves automatically. Reversals in Street Fighter 4 break armor, and every character has at least one special move that blows through Focus Attacks.
+
+==Auto Combo==
+
+: '''See:''' [[w:Combo (computer and video games)#Auto combo|Combo (computer and video games)]]
+
+==Auto Correct==
+An auto correct happens when you input a move when your back is to the opponent (usually a special move) and the computer automatically turns (corrects) your player and subsequently the move towards the opponent.
+
+==Auto Guard==
+
+An interesting built-in feature for various fighting game characters that originates from the Street Fighter series. Moves with autoguard have a specific set of animation frames, during which any move that comes in contact with the character is automatically blocked: this is different from regular move invincibility in that autoguard usually nullifies any move that comes in contact with it during its duration by blocking it and thus renders it harmless, while moves with invincibility might run out of invincibility while the attack is still able to connect with the character, causing the character to get hit regardless. 
+
+As a tradeoff, moves with autoguard are often slowed down when they block enemy attacks, allowing the other character to avoid getting hit by them if the move they use to trigger the autoguard is fast enough. Moves with autoguard are most effective at going through projectiles due to the fact that projectiles usually hit only once and it's relatively easy to time the move with autoguard animation frames so that they're active during the point of impact with the projectile. Some Super Moves also have this feature, and the length of the autoguard animation frame might be exceptionally long for them, in some cases even several seconds.
+
+==Baiting==
+
+'''Baiting''' consists of doing certain moves and movements to try and elicit a certain reaction or move from an opponent, and then [[#Punish|punishing]] that reaction or move.
+
+==Balance==
+
+A term (derived from [[w:balance of power|balance of power]]) used to describe the overall cast of a particular game, specifically referring to whether or not certain characters are inherently stronger or weaker than others. "Good balance" or "well-balanced" refers to when most, if not all, of the characters in a game are on generally even footing with one another. The larger the cast, the more difficult it becomes to maintain good balance. See also [[w:Game balance|Game balance]].
+
+==Block==
+
+When a character is blocking, he/she is in a defensive state that protects him/her from being damaged by his/her opponent's moves (or, in certain cases, softens the damage). Blocking is often performed by tilting the joystick away from the player's opponent, otherwise a specific button is used to block. Usually there is more than one kind of block (most often "high" and "low"), each of which protects against and is vulnerable to different classes of moves. In most games, blocking can be countered by a ''throw''. The same term is known in [[w:Japan|Japan]] as '''guard''', or even '''defense''' in some places.
+
+==Blockstop==
+
+The duration in which you are unable to switch your guard while blocking an attack. This is also usually the window of time that you are able to input a tech hit or guard cancel (in Vampire Savior), and is a time prior to entering blockstun where your character is frozen in place and not being knocked back.
+
+==Block String==
+A block string is a string of linkable attacks that are blocked.  The opponent is forced to block during the entire duration of the block string, or else will be hit. A block string may be understood as a sort of combo that is blocked, hence a blockstring becomes a combo if unblocked.  Possessing and knowing your character's block strings is key to applying pressure, for it forces your opponent to block longer, thus granting you offensive benefits.
+
+==Block Stun==
+
+The term ''block stun'' is used to refer to three different things: The first and most rare is to refer to the delay after a player ceases to hold back or press the block button before the player can move again. The second is the delay before a player can perform another move after successfully blocking a move. The third is the delay before a player can perform another move if the opponent blocked his move. In ''[[w:Mortal Kombat|Mortal Kombat 1]]''-''[[w:Mortal Kombat 4|4]]'', both the blocker and the blocked recover at the same time, while other two dimensional fighters have subtle differences depending on the particular move used.
+
+==Blow Away Attacks==
+
+A particular type of normal move in [[w:The King Of Fighters|The King Of Fighters]], also known as '''CD Attacks'''. Blow Away attacks are performed by pressing CD while standing or jumping. They cannot be used while crouching. All characters can use CD attacks, except for May Lee when she is in Hero Mode (she only has a standing CD in this mode, and it functions differently from most CD attacks). Most ground Blow Away attacks are cancelable, but some aren't. Furthermore, some are only cancelable into special moves and (S)DMs, while others are cancelable into command attacks.
+
+Guard Cancel Blow Away Attacks (Guard Cancel CD Attacks) can only be used while you're blocking while standing up. They do less damage than normal Blow Away Attacks, look different, and are not cancelable.
+
+==Bread and Butter (BnB)==
+
+Refers to a "bread and butter" combo or technique for a character. Usually this is one combo or technique whose use is ubiquitous and highly recommended due to its efficacy, ease of execution, and versatility. First applied to the Street Fighter II series.
+
+==Broken==
+
+Broken refers to both characters and moves. The reason why a move or a character are called broken is because they are so powerful/advantageous that none of the cast has an answer for it, and therefore is game-breaking. This term unfortunately gets taken out of context mainly due to two things. Firstly, during the early days of a new release because players haven't yet found a counter for it. The other reason why this term is taken out of context is because most players label certain characters/moves as strong even though they are not necessarily unbeatable. (Broken in this sense is synonymous with cheap.)
+
+Another meaning for broken can be something that's so good that there is no way to beat, defend or do anything against it. It becomes something that is game breaking, which leads to the character being banned in tournaments at times.
+
+==Buffering==
+
+# In [[w:The King Of Fighters|The King Of Fighters]], performing a normal attack and cancelling it in the middle of its animation with a special, cancelling the ending frames of the normal move's animation (like Kyo's CD attack into his Aragami Style No. 104: Wild Bite or a R.E.D Kick). This is a tactic usually used to manipulate the rhythm of the opponent, or to bait them. 
+# In [[w:Capcom|Capcom]] games, buffering a non-special move into a  special move so quickly that the special move comes out before the normal move ends (often making a [[#Combo|combo]]). This use of the term is synonymous with the term [[#2-1 combo|2-1 combo]].
+# Entering the commands for one move while your character is still in the animation of another move, so the second move comes out as soon as the animation ends. This is an important element of [[3D computer graphics|3D]] fighters, not in and of itself, but because many 3D fighters have "[[w:glitch|glitches]]" or "unintended features" which modify the properties of buffered moves compared to if they were simply immediately executed after the last move. The most famous of this is the tactic in ''[[w:Tekken|Tekken Tag Tournament]]'' of buffering a low parry with an ''Electric Wind Godfist'' movement. If it is buffered, the computer will choose to execute the move only if it is in the best interests of the player, a process known as '''option select'''.
+
+==Button Mashing/Button Bashing==
+
+[[w:Button mashing|Button mashing]] is a derogatory term used to describe the way in which inexperienced players play fighting games. It refers to rapid repeated pressing of buttons in a random fashion, with or without random joystick movements.
+
+It can also be used to describe what occurs in certain situations where buttons must be mashed to achieve a desirable outcome, such as weapons clashing in ''[[w:Samurai Shodown|Samurai Shodown]]'', rapidly mashing on punch buttons to increase the damage on a ''Shoryu Cannon'' performed by [[w:Sean Matsuda|Sean]] of ''Street Fighter III'', mashing on buttons to try to escape from a ''dizzy'' state, or an attempt to mash out of certain combos like [[w:Magneto (comics)|Magneto]]'s ''Magnetic Tempest'' combos in ''Marvel vs. Capcom 2''.
+
+One feature of ''Mortal Kombat'' and ''Mortal Kombat: Deadly Alliance'' is a mini-game titled "Test Your Might." It required the player to rapidly bash the buttons to keep a green meter above a certain level when the count-down ended.
+
+When a player is intentionally trying to mash more hits from a super, a common technique is to fan or drum the fingers out over the buttons and wave the entire hand back and forth over the buttons.
+
+==Cancel==
+
+Cancelling, a concept invented in the Street Fighter II series, is defined as breaking out of a current animation or move by inputing another move that cancels the previous one. Attacks are defined as "cancelable" meaning they have the ability to be canceled (and effectively comboed) into a special or super (the act of cancelling a special move into a super move is usually called '''Super Cancel'''). It also sometimes referred to as ''interrupting''. In some games, the move which is used to cancel a previous move usually does less damage than if the move is used alone.
+
+Normal to special move combos are based on cancelling a normal attack into a special attack. ''[[w:King of Fighters|The King of Fighters]]'' and in a minor degree ''[[Street Fighter Alpha]]'' are known for having ''guard cancel'' techniques that immediately put you out of [[#Block stun|block stun]] and allow you to hit your opponent at the cost of some [[#Super gauge|super gauge]]. The King Of Fighters has a detailed system of evasion and counterattacking based on cancelling your blocking animation, the "CD Guard Cancel" allows you to knockdown your opponent breaking out of your blocking animation to land a CD attack that does little damage at the cost of 1 power bar (which is even cancelable in some cases and allows you to start combos), while the "Guard Cancel Emergency Evade" allows you to roll both backwards and forward to evade and punish the attacker if you time it when he's doing an attack whose recovery will leave him open after your evasion. Systems like ''Guilty Gear XX'', which features the ability to completely ''Roman Cancel'' any move a character is doing by pressing 3 different attack buttons (except '''Dust''') and spending 50% of your Tension bar ([[#Super gauge|super gauge]]; 25% bar in the case of ''False Roman Cancels'') -- , thus completely eliminating recovery time.
+
+A term exclusive to King of Fighters XI is '''Dream Cancel''', where the leader of the team of three, the sole character who can use [[#desperation move|Leader Desperation Move]], can cancel a Desperation Move (a 1-stock super move) into a Leader Desperation Move ( a 2-stock super move).
+
+Soul Calibur allows players to cancel moves by pressing G (guard) during startup, sometimes stopping the move altogether.  This can effectively be used as a form of Baiting, since cancelled moves take little time and can often be followed up by a quick attack.
+
+==Chain Combo==
+: ''See:'' [[w:Combo (computer and video games)#Chain combo|Combo (computer and video games)]]
+
+==Channeling==
+
+Channeling is the redirection of an attack to its targeted location, be it the front of the opponent or the rear.
+
+==Charge Move==
+A move whose command input involves holding (charging) either a direction on the joystick or button(s) for a brief period of time. This kind of move is most popular in 2D fighters, although it is occasionally seen in 3D fighters (more commonly as a button charge than a joystick charge).
+
+==Cheap / Cheese==
+
+Being cheesy or cheap is a derogative term used to point out an overpowering or repetitive tactic, or a player that uses overpowering or repetitive moves. Of course, whether a move or tactic actually is overpowered is a universal source of controversy. Such tactics may be discouraged during casual play with friends, but they are usually fair game during tournament play and amongst tournament players.
+
+It is not so uncommon for a tactic to be deemed cheap by casual players and be considered a poor or weak tactic among higher end players.
+
+In Capcom fighters, this also doubles as an ingame term for defeating an opponent via block damage from a special or a super move, which fits the above description.
+
+Also see balance.
+
+==Chicken Blocking==
+
+Chicken blocking, used most often in [[w:CvS|CvS]] and [[w:MvC|MvC]] circles, used to describe a situation where a player would jump to block an incoming attack in the air instead of on the ground. The idea comes from when you land on the ground it cancels block stun recovery frames, the defending player is no longer in block stun, while the attacker is recovering from his/her attack and is unable to block, leaving them vulnerable to counterattack. Also while airborne you only need to block in one direction thus eliminating high/low mix-ups. Many players referred to this is a "chicken's" way to play.
+
+==Chip Damage (also Block Damage)==
+
+The reduced damage a character takes from an attack while blocking. Generally an extremely small amount; in some games, [[#Normal move|normal moves]] do not cause this. The term refers to the visual effect of the player's ''life bar'' being "chipped" away, bit by bit.  Also refers to a type of fighting that relies soley on causing such damage.
+
+==Clone==
+
+A clone character is a character whose moveset is extremely similar, if not identical, to another's, despite (usually) a different appearance. In the original ''[[w:Street Fighter (video game)|Street Fighter]]'', for example, [[w:Ken Masters|Ken]] and [[w:Ryu (Street Fighter)|Ryu]] were clones.   There is a tendency for clone characters to become more different with later versions of the game (for example, [[w:Ralf Jones|Ralf]] and [[w:Clark Steel|Clark]] from [[w:The King of Fighters|KOF]], Yun and Yang from Street Fighter 3rd Strike, Fox and Falco from Super Smash Bros. Melee). A clone differs from a ''palette swap'' in that a different actual sprite or model is usually used, but the movelist is still the same. ''Palette swaps'' are simply differently-colored sprites (usually alternate costumes for 2D fighting game characters).
+
+==Combo==
+: ''See:'' [[w:Combo (computer and video games)|Combo (computer and video games)]]
+
+In traditional 2D fighter terminology, a [[#String|string]] of attacks that cannot be [[#Block|blocked]] if the first hit connects. The word "combo" is also used presently by some 3D fighter fans to describe simply a series of moves which when done in a certain order perform more quickly than when done out of order (also known as a "string").
+
+==Command Move==
+
+First used in the original Darkstalkers, is a simple or complex move, in execution or animation, usually performed with a simple combination of joystick and button action, such as a 'Forward' Punch or Kick. The properties of these moves are usually not radically different from other [[#Normal attack|normal moves]], but rather they are performed with a button press ''and'' a joystick action to allow a wider array of normal moves without having to add extra buttons. Most command moves usually enjoy special properties such as hitting overhead or low. Particularly in [[w:The King of Fighters|The King of Fighters]], if a normal attack is cancelled into a command move, the command move loses its special properties but become cancellable themselves into a special, while there are others that are immediately cancelable into special or super attacks when performed alone without previous canceling.
+
+==Command Grab==
+
+A command grab (or command throw) differs from normal throws. Normal throws can be 'teched' which means that you can escape from being grabbed by pressing various button sequences. Command throws are untechable and are more damaging than normal throws. The only drawback to this is the fact that most of them require some complex directional inputs to be performed.
+
+==Conditioning==
+
+The act of making the opponent get used to a certain course of action by means of repeated exposure to the same situation. For example, you can condition the opponent to block low on wakeup if you always attack low after a takedown. This can then be useful if you want to take advantage of some strategy that requires starting with an overhead.
+
+==Counter Hit==
+
+A counter hit is a term for an attack that hits another player while they are in the process of performing an attack. In many fighting games this type of attack is granted bonus damage. and/or additional effects ( i.e. [[#Dizzying|dizzying]], [[#Stagger|stagger]]). In [[w:The King Of Fighters|The King Of Fighters]], aside from adding damage, they are given juggling properties, meaning that an opponent caught in a counter hit is immediately eligible for a second attack, for example, a jumping CD attack that hits as counter, can be followed up by a second CD attack of the same nature, or a special, or super, or other moves that have other juggling properties.
+
+==Counter Mode==
+
+A feature exclusive of ''The King Of Fighters 99'' and ''The King Of Fighters 2000''. Counter Mode is activated by pressing ABC. It costs 3 stocks to use, and when activated, the character will pose momentarily and flash red for a short period of time (indicated by the timer at the top of the screen). During this time there is no Power Gauge and you cannot amass Power Gauge energy or stocks. Even though the character's Power Gauge disappears, he/she can use the Guard Cancel CD Attack or Guard Cancel Slide (in either direction) as many times as he/she want.
+
+While in Counter Mode, all attacks inflict more damage. And even though there is no Power Gauge, Desperation Moves can be performed infinitely: no stocks are required. Furthermore, the character becomes able to cancel the Dodge Attack into command attacks, special moves, and DMs, just like a normal punch or kick. A unique feature of Counter Mode is that the character can interrupt a special move with a DM, the same way he might cancel a normal attack into a special move.
+
+Once this mode ends, the Power Gauge will not reappear for a few
+seconds, and the character will still be unable to collect energy / stocks until it reappears.
+
+==Counterpick==
+
+Counterpicking is when you pick a character with a statistical advantage over that of your opponent's character. Some people tend to look down upon this practice because certain players say that you have an unfair advantage over their character whilst others believe this is a strategic choice and a matter of opinion.
+
+==Criticals==
+
+Criticals are moves that may cause more than the default damage, resulting in critical or more damage. Criticals usually occur at random. One example of a character able to use criticals is Shingo Yabuki from [[w:King of Fighters|King of Fighters]], whose attacks always result in a "critical" in The King Of Fighters 97 and The King Of Fighters 98, which did more damage than normal.
+
+==Cross-Up==
+
+A cross-up is a situation where it is more difficult for your opponent to determine whether they must block left or right. Most commonly, this is done by attacking while jumping over your opponent so that it hits as one passes over them. Cross-ups are most easily used in many games after knocking down your opponent, as the opponent will be unable to move or attack while the attacker begins the cross-up (see ''okizeme'').
+
+The term 'cross-up' generally refers to jumping attacks, but is sometimes applied to any situation in which an opponent may have difficulty in determining which direction to block in. In particular, when dashes pass through their opponent it can create cross-up opportunities on the ground. When an opponent must also guess or react quickly to block high or low, or to defend against a throw, the more general term [[#Mixup|mixup]] is preferred.
+
+Starting combos with a cross-up is preferred because it makes the combo more difficult to defend against, as well as providing an extra hit.
+
+Cross-ups originated from Street Fighter II as a glitch, though much like combos, they were later intentionally maintained by the developers to add depth to the game. Crossups were not only implemented into the system, but, for example, Iori from King of Fighters's air Back B [[#Command Move|command]] actually has him kicking backwards after jumping over an opponent, and ideally only useable for easy crossups. There are also characters like Felicia and Sasquatch from the Vampire series who have dashes that can cross up with out having to be in mid air.
+
+==Crouch Dash==
+
+A dash either executed from a crouching position or involving a crouching movement at some point. Seen most often in 3D fighters, particularly the [[w:Tekken|Tekken]] series, where its command is usually '''forward, return stick to neutral, down, down-forward'''. Many characters in Tekken have several different moves available from the crouch dash, and a few (the Mishimas in particular) can actually link one crouch dash into another, which creates a move known as the ''wavedash'' (Not to be confused with the Smash Bros. Melee version of [[wavedash]]). Crouch dashes in Tekken usually have the property of automatically evading high attacks, and some have automatic low parries.
+
+==Damage Scaling (proration)==
+
+Damage scaling refers to the fact that in some games, attacks may sometimes inflict less (or occasionally more, as seen in Guilty Gear) than normal damage due to any number of reasons. Damage scaling can be a result of the number of hits in a combo (Many games; numerous), the specific move used to start a combo (Guilty Gear), the amount of damage that has been inflicted so far in the combo (Last Blade), the type of move (Third Strike), number of uses of the attack, or other factors.  Damage scaling may also be referred to as proration.
+
+==Dark force== 
+
+A specific feature in the video game Vampire Savior, is a special state in which you activate an alternate fighting mode for your character at the cost of one stock. This state has a limited duration and the effects are character-dependent.
+
+==Dash==
+
+A dash is a movement which is both faster than normal movement and requires some sort of input more complex than simply holding one direction on the joystick. Dashes are executed in most fighting games by double-tapping the direction (such as forward, forward or back, back.) Dashes were first implemented in the Art of Fighting series.  Many types of dashes exist, depending on the game, such as air dashes, and some games even include special properties into dashes (Slayer from the [[w:Guilty Gear|Guilty Gear]] series is invulnerable during certain portions of his dash, for example). There are often variations on the basic dash, such as the ''crouchdash'' (executed from a crouching position) or ''wavedash'' (a type of dash in the [[w:Tekken|Tekken]] series specific to certain characters), and in some games mastering the execution of a certain dash is pivotal to winning strategies.
+
+==Deadly Rave==
+
+A super move in which a player must press a series of buttons (traditionally, eight button presses and a quarter-circle move) after execution in order to complete the move. Each button press must be performed with precision timing. Named after the first such super combo of its kind, [[w:Geese Howard|Geese Howard]]'s (from ''[[w:Fatal Fury|Fatal Fury]]'') ''Deadly Rave''.
+
+==Death Trap==
+
+A portion of an arena that can be used to instantly dispatch an opponent. Examples include the cliffs and pits in the ''[[w:Soul Calibur|Soul Calibur]]'' series which may be used to obtain a "ring out", and the various death traps in ''[[w:Mortal Kombat: Deception|Mortal Kombat: Deception]]''.
+
+==Deep Hit==
+
+A hard attack, usually airborne, that causes the attacker's sprite to overlap far into the target's sprite. This results in the attacker being sufficiently close to the target upon completing the attack to allow for the next hit to be part of a combo.
+
+==Desperation Move==
+
+Initially used to describe moves that can only be performed when one's health was critically low, it has since expanded to include any [[#Super move|super move]].  It is often abbreviated to ''DM''. This term is pretty much exclusive to SNK games, more particularly to [[w:The King Of Fighters|The King Of Fighters]] and [[w:Fatal Fury|Fatal Fury]], where it was a known feature to be able to perform unlimited supers when your energy bar was reduced to a point where it started to flash in red.
+
+An even more powerful version of a desperation move is called '''Super Desperation Move''' (frequently abbreviated into '''SDM'''), usually a crazier and far more powerful-looking version of a normal '''Desperation Move''' typically requiring either two or more (usually a maximum of three depending if it is cancelled from a special move or not) [[#super stock|super stocks]], and/or very low life, depending on the game. King of Fighters 96, 97, 98, 99, 2001 and 2002 featured both kinds of SDMs, one is the normal SDM which requires you to either be with your bar on MAX or in 2002, in "MAX Mode", or in some cases, a combination of the older feature of red bar (described above) and the power gauge system where you need to have both a power stock and your energy flashing red, and the other being Hidden SDM which adds low life as an additional requirement.
+
+Starting from King of Fighters 2003, SNK included another term: '''Leader Desperation Move''' (LDM), which is basically the same as SDM. However, unlike SDM which can be used by any character in previous King of Fighters games, only one out of three characters chosen in the team can use LDM (this character is called the leader). Since the bosses usually do not form teams, they are already capable of doing LDMs as well.
+
+The [[w:Battle Arena Toshinden|Battle Arena Toshinden series]] is also famous for it's Desperation Move system. Whenever a character's energy bar turns red, a Desperation Move can be executed which will result in a critical hit to your opponent if successfully done. Desperation Moves are a big part of these fighting games and will most often determine the victor.
+
+==Double KO==
+
+Both players are knocked out at the same time, requiring a trade against each other when both players are at low health. Double KOs may award wins to both players or losses to both players, and the behavior is dependent on the game.
+
+In [[The King Of Fighters]] it results in both characters being taken away from the fight and both of the next ones jumping in to continue the fight and if both KOed characters were the last ones, they are pitted against each other in a last round with only 25% of their energy and a full 60 seconds timer, if a Double KO occurs again, the game ends for both. 
+
+In old Mortal Kombat games, it was a known trick to cause this to continue playing extra rounds. 
+
+In the case of Guilty Gear, if wins to both players would result in the end of the match, a win is given to the player with the lesser number of wins only.  If the number of wins is tied, an extra, "FINAL" round is played.  If there is a draw in that round, the game ends in a draw. 
+
+If there is a DKO on the final round of a match  ''Soul Calibur'', will require a [[sudden death]] round, in which the stage area is shorter.
+
+Also in Street Fighter III: 3rd Strike, If both players each have the same amount of wins and are in the final round, a DKO will incur a Judgement, the first of its kind in the fighting genre. In this case 2 of the 3 judges must turn over a "paddle" with your character's face on it based on fighting prowess ie. no. of combos, longest combo, no. or parries etc. for you to win the match and receive a 'J' symbol.
+
+In Marvel vs Capcom 2, if a DKO happens during 1 player mode, the screen will say "Draw Game", but you lose automaticaly.
+
+In Tekken 3, if a DKO occurs during the final round of a match, the first player wins (!!!).
+
+==Download==
+
+To download one's opponent is to analyze the mannerisms, calls and habits of said player in order to gain the advantage over them. Sometimes, a player will dedicate an entire round to testing and observing their opponent without actually trying to win, using the rounds ahead to capitalize on that time they used to gain information on said opponent.
+
+==Dragon Punch (DP)==
+
+This is used to describe a few different things:
+* A motion in 2D fighting games consisting of moving the joystick in a forward, to down, then down-forward motion. First seen in the very first Street Fighter game
+* Any other kind of move that is generally done with some sort of variation of the above motion, that mostly serves as an ''anti-air'' attack.
+* [[Ryu (Street Fighter)|Ryu's]] and [[Ken Masters|Ken's]] trademark uppercut move from the ''Street Fighter'' games, done with the motion described above and any punch button. Also called ''Shoryuken'' in its native Japanese, or ''Rising Dragon Fist''.
+
+==Dramatic Battle==
+
+A type of match where two teams of characters are fighting each other, all of whom are fighting at the same time. The first instance of this was in the original ''Fatal Fury'', the term is derived from the ''Street Fighter Alpha'' series, where 2 characters fight 1(usually stronger) character at the same time.
+
+==Endurance Match==
+
+An ''endurance match'' is a match where a limited amount of opponents must be defeated, one after another, on a single life bar. These matches are similar to ''[[#Survival Battle|survival matches]]'', where a player continues to play until defeated (with the timer being reset after defeating an opponent), or ''time attacks'', where a player continues to play until time runs out or is defeated. Unlike survival matches or time attacks, endurance matches are not one-round affairs, but are typical three-round matches.
+
+A ''dramatic endurance match'' is similar, but incorporates elements from [[#Dramatic Battle|dramatic battles]].
+
+Endurance matches were first introduced in ''Mortal Kombat'', where three such matches (each with a single character facing two characters) were played before facing the game's [[boss (video games)|bosses]].
+
+==Enhanced Special Move==
+
+A special move where attacks can increase in power by using power stored in a '''super move gauge'''. Also known as an '''ESpecial Move''', '''EX Move''', or an '''ES Move'''. This type of special move was first used in the Darkstalkers series.
+
+==EX Focus== 
+
+Present only in the series Street Fighter IV is made to do a Focus Attack in the middle of a combo, the last movement combo is canceled in a Focus Attack level 1. Spends 2 bars super meter.
+
+==EX Moves==
+EX moves are powered up versions of your special moves. In the Street Fighter IV series to perform an EX special move you need 1 bar of super meter (1/4th of your super meter). To input the move press two buttons at once instead of just one. For instance, to perform an EX Shoryuken you could press any two punch buttons at the same time instead of just heavy punch or light punch. The two buttons pressed don't matter, so you could press LP and HP, or LP and MP, or MP and HP and you'd get the same EX move.
+
+EX versions of special moves have different properties than the regular versions. Examples include more invincibility on shoryuken, projectile invincibility on Vega's EX rolling crystal flash and EX sky high claw, faster start up on some moves, and super armor on Balrog's rush punches and Makoto's command grab. It's pretty universal that EX moves will have faster start up times on them compared to the regular versions.
+
+==Fierce==
+
+In the ''Street Fighter'' series and related Capcom ''six-button fighters'', a heavy punch.
+
+==Finish==
+
+The method in which a player is knocked out. For example, a player knocked out by a [[#Special move|special move]] is called a '''special finish'''. A dedicated special move that knocks out an opponent in spectacular fashion is called a [[finishing move]]. In ''Mortal Kombat'', a finish is also the method of finishing your opponent with such a move when the match is won (also known as a [[fatality]]). Many games display special effects if a character is knocked out with a powerful finish.
+
+==Focal Adherence==
+
+Focal Adherence represents the mechanical laws of battle that two combatants must adhere to in relation to their focal point: the opponent.
+
+==Focus Attack==
+
+Often abbreviated to "FA". Focus attacks were introduced in Street Fighter IV and are a very important game mechanic that makes the game unique. Performed by pressing both medium kick and medium punch at the same time. Focus Attacks grant your character super armor. As soon as this move starts up your character is able to absorb one hit of an opponents attack, unless that attack is an armor breaker. This means that if you're hit with that armor breaking attack during your focus attack, that attack will not be absorbed and you'll just get hit. As an example, Ryu's hurricane kick (tatsu) is his armor breaker attack. Every character has one attack that can specifically break armor. Some characters, though, have moves that hit multiple times before you could be able to release MP and MK to counter, and will thus break your focus. Cody is a great example of this.
+
+There are three levels to a focus attack charge. The longer you hold the button the more damage it will do and the more potential you have for a follow up attack. A level 1 focus attack will not put the opponent into a crumple state allowing for a follow up attack unless it is a counter hit. This means that you can't combo off of a level 1 focus attack. A level 2 focus attack will put an opponent into a crumple state if it hits, allowing you to dash out of the recovery and perform a follow up attack. A level 3 focus attack is unblockable and will also put the opponent into a crumple state. The downside to this is that it also takes a long time to charge and your opponent will often react to counter before you could attack swing.  This is often exploited to bait your opponent into making a mistake, or jumping, or whiffing a move.
+
+All the characters have different ranges on their focus attacks. The lengthiest focus attacks belong to Fei Long, Makoto, and Vega, and one of the shortest belongs to Balrog.
+
+==Focus Attack Dash Canceling [FADC]== 
+
+In the Street Fighter IV series, during a focus attack or during its recovery you can input dash to cancel the recovery animation. Note that you cannot dash out of the recovery if your focus attack whiffs; you must strike the opponent. Whether you score a hit or not is irrelevant, you can still dash out of the recovery as long as your attack connects with something.
+
+While the literal definition of FADC is just dash canceling a focus attack, "FADC" is more commonly referred to by the player base as a means of making some special moves safe on block or using it to extend combos. For the cost of two meters (half of your super meter) you can cancel the majority of special moves with a focus attack.
+
+==Footsies==
+
+“Footsies” is oldschool slang for the mid-range ground-based aspect of fighting game strategy. It refers to a situation where both players are outside of combo range and attack each other with long-range, generally safe attacks ('''pokes'''). The ultimate goal is to control the flow of the match, bait the opponent into committing errors, and punish everything.
+
+==Forward==
+
+In the ''Street Fighter'' series and related Capcom ''six-button fighters'', a medium kick.
+
+==Four-button Fighter==
+
+A type of fighting game controls that uses punch and kick buttons of two different strengths, typical of [[The King of Fighters]] and other SNK fighting games.
+
+==Four Fierce Combo==
+
+Attributed to [[Guile (Street Fighter)|Guile]] from ''Street Fighter II'', his lack of delay after executing a ''Sonic Boom'' allowed him to follow up with another attack that proved to be one of the most devastating and difficult ''combos'' in early ''Street Fighter II'' history. Fully executed, it drained 60% of an opponent's full lifebar.
+
+This combo was generally done once an opponent was dizzy to aid in setup: jumping FP (fierce punch), standing FP, sonic boom, FP backfist (-> FP). While there are actually only 3 punches, all 4 attacks can be done with only the Fierce Punch button. Expert players could add a ''Sonic Boom'' to the beginning of the combo, making it a 5-hit, 70% damage combination. Oftentimes, this combo also redizzied the opponent, making them vulnerable once again to a very potentially round-ending combo or attack.
+
+In the same vein, Ken had this ability as well after ''Street Fighter II: Champion Edition'' was released. His standing FP ''Shoryuken'' would hit twice, so a jumping FP and standing/crouching FP into a similar ''Shoryuken'' would deliver as much, if not more than Guile's combo.
+
+==Frame(s)==
+
+A frame is a single still picture on a display screen such as a television set or computer monitor. Fighting games generally run at a fixed '''60 frames per second''' (50 frames in Europe) which means they show 60 still pictures every second to simulate motion. Thus, the time that a move takes to start, how long it is considered to actually be hitting and how long the character takes to recover immediately after the move can all be measured in frames. One frame is 1/60th of a second, so a move that takes 10 frames to start up equates to 1/6th of a second.
+
+==Frame Advantage==
+
+A move which allows the player to recover before his opponent leaves either [[#Hit stun|hit stun]] on hit or [[#Block stun|block stun]] on block is considered to have '''frame advantage''' in those areas. Moves that enjoy '''frame advantage''' on hit are often used in [[#Link|links]] to perform [[#Combo|combos]], while moves that enjoy '''frame advantage''' on block are often used as [[#Poke|pokes]].
+
+==Frame Data==
+The data or code behind the specific attacks.  This data can be found online and when studied can be advantageous to someone trying to improve their game. This data includes but not limited to: startup frames (how many frames must pass before an attack becomes active), active frames (the amount of frames that an active can hit the opponent), recovery frames (after performing the attack, how many frames must pass before the player is unfrozen), total frames, frame advantage (and disadvantage) on both hit and block (for instance, one attack may be "+10 on block", meaning that if you perform an attack and the opponent blocks, you have a 10 frame advantage over your opponent)
+
+==Frame Trap==
+
+A tactic in which you use a move that seems to be punishable but is actually advantageous on block, baiting the opponent into being punished when they attempt to retaliate. An example of this would be Lilith's c.HK canceled on block into her Luminous Illusion, in the Darkstalkers series. 
+
+==Free Cancels==
+
+Also known as dokomademo cancels.Often making reference to the MAX Mode feature of ''The King Of Fighters 2002'' that gives the player the ability to cancel normal, command and special moves into other command and special moves, Free Cancels are the term used to describe these cancels. Free Cancels work in the following manner:
+* Any Normal attack can be canceled into certain special moves (i.e. Kyo's far standing D into Dokugami).
+* Any jumping Normal attack, Command or CD attack that hits or is blocked can be canceled into certain special moves (i.e. Kensou's jumping C into Ryuu Sougeki).
+* Any normally uncancelable Normal, Command or CD attack can be canceled into certain special moves (i.e. Ramon's standing CD into Tiger Road).
+* Any command attack can be canceled into certain special moves (i.e. Benimaru's Flying Drill into Kuuchuu Raijin Ken).
+* Many special moves can be canceled into other special moves (i.e. Maxima's Double Bomber into Vapour Cannon).
+
+Each time a Free Cancel is used, the character flashes white and a small amount of energy from the MAX timer is lost.
+
+Free canceling an attack into a command attack or (HS)DM is not possible (unless that attack is cancelable normally). It isn't possible to Free Cancel a special move into itself, although moves that can be done on the ground and in mid-air are an exception. For example, you could free cancel a (C) Psycho Sword into a mid-air Psycho Sword, or the ground Minutes Spike into the mid-air Minutes Spike.
+
+One advantage of using free cancels is that you can cancel moves that
+might lose their properties otherwise.
+
+==Fuzzy Guard==
+Fuzzy guarding is when a blocking character is left in a standing block position even though they are crouch blocking. Depending on the game, this may present various inconsistencies and sometimes gameplay advantages.
+
+==Grappler==
+
+Grapplers are characters with strong command throws. These command throws are hard to perform, but the payoff is big due to the fact that you'll have a high damage output. Grapplers usually have movesets that comprise of 360 degrees motions.
+
+==Guard Break==
+
+The action of performing an attack which is blocked, but leaves the blocking player open to further attack. This usually happens when a character receives too many attacks from a defense position, thus losing the guarding status. It is also known as a '''guard crush'''. There can also be attacks that are meant to cause this effect. The first known instance of guard breaking was in the original ''[[Samurai Shodown]]'', where continual blocking can actually cause one's weapon to break.
+* This is also the name of a common exploit in Marvel vs. Capcom 2 in which a character is rendered unable to block in mid-air. In the game, when a character is considered to be in a "normal jump" (either a normal jump or coming into the screen after another character was defeated), the character can only block once (this blocking action will expire after a certain amount of time passes without blocking any attacks). Therefore, any attack executed after the character is no longer blocking cannot be blocked.
+
+Cable is especially notorious for this strategy and combining it with his Air Hyper Viper Beam (AHVB), however all characters are capable of exploiting the phenomenon, if not with the same ease or the same extent.
+
+==Guard Cancel==
+
+The action of [[#Cancel|cancelling]] out of [[#block Stun|block stun]] with another move to counterattack.  An example of this is The King Of Fighters series, where many types of guard cancel techniques exist that immediately put you out of block stun and allow you to hit your opponent at the cost of some super gauge. The "CD Guard Cancel" allows you to knockdown your opponent breaking out of your blocking animation to land a CD attack that does little damage at the cost of 1 power bar (which is even cancelable in some cases and allows you to start combos), while the "Guard Cancel Emergency Evade" allows you to roll both backwards and forward to evade and punish the attacker if you time it when he's doing an attack whose recovery will leave him open after your evasion. In some other SNK games and also in some Street Fighter games you can break out of your defense using Specials, Super moves, Alpha Counters, and similar moves. Systems like Guilty Gear XX feature Dead Angle attacks, in which the blocking character presses forward and two buttons (besides Dust) to move out of block stun and attack to knock away the opponent (though a Dead Angle is blockable itself, and costs 50% tension).
+
+In the Rival Schools series, these are known as "tardy counters."
+
+In some games this is the action of an attacking player to instantaneously stop the attack while it is in progress by using the guard button. This can be used many times to instantly go into other attacks without lag time.
+
+==Guard Meter==
+
+A '''guard meter''' has two meanings. The most common is a gauge that drains as a player blocks attacks. When it completely drains, the player is '''guard crushed''', and is vulnerable to attacks. In some games, the length of the guard meter may shrink after repeated guard crushes to the point where a character cannot block at all. Like low and overhead attacks, the guard meter serves as one of the many countermeasures to prevent [[#Turtling|turtling]].
+
+However, in other games, such as [[Guilty Gear]], a guard meter fills up as a player blocks attacks, and the higher it gets the more damage (including [[#Chip Damage (also Block Damage)|chip damage]]) the player receives from all attacks.
+
+==Half Circle Backward (HCB)==
+
+The act of moving the joystick from the forward position to the down position, then to the backward position, forming a half-circle.
+
+==Half Circle Forward (HCF)==
+
+The act of moving the joystick from the back position to the down position, then to the forward position, forming a half-circle.
+
+==Happy Birthday==
+The act of catching both the opponent and an Assist, making it an opportunity to hit them, in several games keeping them in the stage to continue dealing damage in a combo.
+
+==Hit Box==
+
+Behind the aesthetic of the sprites in fighting games lies the actual coding.  This includes hitboxes. Hit boxes are named as such because the windows for the virtual space that comprise individual attacks, as well as zones of player collision detecting a hit are actually boxes.  For instance, when a character performs a short forward jab, the actual attacking zone is a short rectangle in the approximate location of your character's arm.  When you perform instead a low sweeping kick, the hit box is would be a skinny, low and long to the ground rectangle. The player's themselves have hitboxes.  For an attack to hit, it has to make contact with the opponent's hitbox.  It is noteworthy that perform attacks or any motion changes your character's hitbox.  Hit box data is another powerful study tool in addition to frame data.  Hit box data shows visual images of hit boxes of individual attacks, as well as how your character's hitbox is affected by a particular attack.
+
+==Hit Confirm==
+
+The act of waiting to see if an attack lands, to then continue into a combo or special attack. Hit confirm may also refer to using a safe attack to see if you are able to land a combo or not. This is usually done by hitting your opponent with light attacks. If the attack connects then you may carry on into your combo. If it is blocked then you can end your attack string safely. The reason why you'd use hit confirming is so that you don't put yourself in dangerous situations when attempting combos.
+
+==Hit Stun==
+
+This refers to the amount of time of frames it takes you to recover after being hit by a certain attack. This, combined with [[#Recovery time|recovery time]], is what determines whether or not an attacker will have enough [[#Frame advantage|frame advantage]] after an attack to execute a [[#Link|link]].
+
+==Hood Flawless==
+
+Winning a match but only taking chip damage
+
+==Hunter Chain==
+
+This is a type of chain combo where:
+* any punch can combo into a kick of the same strength, and
+* an attack of lower strength can be comboed into the subsequent attack of the next strength forming a chain.
+
+The name is obtained from ''[[Darkstalkers|Night Warriors: Darkstalkers' Revenge]]'' (''Vampire Hunter: Darkstalkers' Revenge'' in Japan). This is sometimes known as "the chain combo", and variations of this exist in many other games, the most common being a ''two-chain'' (where only the first applies), ''three-chain'' (where only the second applies), and the ''five-chain'' (where you cannot combo a punch of the highest strength to a kick of the highest strength). It's a most common feature in the crossover Series of X-Men and Marvel vs Street Fighter.
+
+==Infinite==
+
+The infinite is a combo that can be continued indefinitely, typically by looping the same sequence of attacks by comboing into the attack that started the sequence. Infinites are generally impossible to break when executed correctly, and require an escape mechanic like Guilty Gear's "Burst" to break the combo.
+
+==Invincibility==
+
+Certain attacks have invincible frames (sometimes referred to as i-frames) during the duration of the attack. During invincible frames, any attack will simply go through the invincible player without doing damage or inducing hitstun. Depending of the game, an attack hitting invisible might still be considered as having hit for the purpose of cancelling it. For example, in the Injustice series, a normal can be canceled into a special move, but only if it is a hit or blocked (ie it can't be canceled on whiff). However, if a normal "hits" during invincible frames, it can still be canceled into a special move even though it didn't hit the opponent.
+
+==Jab==
+
+In the ''Street Figher'' series and related Capcom ''six-button fighters'', a light punch.
+
+==Juggle==
+
+A [[#Combo|combo]] in which the victim is hit multiple times in midair. The move used to start the juggle is called a "launcher" or "floater." This was the second type of combo to ever appear in a fighting game, and first appeared in ''Mortal Kombat''.
+
+In recent King of Fighters games, juggling is supported by another feature called [[#Wire|wire]].
+
+==Jump Installing==
+
+Jump installing is a Guilty Gear term referring to an aspect of the engine that was originally a bug, but later became a feature. The idea is to press an upwards direction during a jump-cancelable move, but then cancel the attack into another attack instead of allowing the jump to occur. This "tricks" the engine into believing you are in an airborne-state. At the end of the attack string, if you end up in the air via an attack that would not normally allow you to do anything before you land, you will have all the options available to you that you'd normally have from a jump, such as air dashing or double jumping.
+
+==Kara Cancel==
+A '''''Kara''''' (Japanese for "empty") '''Cancel''' is a special type of Canceling that exists in games such as Street Fighter III, Street Fighter IV, and BlazBlue. In a typical cancel, the animation of the move is interrupted after it hits the opponent, thereby allowing a subsequent move to follow up the canceled move in a combo. However, when a move is ''kara'' canceled, it is interrupted while still in its start-up frames before it even hits the opponent. Often, kara canceling is used to increase the effective range of a certain subsequent move, such as a throw. In this case, the initial move to be kara canceled is typically a normal move that causes the character to move toward the opponent during the move's initial start-up frames. The throw command is then quickly inputted, right when the appropriate start-up frames have lapsed. By kara canceling the normal move into a throw, the normal move's initial start-up frames are utilized to move the character closer toward the opponent before the throw comes out. A throw executed in this manner is called a "'''kara throw'''". Kara canceling might also alter the properties of the subsequent move (a throw, in this example). In most games with kara canceling, only normal moves or command moves can be kara canceled. Because the kara canceled move must be interrupted during its initial start-up frames, the subsequent move must be inputted extremely quickly. The timing is usually significantly more demanding than a normal cancel.
+
+==Knockout==
+A knockout (KO) occurs when a player's life is depleted and the player's character is "knocked out." Sometimes compared to ''Ring Out''.
+
+==Life==
+
+Also called "energy", "health", or "vitality", a character's life is how much more damage he can take, represented by a bar at the top of the screen, with the bar depleting inwards in most cases (''Darkstalkers 3'' being a notable exception). When a character's life bar is completely drained, the round is lost. Some games like '''Real Bout Fatal Fury''', '''Samurai Showdown''' and '''Art of Fighting''' have a total life bar that is composed by two bars, one which is the classical yellow one and a red one. This feature is used to implement certain super gauge systems and other strategical details.
+
+==Link==
+
+Linking moves is the act of performing a move with quick [[#Startup|startup]] immediately after a move with quick [[#Recovery|recovery]] has connected while your opponent is still in [[#Hit stun|hit stun]], thus linking both attacks together into a combo. In general, a combo can be formed either by canceling one move into another move, or by linking one move into another move. The difference is that in canceling, the animation of the earlier move is interrupted, whereas in linking, the animation of the earlier move is not interrupted.
+
+==Low Attack==
+
+Quite simply, a low attack is an attack that must be blocked crouching. They are an integral part of [[#Mind games|mind games]] when mixed up with [[#Overhead attacks|overhead attacks]].
+
+==Matchup==
+
+A matchup refers to when two characters face off each other in a fight. Matchups can be determined either as good or bad depending on a variety of factors such as character speed, strength, and whether or not that character has a hard time getting close to the other character.  Matchup data is often the underlying basis for tier lists.  A matchup chart shows how each character fares against the other characters of the game.  A high tiered character has matchups mostly in their favor,  while a low tier character has mostly bad matchups.
+
+==MAX Mode==
+
+MAX Mode is a feature present in ''The King Of Fighters 2002'', it is a mode which the player can "enter into" or activate. MAX mode costs one level of power gauge to activate (by pressing BC). When the player does this, the character will do a starting pose, then start to flash. During this time, a blue gauge appears above the Power Gauge and begins to slowly drain. Once it is empty, MAX mode ends.
+
+When it is activated, it becomes possible to cancel moves from normal, command and Special moves ''into'' Special moves, and even some ''Command Attacks''. Hence, it is possible to cancel normally uncancelable moves into safer moves, Uppercut moves, and many other types of moves to surprise the opponent, attacking or defending yourself, or to create complex ''sequences'' of attacks. As for combos, it is also used to create combinations that otherwise wouldn't be possible, such as ''repeating'' one special move into another and canceling into the same previous move again to create a ''semi-infinite'' (which is prevented and limited by the bar that depletes from itself a certain quantity of bar energy whenever a move is cancelled). Certain attacks can only be canceled ''from'' initially and not ''into'' when in the middle of a combo or string of attacks.
+
+Also, to allow the player to activate MAX Mode dynamically, there is a feature called the ''Quick MAX Mode Activation'', performed by pressing BC when one of your attacks hits or is blocked. Quick MAX Mode activation costs 2 levels to use. Quick MAX Activate offers the advantage of canceling instantaneously the animation of any Normal or Command attack, and eliminates its own MAX Mode startup animation. When the current attack is canceled, you can immediately attack your opponent after pressing BC, having the absolute freedom of continuing your movements and do anything that you want, from running forward to continue the combo, to jumping, to evading, etc.
+
+While in MAX mode, your attack power decreases. Only DMs do a
+normal amount of damage. Furthermore, you cannot earn Power Gauge
+energy while in MAX mode.
+
+You can perform a DM without losing any levels from the Power Gauge. You can also perform an SDM, which will only cost one level to use. If your Life Gauge is very low (to be exact, below 1/3rd of the total gauge length), you can use HSDMs as well, which have the same requirements as SDMs. In all of these cases, performing the (HS)DM will immediately end MAX mode.
+
+==Meaty== 
+
+First used in Street Fighter II to describe the act of attacking the opponent as they are standing up in such a way that only the latest active frames of the move strike the opponent. This is really powerful because it allows a bigger frame advantage. In fighting games that an attack can be freely canceled on hit or block, "Meaty" usually refers to hitting an opponent on the first frame possible of their wakeup, usually with an attack with long active frames.
+
+==Mercy==
+
+An old courtesy tactic that appeared back when Street Fighter II became popular. When fighting someone in a 2-player game; the winner of the first round lets the other player win the second round. This "mercy" round not only gave players who were outclassed the opportunity to play a little longer, but to also practice moves etc.
+The term mercy was first officially used in Mortal Kombat 3, where instead of finishing an opponent off, players were also able to give an enemy a small portion of energy back - called a mercy.
+
+==Meter (Gauge)==
+
+A bar that increases over the course of a game. It is usually located at the bottom of the screen, and different games have different systems. Some examples of fighting game series with Meter are Marvel Vs. Capcom (Hyper Level), Street Fighter (Combo Bar from SF3 onward), Guilty Gear (Tension Gauge), and Mortal Kombat (Super Meter from MK9 onward). Most commonly, this meter is used to execute "supers", powerful moves that take up some of the offending player's meter. Many fighting games also use the meter for "Meter Burn" moves, moves that take up less meter than supers, and make a character's normals or specials more powerful.
+
+==Meter Gain==
+
+Refers to how much meter is gained from executing an attack.  How much meter is gained usually depends on whether the move is normal or special, and whether the attack lands or is blocked.
+
+==Mind Games==
+
+Mind games are described as the use of psychology to maximize one's chances of winning. A big part of mind games is '''archetyping''', dissecting the way an opponent plays and then immediately gearing oneself to prepare an effective counter strategy, as well as a great deal of other tactics that take advantage of the amount of predictability present within an opponent.
+
+Mind games generally used within fighting games can include:
+* Training an opponent into doing a certain move in response to something, then [[#Baiting|baiting]] that response to [[#Punish|punish]].
+* Putting forward an incredible rushdown game and then suddenly ''shifting gears'' at the least expected moment, and viceversa.
+* Deliberately showing a pattern and then changing it part way through once your opponent catches on. For example, one could jump at the opponent and perform a low attack repeatedly throughout the match, then jump at them and perform an ''overhead'' attack when they try to block low.
+
+==Mirror Match==
+
+A match in which both players use the same character.
+
+==Mixup==
+
+''Mixup'' is a strategy or technique of making one's attacks more difficult to predict. In 2D fighting games such as ''Street Fighter'' or [[The King Of Fighters]], it typically involves using [[#Low Attack|Low attacks]], [[#Overhead Attack|Overhead attacks]], [[#Throw|Throw attacks]], and generally any assortment of attacks which require different actions from the opponent in order to defend against them. Mixups become more effective as the variety and complexity of the required defenses increases, and as the amount of time available to react decreases. When used in a [[#Pressure|pressure]] [[#String|string]], mixup can allow a player to connect a [[#Combo|combo]] or score a knockdown to continue the pressure if his opponent fails to correctly guess what to do, how to evade/counterattack or where to block. 
+
+Certain mixups are so effective that they are frequently considered impossible to defend against except by luck or knowledge of your opponent's tactics; in this case, they are sometimes called '[[#Reset|resets]].'
+
+Mixup can also refer to the strategy of entering poses or stances which have multiple moves with different attack properties available to them, such as [[Lei Wulong|Lei Wulong's]] animal kung-fu arts or Guy's Bushinryu ninpo arts.
+
+==Negative Edge==
+Use of button release in place of button press within a command sequence; most Capcom fighting games allow special and super moves to be performed by this method.
+
+==Neutral Game==
+The situation were neither opponent is attacking or defending, for example at the start of the game. Usually, it emphasizes that no player has an advantage over the other, thus the situation is called 'neutral'. Often, the neutral game consists of each player trying to achieve advantageous spacing or finding a chance to apply pressure. 
+
+==Normal move==
+A '''normal move''' is any attack performed using a single button press, without moving the joystick and usually without being in midair.
+
+==OCV (also Straight)==
+
+Abbreviation for One Character Victory. It is used to refer when a person wins a team based fighting game by only using one character on their team (like in [[The King Of Fighters]], or tag games like [[Tekken Tag Tournament]] or [[Marvel vs Capcom|Marvel vs Capcom]]). Since the one character doesn't necessarily regain all of his or her energy after defeating an opponent, and has been able to defeat the whole team of the other player by himself, this type of victory indicates a very decisive win.
+
+==On the Ground (OTG)==
+
+A state in which the opponent has been knocked down to the ground.  An OTG attack is an attack that hits an opponent who has fallen to the ground.  
+
+==Okizeme==
+
+'''Okizeme''' (literally "waking attack") is the art of putting pressure on a rising or grounded opponent. This is often done by putting an opponent in a situation in which he must immediately block, often with a new string of attacks or a projectile. This term and the techniques effectiveness is much more prevalent in the world of 3D fighters, which generally allow characters to attack downed opponents, something minimally found in 2D fighters. In 2D fighters, an opponent can't generally be attacked while knocked down, and can rise and immediately theoretically counter or block any move, making okizeme more of a psychological concept, known instead as ''wake-up game''. This is not always true of 2D fighting games, however. For example, in the [[Blazblue]] series, which allows characters who have been knocked down to roll away in multiple directions, pressuring a character as they stand up (as well as trying to predict which direction they will roll in) can have a profound effect on the outcome of the match.
+
+==Option Select==
+
+'''Option select''' describes a situation in a fighting game where the action of the player is ambiguous, and the computer will determine the outcome based on the situation. Generally speaking, the result chosen is the one that is best for the acting player. For example, in ''[[Virtua Fighter|Virtua Fighter 3]]'' it was possible to do an action for both a block and a throw, and if the throw would have successfully captured the opponent it would do that, otherwise it would do a block. In SNK vs. Capcom: Chaos, attempting an air throw will result in a light attack if there is no opponent within throw range. Option select is sometimes the result of a flaw or overlooked feature within the game.
+
+==Orientation==
+
+'''Orientation''' is one of the laws of [[#Focal Adherence|Focal Adherence]] that forces all attacks, defense, and movement to relate specifically to the location of the opponent while dictating the direction each character faces. This law prevents a character on the left side of the screen from turning and moving Forward in the direction of the screen when the player presses left. If characters switch sides, Orientation forces both characters to turn and face each other, be it automatically, or upon further action from the character(s). This law defines the difference between the game's acknowledgement of Left/Right and Back/Forward with respect to all character actions. While most fighting games are structured upon this law, some games such as Super Smash Brothers Melee are not.
+
+==Overhead Attack==
+
+An '''overhead attack''', first used in Street Fighter II, is an attack (normally a command move) that hits players who are crouching and blocking, and must be blocked standing. It is among one of many countermeasures to deter turtling. Because of the nature of the attack, many attacks done from the air are overhead attacks. Therefore, this term is usually used within the context of a ground attack. Examples of overhead attacks include [[Kyo Kusanagi]]'s Ge Shiki: Gou Fu You (Foreign Style: Thunder Axe Positive), Ryu's Sakotsu Wari (Collarbone Breaker), Guy's Neck Breaker or his Run Command into Neck Flip, [[Ky Kiske]]'s ''Greed Saber'' and [[Terry Bogard]]'s ''Hammer Punch''. Some games, such as the [[Soul Calibur]] series, have a "mid"-level attack (in addition to high and low attacks) that serves the same purpose.
+
+In some games, these attacks are cancelable and comboable into special or super moves, or even cancelable into special features of the gameplay system, like The King Of Fighters 2002's MAX Mode, which can be used to cancel the animation of these moves as soon as they hit to run and start a normal combo into any thing.
+
+==Parry==
+
+Parrying is a technique introduced in the Street Fighter III as a means of evading an incoming attack without receiving damage. The technique is achieved by timing a toward or down controller motion (when on the ground) at the exact moment an opponents attack is about to hit. A successful parry generally leaves the opponent vulnerable to a counterattack. It is also possible to parry in mid-air by tapping the controller down while airborne. Parrying works against regular, special, and super moves.  To parry a full special or super move, the player must perform individual parries against every damage frame of the incoming attack.
+
+==Plink==
+
+Plinking, or '''Priority linking''', is a fundamental technique in which two or more buttons are pressed in rapid succession, allowing for easier input commands and overall better execution.  This technique was popularized in Super Street Fighter IV, when players utilized it to execute more difficult combos.
+
+==Poke==
+
+A '''poke''' is generally a quick attack that is done to hit an opponent from just about the maximum range that specific move will allow, generally done as a single attack to accomplish any of the following things (sometimes more than one): to [[#Stuffing|stuff]] an opponent's current attack, even one of their own pokes; to create distance between the two players; to deal "safe", unpunishable damage.
+
+==Pressure==
+
+'''Pressure''' involves using a sequence of attacks to keep an opponent on the defensive and often involves [[#Okizeme|okizeme]] and [[#Mixup|mixup]] tactics. The purpose of pressure is to keep an enemy from effectively attacking back until they make a mistake, usually allowing for a damaging [[#Command move|command move]] or [[#Combo|combo]] to be performed.
+
+==Pretzel Motion==
+The '''Pretzel Motion''' is a motion introduced in Fatal Fury Special, which was used under series' antagonist "Geese Howard" as his Raging Storm Desperation Move. It is notable for being difficult to pull off, as the motion is done by doing a down-back, to Half-Circle Back (HCB), then down-forward motion. The name derives from these three motions put all together. It is also used by Hazama in the BlazBlue series as his Astral Heat.
+
+==Priority==
+
+A descriptive measure of an attack's tendency to strike the opponent when that opponent is also attacking. In general, higher priority attacks always interrupt lower priority attacks. It's important to note that "priority" is usually simply a term of convenience - very few games actually have an internal mechanism that governs the resolution of attacks via priority. Instead, priority arises as a consequence of the characters' hit-box properties during a move. Typically, hit-box properties can lead to priority in two ways. First, during the move, the character's attacking hit-box can extends far beyond his target hit-box such that he can hit the opponent without being hit. Second, priority can arise when a move allows the character to attack another character while being invincible for a certain duration of the move (where such invincibility is usually the consequence of the complete absence of a target hit-box). An example of a high priority move is Ken's Shoryuken in the ''Street Fighter II'' series, a move which had extensive invincibility frames during its startup. In later renditions of ''Street Fighter II'', the amount of invincibility frames was reduced, but even when not invincible, the attacking hit-box remained a great deal larger than the target hit-box for a relatively long duration of the move.
+
+==Punish==
+
+Attacking an opponent who is [[#Recovery|recovering]] from performing an attack. It is, of course, easier to "punish" [[#Whiff|whiffed]] attacks, as well as attacks that have high recovery time.
+
+==Puppet Fighter==
+
+A '''Puppet Fighter''' is a type of character who has the ability to actively control two separate persons or entities simultaneously. One person acts as the main character, while the other acts as an extra tool (aka the Puppet). These types of characters are usually considered to be amongst some of the most difficult characters to play. If played correctly, the player can control most of the screen. These types of characters usually tend to be one of the best characters in their specific game. The '''Puppet Fighter''' playstyle was introduced in the JoJo's Bizarre Adventure fighting game made by Capcom. The playstyle would later be adopted by other fighting games. Some examples of Puppet Fighters include "Zato-1/Eddie" of the Guilty Gear series, "Carl" and "Relius" of the BlazBlue series, "Rosalina" from Super Smash Bros. 4, "Ms. Fortune" from Skullgirls, and "Viola" from Soul Calibur V.
+
+==Pursuit Attack==
+
+Although this could be done in Street Fighter II, by some characters, it was not properly implemented until Night Warriors: Darkstalkers Revenge. It is an attack that hits a character who is lying down on the ground. A combo that contains, but does not end with, a pursuit attack is known as an '''off-the-ground combo''', or simply '''OTG'''.
+
+==Push Block==
+
+A technique added to normal block, that pushes away an opponent that is using a combo string against the character who is blocking. It's a defensive component featured in some games of the [[w:Marvel vs. Capcom (series)|Marvel vs. Capcom]] series, [[w:Skullgirls|Skullgirls]] and [[w:Injustice: Gods Among Us|Injustice: Gods Among Us]].
+
+==Quarter Circle Back (QCB)==
+
+The act of moving the joystick from the downward position to the direction that makes your character move backwards, forming a 90 degree angle, or quarter circle.
+
+==Quarter Circle Forward (QCF)==
+
+The act of moving the joystick from the downward position to the direction that makes your character move forward, forming a 90 degree angle, or quarter circle. Sometimes referred to as a "''Fireball'' Motion", as it is commonly used to perform a character's projectile attack.
+
+==Quick Recover==
+A quick recover is when your character get back on their feet quickly after being knocked down. This is performed differently from game to game however it is usually performed by pressing down the moment your character hits the floor.
+
+==Rage Gauge==
+
+The '''rage gauge''' is a super move gauge where the only way to gain energy is to get hit. It was introduced, and most commonly used, in the ''Samurai Shodown'' series of games.
+
+Because of the way power in the gauge is obtained, the rage gauge typically gives many bonuses when completely filled up. For example, characters typically deal significantly more damage when the rage gauge is full. However, this gauge often has drawbacks: it is not uncommon for the gauge automatically empty after a certain period of time (when the rage starts to "cools off"), or at the start of every round.
+
+The rage gauge was originally designed as a variation of a super move gauge: the first ''Samurai Shodown'' game did not have super moves, but did allow a player to deal substantially more damage when his "rage gauge" was high.
+
+Also featured in "Capcom v. SNK 2" as the K-Groove gauge, and in Street Fighter IV as the method for executing Ultra Combos.
+
+A variant entitled "rage mode" was also utilized in "Mortal Kombat vs. DC Universe," where the rage gauge would fill both when the player received and inflicted damage.
+
+==Ranbu Super==
+
+A term for any super which involves a dash forward followed by a predetermined, auto-executing series of hits, traditionally ending with an uppercut or close equivelant.  Named after [[Ryo Sakazaki]]'s super <i>Ryuko Ranbu</i>.
+
+==Read/Reading==
+
+Reading is when you understand your opponents playstyle and patterns so that you have a better idea of being able to guess what your opponent is going to do next.
+
+==Recovery==
+
+The time or frames it takes for a character to return to a neutral state after the [[#Frames|frames]] in which the attack actually hits have passed. The shorter the time, the better.
+
+==Red Parry==
+
+Exclusive to ''[[Street Fighter III|Street Fighter III: 3rd Strike]]'', a Red Parry is a parry done while in block stun. Because the stick must return to neutral before you can parry again, the timing window is much more precise than a standard parry. The additional benefit given for executing this move is that it can be executed more safely, since the player starts a Red Parry after blocking an attack.  There are many more cases where a Red Parry can be used to gravely punish a predictable opponent than an ordinary Parry can offer. However, the strict timing requirement makes execution extremely risky. Your character flashes a reddish-orange color instead of the standard blue when red parrying.
+
+==Renda Bonus==
+
+This is a trait unique to Vampire Savior. Some characters gain a frame advantage bonus when chaining light attacks into themselves, usually +2-3F advantage bonus over the base amount of frame advantage. But this is character specific and does not apply to the whole cast, or to every light attack. An example would be Bulleta's far standing LP which is normally +10 on hit, but becomes +13 on hit when chained into itself. 
+
+==Rekka==
+
+A type of special move that can be comboed by repeating its own motion, to a maximum number of attacks (usually three). For example, QCF+P into QCF+P into QCF+P. Named for Fei Long's ''Rekkaken'' move in ''Street Fighter II''.
+A rekka-type move may also use a more unique command sequence.  For example, Samurai Shodown II's Nienhalt Sieger uses QCF+C (Tigerkopf) into QCF+B (Falkennagel) into HCB+A (Elefantglied) for his back breaker combination move.
+
+==Repel==
+
+Term used in the Last Blade games, whose command is D or forward/down-forward+D. A repel reverses an opponent's attack and gives the chance to counter with an attack/combo of choice. This way, the player not only can avoid getting hit but also punish the opponent for attacking.
+
+Also present in the Soul Calibur line of games. If you guard as you press forward you will "repel" the attack, forcing the opponent off balance and giving you the opportunity to counter.
+
+Ending a combo in a way that leaves the opponent in a neutral state rather than a knockdown, then immediately attempting a second combo. The first combo does less damage than a full knockdown combo, but the second combo will reset damage scaling and do full damage, giving you more damage overall. Resets are harder to defend against than okizeme after a knockdown because the opponent gets no wakeup invincibility, and resets make it difficult to guess when the combo will end. By definition, however, resets must be escapable.
+
+==Reversal==
+A move that generates a certain advantageous situation when done in immediate reaction to an opponent's attack.
+
+Sometimes a reversal is done at what the game considers the optimal time necessary to take advantage of either the move's invincibility frames or [[#Priority|priority]] for the best possible outcome. The timing window for such moves is generally small. An example of this is present in ''Street Fighter'', where a move done at the first possible [[#Frames|frame]] on wake up is considered to have reversal timing. The ''Dragon Punch'' is a popular move to use as a '''reversal'''. 
+
+In ''[[Mortal Kombat X]]'', a reversal is a move entered right after blocking an incoming attack. The move will then automatically come out at the first frame possible after the blockstun, leaving the opponent no chance to defend against it.
+
+Reversals can also refer to moves specifically designed to be used while the opponent is attacking, but do no damage on their own - i.e., if the opponent attacks during the active frames of the reversal within sufficient range of the player's character, an automatic counterattack will be launched. The most prominent and known example of this is [[Kyo Kusanagi]]'s '''Nue Tsumi''' (Style No. 902: Clipping Chimera), another one is [[Blue Mary]]'s '''Mary Reverse Facelock''' and (for short) '''M. Head Buster''' (that can even be comboed into special and super moves, as it has juggle capabilities, further expanding on the concept). An easier way to think of this form of reversal is a ''throw'' that only deals damage if the opponent attempts to attack while it is active. This kind of move is more common in SNK games and in 3D fighters, where they can also be known simply as "counters", and this form of reversal differs from ''parries'' in that parries do no damage - they simply interrupt an opponent's attack. Some games offer command options for escaping a reversal (and thus negating the damage from it), though the complexity of the escape varies wildly.
+
+==Ring Out==
+
+A victory achieved by sending the opponent out of the ring or fighting arena; these are usually only found in 3D fighting games but some 2D fighters, like Real Bout Fatal Fury, contain ring outs as round ending stage hazards once the barriers are broken. This is usually the only way to KO an opponent in the [[Super Smash Bros.]] series.
+
+==Rolling==
+
+Rolling is a gameplay feature found in some SNK games, and is an important part of the engine in [[The King Of Fighters]]. The entire concept behind Rolling is to evade the opponent either by Rolling forward when you know that his attack will have a slower recovery time than your roll so you can punish it with frame advantage (players can also calculate the timing of the roll to reach the opponent's back before his attack finishes, even if it is an attack that is normally thought to be "safe", anticipating his movements) or by Rolling backwards to prevent any dangerous attacks from him and neutralize any poking attempts. The Rolling moves (otherwise referred to as the "Emergency Evade") can be used by themselves, or while blocking an attack. You are immune to attack as the Roll begins, but you can be attacked while recovering from the Roll (before you have a chance to block). Throws of any kind can grab characters out of a Roll at anytime.
+
+A third type of roll was added in ''The King Of Fighters 2002'', the "Quick Emergency Evade." Basically, what it allows you to do is cancel any normal attack, command attack, or Blow Away Attack (CD Attack) into a forward roll, successfully adding another mind game that comes in effect when the opponent tries to knock you down with a ''Guard Cancel CD Attack''. While he spends one power gauge to perform this CD attack to knock you out of any sequences or strings of attack that you may be doing, you can spend one power gauge yourself to evade his Guard Cancel CD Attack by rolling forward, which leaves him open to your attacks. It can be used even if the attack is not cancelable, or before the attack even hits. Canceling a roll in this manner will cost 1 level of Power Gauge, even if the character is in ''MAX Mode''.
+
+==Roll Cancel==
+
+In [[w:Capcom vs. SNK 2|Capcom vs. SNK 2]], roll cancelling is the ability to cancel a roll into a special attack. This changes the roll "animation" into that of a special attack, but the engine does not re-evaluate the invincibility frames from the roll. This means that for the first 17 frames of your special (about 1/3rd of a second), you are completely invincible.
+
+==Roundhouse==
+In the ''[[w:Street Fighter|Street Fighter]]'' series and related Capcom [[#Six-button fighter|six-button fighters]], a heavy kick.
+
+==Rubber Band AI==
+
+Rubber Band AI is found in several fighting video games most notably in the [http://en.wikipedia.org/wiki/Soul_Calibur Soul Calibur Series]. The concept refers to a game where CPU opponents will retaliate with deadly combos after they lose a round somewhat fast or with the human player not taking a certain amount of damage. The CPU will almost appear to have increased the difficulty.
+
+==Rushdown==
+
+The complete opposite of [[#Turtling|turtling]], a rushdown style is considered to be completely offensive, often using a huge variety of [[#Mixup|mixup]], [[#Pressure|pressure]] and [[#Mind games|mind games]] to force an opponent into a suboptimal defensive situation, seeking to create openings and watch for sudden mistakes to capitalize with proper, devastating [[#Punishing|punishment]]. Because of its overtly offensive, flashy nature, rushdown is generally considered to be a very entertaining -- if risky -- style of fighting. [[w:The King Of Fighters|The King Of Fighters]] is a game acknowledged for having a universal system of movements that allow an evolved form of rushdowns.
+
+==Run==
+
+Running, as it literally means, is the act of approaching your opponent through continuous movement much like Jumping, but unlike it, Running lets you travel through the ground.
+
+The game that most prominently established the maneuver of Running for the first time was in the Neo Geo title Samurai Shodown, back in 1993. Instead of only walking forward, when the player could just jump instead for added mobility in [[w:Street Fighter|Street Fighter]], the Run came into scene to complement ''Jumps'', effectively giving a better notion of mobility that contradicts the often aerial advancement that characterized games of the past. Other games then, such as SNK's own ''The King of Fighters 96'' and later ''Guilty Gear'' implemented this feature. ''Ring of Destruction: Slam Masters II'' introduced ''Backwards Running'', which can be served as a basis for Namco's ''Soul'' series.
+
+By Running a player can:
+
+* Approach the opponent quickly but sticking to the ground
+* Stop at any moment, with freedom to block, to do a Low Attack, an Overhead Attack, a Throw, and any other type of movement such as Jumping or Rolling to evade, retreating, etc.
+* When timed well, it can be used to anticipate the opponent's movements by running and attacking (when they attack or try to jump)
+* Accompained with backsteps, it can be used for zoning.
+* When a player does a Jump, it can actually pass ''below'' it, end in the back of a player, and the Running character can then turn and attack the opponent in the back, successfully punishing them for jumping.
+
+==Runback==
+
+Fighting game slang for coming back from a loss and winning, usually against the same person.  
+
+==Sabaki==
+
+A term first used in [[w:Virtua Fighter|Virtua Fighter]] series, a Sabaki (sometimes called a Sabaki Parry) is a move that automatically parries an attack during its animation. Sabakis are not invincible, but can absorb, counter, parry or ignore other attacks. The attack auto-parries their move allowing your Sabaki to continue as though it was never interrupted. These moves usually work against specific attacks or specific types of attacks only. If done and an attack is not parried, the Sabuki will usually run it's course as a normal move or attack. Examples of a Sabaki are Sarah's FL P+K (Sabakis low punches) and Bruce's Irvin ([[w:Tekken|Tekken]]) f,f+2 (Sabakis high left punches).
+
+==Safe==
+
+A move that cannot be punished if blocked. Usually these moves have a very short recovery time, or they stun your opponent for a long enough so that you can block again before they're capable of retaliating. A term first coined in the Street Fighter II series.
+
+==Safe Jump==
+
+The technique of timing an aerial attack against a fallen opponent in such a way that that if they try a reversal upon wakeup, you can recover and defend against it in time. Ideally if no such attack occurs your attack will also hit their block and allow you to continue pressure, though this may not always be possible.
+
+==Salty==
+Defined on urban dictionary: Slang; A word used in the FGC (Fighting Game Community) to describe someone who is upset. (mainly because of their loss to someone.) Though the word's primary use lies in the FGC, it can also be used in any other context to describe being upset.
+
+==Scrub==
+
+A derogatory term with a specific meaning, but nowadays synonymous with "loser." Originally, it was solely used to denote players who would call certain moves cheap or refuse to cultivate their tactics on principle, so you could easily be a skilled player and still be a scrub restrained by arbitrary barriers. It just means you don't play to win. The word has lost all semblance of a tangible definition in the minds of uninitiated new blood and has spread to other genres in the guise of a generic insult. It's a shame, as no other word more aptly described what creates the stagnant atmosphere and lazy competition that happens to plague many scenes.
+
+==SGGK==
+
+Introduced only in the Street Fighter III series is a option select that combines a Kara-Throw and parry, the opponent is attempting a throw, will throw out a tech. If the opponent trying to attack will come out a parry followed the coup that was used as kara.
+
+==Shenanigans==
+
+A devious trick used especially for an underhanded purpose, trick or questionable practices or conducts.
+
+==Short==
+
+In the ''Street Fighter'' series and related [[w:Capcom|Capcom]] ''six-button fighters'', a light kick.
+
+==Short Jump==
+
+A Short Jump or a ''Small Jump'', even known sometimes as ''Hops'' is a concept characteristic of [[w:The King Of Fighters|The King Of Fighters]], which was introduced in ''The King Of Fighters '96'' along with the [[#Run|run]] and the [[#Roll|roll]], later included in games such as ''Real Bout Fatal Fury'', ''Street Fighter III'' (in the form of Universal Overheads), ''Garou: Mark of the wolves'' and ''Guilty Gear''.  A Short Jump, performed by tapping Up lightly and releasing the directional instantly, is obviously a shorter version of a normal Jump, with a lesser degree of elevation and a faster falldown. It is, in every sense, a quicker jump that allows the following:
+
+* Elevation from the ground to evade low attacks and ground fireballs
+* Because it falls faster than a normal Jump, when timed right, it can be used not only to evade but also to punish sweeps.
+* Aerial rushdown due to the quicker recovery
+* Faster and more effective mind games of different degrees of rhythm through alternation with Runs, Short Jumps and normal Jumps
+* More safety in jumping
+
+==Shotokan Character/Shoto/Shotoclone==
+
+This term derives from the fighting style of Ryu and Ken from ''Street Fighter'', incorrectly described as "Shotokan" in the English translation of the ''Street Fighter'' games.  The style used by these characters is a fictional one with no name, however it can be described as an "Ansatsuken" ("assassinating fist") style, as it is designed to kill (Gen, a character with an extremely different style, is referred to as using an "Ansatsuken" style in Japanese game literature -- Ansatsuken is a ''description'', not the name of any particular style).
+
+In Street Fighter games, ''Shotokan Character'' (''Shoto'', ''Shotoclone'') refers to a group of characters who employ a fighting style introduced with Ryu in the original ''Street Fighter'', characterized by ''Shoryuken'', ''Hadouken'', and ''Tatsumaki'' (Hurricane Kick). The quintessential Shotos in the Street Fighter Series are Ryu, Ken, and Akuma. This term is also used in a broader sense to refer to characters that employ alterated but recognisable "Shotokan" styles. This group comprises Dan, Sean, Gouken, Oni, and Sakura. 
+
+Although used less commonly, an even broader definition of ''Shoto'' (''Shoto Style'') refers to any character or gameplay style that utilizes projectile moves similar to the Hadouken to keep opponents at a distance, and an anti-air attack similar to the Shoryuken to counter opponent jump-ins trying to get over the projectile. In Street Fighter, Sagat falls in this definition, since he has a fireball inputed by the quarter-circle-forward motion, and his tiger uppercut employs an input identical to the shoryuken's input and also functions similarly. Characters in other games, such as Morrigan can also fall within this definition.
+
+==Six-button Fighter==
+
+A type of fighting game controls that uses punch and kick attack buttons of three different strengths, much like that of ''Street Fighter''.
+
+==SNK Boss Syndrome== 
+'''SNK  Boss Syndrome''' is a term use to describe the abnormal level of difficulty of the [[w:boss (video games)|bosses]] in certain fighting games, especially games made by SNK. Bosses suffering from SNK Boss Syndrome have these characteristics:
+* Their moves have very high priority, very high damage or amount of hits, very wide range (including full-screen) and occasionally special features such as unblockability and auto-guard.
+* They often have great endurance, either because of their unusually longer life bar or their defense (in that they take less damage than normal characters).
+* Their speed, both in movement and in attacks, are usually above every other character in the game. One of the most well known occurrences is during any of the final boss fights with Rugal's various incarnations in the King of Fighters series.
+* Their AI pattern is usually less advanced than most normal enemies, supposedly to 'compensate' their high capability of doing damage. There are also cases where the boss is programmed to 'controller-read', basically knowing ahead of time what the player will do, and already have a counter ready for it. A good example of this was with Igniz from King of Fighters 2001, who would counter projectiles every single time with one of his own.
+* They often do not have a distinct crouching animation, making it hard to tell when they will block low or use a low attack.
+
+King of Fighters XI adds one more symptom to this syndrome:
+* Whenever a fighter hits an opponent, a pointer moves towards the attacking fighter, giving them some sort of advantage point. When a boss hits a player however, the advantage they get is far greater than the advantage taken by normal players/enemies. Since the one with greater advantage points will win upon time out, this makes beating bosses via time out in this game near impossible- moreso since the main boss, Magaki, can rapidly deploy an incredible amount of projectiles, that if not properly avoided, very quickly defeat the player through sheer chip damage.
+
+
+==Spam==
+
+Spamming is basically throwing out the same move over and over again, 'spammable' moves are usually safe and are very difficult to counter (e.g projectiles). 
+
+==Spatial Cognition==
+
+Spatial cognition is concerned with the acquisition, organization, utilization, and revision of knowledge about spatial environments. These capabilities enable humans to manage basic and high-level cognitive tasks in everyday life. In fighting games, this would define how one conducts combat due to the information provided by one's environment, relating to the opponent's position, the opponent's attack, and the environment itself. This would suggest that the player must have a full understanding of the different levels of focal adherence presented by the game, the limitations of one's character in relation to his position within a fighting stage, as well as in relation to the position of one's opponent.
+
+==Special Move==
+
+A '''move''' is simply a fighting technique such as a kick or a throw. Each character usually has many moves, each performed by a different combination of joystick movements and/or button presses. A '''special move''' is a unique, sometimes difficult-to-perform move that often has an exaggerated or supernatural effect. The majority of the games also include [[#Super moves|super moves]], powerful but costly special moves.
+
+==Spinning Pile Driver==
+
+Abbreviated SPD, One of the key moves for Zangief.  This is used to describe any move involving 360 stick input.
+
+==Startup==
+
+The time or frames it takes for a character to enter a state in which the attack actually hits after leaving its neutral state. The shorter the time, the better.
+
+==String==
+
+A sequence of attacks. Usually used to refer to strings that aren't [[#Combo|combos]]. This term is used both in 3D fighting games to refer to sequences of attacks that execute much faster sequentially than if done out of sequence, and in 2D fighting games is mostly used to describe a sequence of [[#Poke|pokes]] done to force someone to continue blocking to create safe distance (this is better known as a ''blockstring'').
+
+Some 2D games (or 2D game players) misuse the term when naming [[#Chain combo|chain combos]] as ''strings'' (generally, ''precanned strings'' or ''canned strings'').
+
+==Strong==
+
+In the ''[[w:Street Fighter|Street Fighter]]'' and related Capcom ''six-button fighters'', a medium punch.
+
+==Stuffing==
+
+'''Stuffing''' an opponent's attack refers to the act of using a move to stop or beat an opponent's move, such as beating out an opponent's poke with a higher priority poke. This does not necessarily mean using a higher [[#Priority|priority]] attack (for example, in [[w:The King Of Fighters|The King Of Fighters]], the act of using a Weak Attack to trade hits with an anti air move or in [[w:Street Fighter III|Street Fighter III]] [[w:Chun-Li|Chun-Li]]'s ''Houyokusen'' Super can be stuffed in the beginning by throwing out a very quick, low poke, such as a crouching ''light kick'').
+
+==Stun==
+
+# A temporary state of helplessness caused by taking a lot of damage quickly. The opponent is usually guaranteed a free hit. Also called '''daze''' or '''dizzy'''.
+# Block stun: a short frozen state after '''blocking''' a move or performing a blocked move.
+# Hit stun: a short frozen state after being hit.
+
+==Summon==
+
+A special command move that temporarily calls an object, character or creature onscreen that performs a variety of actions - dealing damage to the opponent, absorbing damage for the player or restoring the health of the character. Character summons are usually referred to as ''Assists'', whereas offensive creature and object summons are more properly thought of as projectile attacks (see [http://en.wikipedia.org/wiki/Dizzy_%28Guilty_Gear%29 Dizzy]). Examples of summons can be seen throughout the fighting game world, but are more common in the [[SNK]] world where inactive characters on the player's team can be called in to assist a limited number of times per match.
+
+==Super Armor==
+Super armor is when a character may absorb a few attacks before actually being hit.  A certain attack may grant super armor, or simply a character's neutral state may grant super armor (usually a large character.) Super armor may be shown as a character flashing a different color when hit.
+
+==Super Canceling==
+
+Super cancelling is the act of canceling a Special move into a Super Move, and it is a feature found in ''Street Fighter III'', ''The King Of Fighters 99, 2000, 2001, 2002, 2003, Neowave and XI'', original from ''Street Fighter EX''. In [[w:The King Of Fighters|The King Of Fighters]], the character will flash white as
+soon as the cancel occurs to provide confirmation of its success.
+
+In order to perform a super cancel, a spare level of Power Gauge energy is needed to expend. This means that super canceling into a ''Desperation Move'' or ''Super Desperation Move'' actually costs two levels of power. Also, you can only supercancel into moves that hit or are blocked: you can't supercancel from a missed attack.
+
+In ''The King Of Fighters 2002'' some characters can cancel uncancelable moves directly into (HS)DMs. This is not considered supercanceling, as you only lose Power Gauge levels for the (HS)DM used, and not the act of canceling. Examples include Kula and K's One Inch, Maxima's Mongolian and Blue Mary's Hammer Arch.
+
+Also, characters with "button-press" (S)DMs (like Mary's Dynamite
+Swing, or May Lee's Disposition Frog) or even HSDMs, (like Mai's Kubi no Kitsune), can cancel out of any uncancelable normal attack or command attack. For example, you could cancel the 2nd hit of the Benitsuru no Mai (which is uncancelable even if canceled into) into the Kubi no Kitsune. The same would apply to Mary's far standing D canceled into the Dynamite Swing.
+
+==Super Combo and Super Combo Gauge==
+
+''See:'' [[w:Combo (computer and video games)#Super combo|Combo (computer and video games)]]
+
+==Super Jump Cancel or High Jump Cancel (SJC or HJC)== 
+
+Canceling the animation of a move with a Super Jump. This ability originates from Capcom's series of fighting games.
+
+==Super Move==
+
+Super Moves (or simply Supers) are a class of move that is utmost in the hierarchy of moves, being above special moves, command moves, and normal moves in terms of damage or potency (and usually, also in complexity of input). Because they are more powerful than special and normal moves, supers often require additional conditions to perform, such as filling a super gauge to a certain amount, or being low in health. Supers, in the broad sense, are known under a variety of different specific terminology depending on the game, such as "Desperation Move" (''King of Fighters'') and "Super Art" (''Street Fighter III''). In Street Fighter IV, there are two tiers of super moves, one called "super" and the other called "ultra," each requiring different conditions to execute, although the ultra being more damaging.
+
+==Super Stock==
+A unit of measurement in a super gauge; one or more stocks are used when performing a [[#Super move|super move]]. A '''stock gauge''' is a gauge where a sometimes visual, sometimes numerical indicator exists to indicate the number of stocks collected. An early game to use this mechanic was ''Frank Bruno's Boxing'' in 1985, which had the ''KO meter''. A '''levelled gauge''' is a gauge where a portion of the super moves gauge represents a super stock. Super stocks allow players to use '''super moves''' and other moves requiring super gauge power such as evasion, counterattacking, etc. Holding multiple super stocks was first seen in the Darkstalkers series.
+
+==Survival Battle==
+
+A type of match where a player must defeat as many opponents as possible (using the same life bar) before being knocked out. In most instances, some life is recovered before the next opponent is fought.
+
+==Sweep== 
+
+Refers to any normal move that knocks the opponent off his feet the most used is the cr. HK (creeping). Sweeping made ​​debut in the original game Street Fighter.
+
+==Tag==
+
+In games that allow the player to select multiple characters at a time, ''Tagging'' refers to the act of switching between those characters mid-round. In The King Of Fighters XI, there are multiple tagging instances, such as tagging out to save your character's life (although none is recovered when he's resting), to bring in your Leader partner, to save yourself from a lenghty combo with an emergency maneuver, or to cancel one of your own attacks in the middle of the animation to bring in another character and create longer combos. Some games, such as [[w:Marvel vs Capcom 2|Marvel vs Capcom 2]], include some sort of attack from the tagged-in character to cover the tagged-out character's escape, while others such as [[w:Tekken Tag Tournament|Tekken Tag Tournament]] leave the entering and exiting characters vulnerable and require careful timing. In most games that include the tagging feature, inactive (offscreen) characters can slowly regenerate health, though this is usually limited to a section of the ''life bar'' colored red - i.e., most games will not allow an inactive character to completely regenerate all of their health. In the [[w:Dead or Alive (video game series)|Dead Or Alive series]], many of the throw attacks when used in Tag Mode will bring in the Tag Partner for a special, extra damaging attack involving both characters if the two have similar fighting styles. The partner who came in for the attack will then remain while the other leaves.
+
+==Taunt==
+
+A taunt (''chouhatsu'' in its native [[w:Japanese language|Japanese]]) is a move that generally has little to no offensive use, its entire purpose mainly to mock your opponent. Different games, however, may have taunts that may be used in offensive situations or as tactics. Of note are many different SNK games such as the ''[[w:Art of Fighting|Art of Fighting]]'' series and some earlier versions of ''The King of Fighters'', where taunting decreases your opponent's ''special gauge'' or ''super move gauge''. In other editions of [[w:The King Of Fighters|The King Of Fighters]], they can be canceled into anything from normal to super moves, and are used to bait your opponent. The [[w:Dragon Ball Z: Budokai|DBZ Budokai]] series uses taunts in a similar fashion, as a successful taunt deducts one Ki Gauge from the opponent. In the Strikers era, it is used to replenish one stock of your Striker's bar. Other games, such as ''Street Fighter III: 3rd Strike'', feature taunts that may give certain properties and enhancements to characters when utilized. Of note in this game is [[w:Q (Street Fighter)|Q]], whose defense increases drastically every time he taunts, maxing out at 3 taunts, thus making taunting an integral part of his gameplan. In ''[[w:Tekken|Tekken Tag Tournament]]'', [[w:Bryan Fury|Bryan Fury]] possessed a combo in which he dealt a small amount of damage with his taunt, and most of his more devastating combos in [[w:Tekken 5|Tekken 5]] and on begin from a taunt. Recent entries in the ''Mortal Kombat'' series feature taunts for some fighters which serve to replenish some of the fighter's health. [[w:Naruto: Ultimate Ninja|Naruto: Ultimate Ninja]] gives some characters the ability to restore small amounts of health by completing a taunt as well.
+
+[[w:Dan Hibiki|Dan]] from the ''Street Fighter Alpha'' series, is known for being both a ''low tier'' character in almost every game he is in, and for having a multitude of taunts to do in the air, ground, floor, rolling, and even as a ''[[#Super Combo|super combo]]''.
+
+On the other side, Ryuji Yamazaki from the ''Fatal Fury'' and ''King of Fighters'' series has a couple of moves, one in which he first taunts the opponent, offering a free hit. When the opponent complies he or she is counter-attacked. The other one is a delayed attack that is simulates a taunt when the attack button is held.
+
+Luigi of Super Smash Brothers also has a 'useable taunt'; his ground kick can (under extremely rare circumstances) deal a point of damage and knockback to an oncoming foe but it cannot KO a foe even at 999%. Snake - introduced in Super Smash Bros Brawl - has a usable taunt that can KO. Similarly, Luigi's taunt in SSBB can be used to 'Meteor Smash' an opponent straight down if done right next to the edge of a stage.
+
+Kliff Undersn, a character from the ''[[w:Guilty Gear|Guilty Gear]]'' series, has a taunt that works as a projectile attack.
+
+''Guilty Gear'' also has two different forms of taunt: a standard Taunt in which the character mocks his/her opponent, and a Respect, in which the character instead compliments the opponent. The gameplay difference is that Respect can be cancelled at any time, into any move or jump (allowing Mind Games to be played if the opponent doesn't recognize it), whereas Taunt stops the character from doing anything for a few seconds.
+
+The character Taokaka from the ''[[w:Blazblue|Blazblue]]'' series has a combo referred to by fans as the "tauntloop." Taokaka's taunt animation is a series of short punches, which the player can use to hit an enemy and briefly stun them, allowing Taokaka to continue her combo against them.
+
+==Teching==
+
+Also known as "Softening", is when you counter your opponents throw attempt. This was first implemented by players in Street Fighter II.
+
+==Throws==
+
+''Throws'' are block defeating moves that usually involve pressing an attack button and occasionally a direction at extremely close range. A predefined animation typically plays that ends up with the opponent taking a reasonably significant amount of damage. This can be used to punish turtlers or add to [[#Mixup|mixup]]. It is possible, in some games, to either minimize or negate a throw, usually done by throwing back as soon as one is thrown.
+
+'''Tick Throw''': Tick throwing is a technique that involves tricking your opponent into getting thrown, such as dropping your attack in the middle of a pressure string and then throwing then opponent who is still expecting to block, or using a move with low recovery and startup to force your opponent into blockstun to give them a very small gap of time in which to counteract the actual throw. Tick throwing is also often used during [[#Okizeme|okizeme]], where an opponent will often have to rise in a defending position and usually will not try to attack. The attacker can then simply walk forward and throw.
+
+'''Command Throw''': Similar to a [[#Command Move|command move]], command throws are moves that require motion and button sequence to achieve and is usually unique to the character. These throws typically do not come out as fast as normal throws or are harder to perform (such as requiring a 360 motion), but usually either yield higher damage or the possibility for a follow up combo. To solve this problem, [[w:The King Of Fighters|The King Of Fighters]] was the first game to introduce simple motions for throws and special throws, usually '''Hcf''', '''Hcb''', or for some of them that had extra properties (such as Iori's Kuzu Kaze, which leaves the opponent open to any attack after switching sides with him) with an added direction like Fwd then Hcf, Hcb then forward, or viceversa, simplifying the player's life and making them far more practical for real fights. Super versions of these moves are often the same motions twice, or sometimes completely different ones. Command throws are generally inescapable if they connect.
+
+3D fighting games usually include a multitude of Command Throws (instead of the normal definition of Throw, above) which ARE escapable, but the complexity of the escape command required differs from game to game - in the [[w:Virtua Fighter|Virtua Fighter]] series, for example, throw escapes are rare, whereas in the [[w:Tekken|Tekken]] series it's often possible for a player to ''mash'' their way out of a throw.
+
+==Tier==
+
+A relative measure of a selectable character's inherent (or, sometimes through engine bugs) attributes; generally this refers to high-level play found in organized tournaments. '''Top Tier''' characters are those whose attributes are seen as the greatest, and are the characters most often used in tournaments. '''Low Tier''' characters, on the other hand, are those whose attributes are seen as the worst, and thus take the most amount of effort to be used properly to be able to win and may not even be viable in tournament play at all. A game is considered to have good balance when the differences between tiers are small.
+
+==Tiger Knee==
+
+Certain aerial moves in some games can be ''tiger kneed''. Originally what was a glitch of sorts seems to be an intentional addition to most new games. Tiger kneeing allows air moves to be performed on the ground or extremely close to it. This is done, usually, by performing the required attack motion and quickly pressing up as well as the necessary button, causing the move to go off as soon as the character leaves the ground. For example, Cable's Air Hyper Viper Beam (AHVB) in ''Marvel vs. Capcom 2'' can utilize a Tiger Knee motion so the hyper hits instantaneously. The term comes from [[w:Sagat|Sagat]], whose ''Tiger Knee'' required a Down+Back to Up motion.
+
+==Time Killer==
+
+A player who intentionally runs down the clock for the whole round the moment a lifebar advantage is gained. No single technique is employed to play keep-away, but [[#Turtling|turtling]] and [[#Pressure|pressure]] are the two most often, and easy, ways to do this.
+
+==Time Over==
+
+Typically, players have about a minute or 99 seconds to try to knock each other out. If time runs out before one player KOs the other player, the player who has done the most overall damage wins the round. In the rare event that both fighters have the exact amount of health at Time Over, the match is usually declared a draw.
+
+In King of Fighters XI, when a time out occurs, winner is no longer determined by amount of Life Gauge left anymore, instead, a judging system determines which party is worthy of the victory, who usually is the one doing more hits and combos. This however, is abused by the game to worsen the [[#SNK Boss Syndrome|SNK Boss Syndrome]], in that even when the bosses do minimal damage, they are immediately favoured by the judging system by leaps and bounds, thus unlike the previous King of Fighters games, beating a boss via Time Out in this game is practically impossible.
+
+==Trade== 
+A trade is basically when two fighters trade hits with each other, both hitting each other at the same time. This can be due to pure coincidence or it may be sought after because it is advantageous to the player in question. In any case if the trade results in you causing more damage to the opponent than you received back it is considered a good trade, and vice versa a bad trade if you come out causing less damage.
+
+==Turtling==
+
+The act of staying in a defensive stance for most or all of the match, only attacking when the opponent misses, or with a reversal move. Usually done when far ahead in the match and running low on time, to avoid unnecessary risk.
+
+==Unblockables==
+
+An unblockable attack is an attack that cannot be normally defended against through blocking. Such attacks will ignore the fact that the fighter is blocking, thus penetrating their guard and consequently ending up with the fighter taking damage regardless.
+
+This can also refer to unblockable setups, where a player simultaneously hits the opponent with two different attacks that need to be blocked differently. For example, if a character fires a delayed projectile that hits high, then does a low attack at the same time the projectile hits the opponent. One of the two hits is guaranteed to succeed if the opponent attempts to block.
+
+==Universal Overhead Hit (UOH)== 
+Those are standard overhead attacks that originated in Street Fighter III: 2nd Impact. Executed by pressing down + medium punch + medium kick in 3rd Strike is done by pressing medium punch and medium kick, the character hops to execute a slow attack that can't be blocked low.
+
+==Victory Symbols==
+
+Victory Symbols are usually seen in Capcom games. Each symbol represents a different type of victory; some good, some bad. Here's a list of them:
+* Cherry - Victory by weak attack (Jab or Short).
+* Cheese - Victory by block damage.
+* Lasso - Victory by ''Command Throw''.
+* Hourglass - Victory by ''Time Over''.
+* "C" - Victory by Chip Damage (equivalent of ''Cheese'')
+* "V" - Victory by Normal Attacks (not including weak attacks, special attacks, or throws)
+* "G" - Victory at low health, to mimic Tekken's traditional "Great!" announcement ([[w:Street Fighter X Tekken|Street Fighter X Tekken]])
+* "A" (Street Fighter) - Victory by Alpha Counter
+* "A" (Marvel) - Victory by Air Combo
+* "S" - Victory by Special Move
+* "SC" - Cheap Victory by means of ''Special'' or ''Super'' Moves (see ''"C"'' and ''Cheese'')
+* "S*" - Victory by Level 1 Super
+* "S**" - Victory by Level 2 Super
+* "S***" - Victory by MAX Level 3 Super
+* "X" - Victory by use of X-Power (Supers in "X-Men Children of the Atom"), or by Cross Art or Cross Assault ([[w:Street Fighter X Tekken|Street Fighter X Tekken]])
+* [[lemniscate|Lemniscate]] (or Infinity Symbol) - Victory by use of Infinity Combo (Supers in "Marvel Super Heroes")
+* "P" (Perfect) - This means you've taken no damage and defeated your opponent
+* Hand Shake - Victory by Tag Team Attack (Seen in the VS series)
+* "Ten" or "天" [[w:kanji|kanji]] ([[w:Street Fighter Alpha#Street Fighter Alpha 2|Street Fighter Alpha 2]], [[w:Akuma (Street Fighter)|Akuma]] only) - victory by [[w:Shun Goku Satsu|Shun Goku Satsu]] or by use of Pandora mode ([[w:Street Fighter X Tekken|Street Fighter X Tekken]])
+* "J" - Victory by Judgement, won when the player is awarded majority of the judges' votes after a double KO (Third Strike only)
+
+==Vortex==
+A situation where one player is continually able to force their opponent to make an unfavorable guess out of a combo or setup, resulting in the opponent getting caught in the same setup all over again. Usually performed after a reset or a hard knockdown and the opponent is forced to guess where to block on their wake up; High, Low, Left or Right. Originally applied to Marvel vs. Capcom 2 player Michael "Yipes" Mendoza who used it with his Magneto/Psylocke team, but was later popularized in Street Fighter IV where characters such as Akuma, Cammy and Ibuki could do it after a hard knockdown.
+
+==Yomi==
+Yomi (literally "reading") is a Japanese term meaning "reading the mind of the opponent", and is essentially an intangible asset required in fighting games. It's the ability to know what your opponent is going to do, and act appropriately, whether achieved by "conditioning" the opponent to act one way, and then acting in another way, or simply working your way into the head of your opponent.
+
+==Wakeup==
+
+The frames in which a character is considered to be standing up from the floor. In 2D games, the character waking up is generally invincible, as opposed to in 3D games, where characters waking up may still be vulnerable to attack.
+
+As a corollary to this, a ''wakeup game'' is the ability for a player to choose how they stand up, or, often in the case of 3D games, whether to do so at all. Options open to the player may include: rolling towards or away from the opponent, attacking, or, in some 3D games, staying on the floor. Because 3D fighters still allow a player waking up to be attacked, wakeup games are considered vital to offset that vulnerability, as a waking character can bait and punish an opponent who thinks they can get an extra hit in while the player is down.
+
+==Wavedash==
+
+Wavedashing is accomplished when a character successfully links one ''crouch dash'' into another, named so for the bobbing motion this produces in a player character. The primary notoriety of this technique originates from the Mishima family - [[w:Jin Kazama|Jin]], [[w:Heihachi Mishima|Heihachi]] and [[w:Kazuya Mishima|Kazuya]] - in [[w:Tekken|Tekken]], where wavedashing by a skilled player using those characters was one of the more frustrating tactics to play against. Many considered the tactic almost unbeatable, as wavedashing allowed for rapidly closing on the opponent, automatically parrying most low attacks and preparing the character to unleash a signature attack known as the ''Wind Godfist'', a high-hitting launcher that dealt respectable damage on its own and led into several ''juggles''. The Wind Godfist however, leaves you vulnerable to quick attacks afterwards on block, but there is a harder to do, faster, and much more effective variant, the ''Electric Wind Godfist'', which pushes the opponent far away on block and gave the user a frame advantage. The Electric Wind Godfist also gave better recovery on hit, so much more effective and devastating combos could be done. Both moves are high, so they can be ducked, but you have a mix-up with mid pokes and sometimes launchers against those who try to do so. You can also use lows against those who simply try to block. The wavedash can be interrupted, but mind-games and mix-ups can trick the opponent. All of this combined to make the wavedash a very rapid mindgame that was difficult to counter. Other characters in the [[w:Tekken|Tekken]] series have proven to be capable of wavedashing, but their mix-ups are usually not as effective as the Mishimas.
+
+Wavedashing also refers to a form of movement in Capcom's ''vs.'' games, achieved by rapidly alternating between pressing two attack buttons and crouch. By canceling the slower half of the dash, chaining rapid dashes together is possible. However, unlike the Tekken series, wave-dashing has no benefit other than increased speed in covering the screen.
+
+A form of wavedashing is possible in Nintendo's [[w:Super Smash Bros. Melee|Super Smash Bros. Melee]], in which a character performs an air dodge into the ground at an angle the instant after leaving the ground during a jump, allowing a quick burst of movement with 10 frames of time.
+
+==Weapons Fighter==
+
+A fighting game where most or all characters have weapons, and there are gameplay rules that involve these weapons (such as how to disarm and rearm weapons). The first high-profile example of this was the ''[[w:Samurai Shodown series|Samurai Shodown]]'' series, but the more common modern example is ''Soul Calibur'', as all of the fighters are armed with melee weapons ([[w:tonfa|tonfa]], [[w:longsword|longsword]]s, [[w:katana|katana]], [[w:quarterstaff|quarterstaff]], [[w:katar|katar]]s, etc).
+
+==Whiff==
+
+A move that misses the opponent completely. Sometimes used intentionally to bait an opponent, build super meter, or reduce recovery time in slow moves by cancelling them into a quicker move that whiffs.
+
+==Wire==
+
+In recent King of Fighters game, some attacks which hit a fighter hard enough can make the victim fly straight onto the 'wall' and get bounced, ripe for follow-up attacks. This is called '''wiring'''. Most wire attacks are usually '''counter-wire'''s, in that if the attack hits an enemy as a counter-attack, wire effect will occur, otherwise, the opponent will merely be thrown far away.
+
+In other fighting game series this is often referred to as "wallbounce" or "wallsplat", depending on whether or not the opponent ricochets off the wall or crumples.
+
+==Zoning==
+
+Zoning is a tactic in 2D fighters usually used at mid-range or far mid-range, the purpose of which is to out-prioritize your enemy's moves. The idea is to space yourself so that you are in a position to respond to or punish any entry angle or attack of your opponent's. Ideally, you can use certain pokes and attacks to beat your opponent's attacks, punish his advances or jumps, and hopefully shut down his offensive options, while landing hits. In attempting to zone, it is important to know the properties of your own attacks as well as the attacks of your opponent, in order to find the best move to use in countering your opponent's move. The ability to predict your opponent's next move, and having good reflexes to react to that move, are also important.
