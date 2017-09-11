@@ -6,6 +6,7 @@
     "Discord.Net.Commands": "1.0.1",
     "Discord.Net.Core": "1.0.1",
     "log4net": "2.0.8",
+    "System.Runtime.Loader": "4.3.0",
   },
 
   "frameworks": {
