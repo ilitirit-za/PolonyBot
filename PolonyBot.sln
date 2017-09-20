@@ -1,26 +1,23 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 14
-VisualStudioVersion = 14.0.25420.1
+# Visual Studio 15
+VisualStudioVersion = 15.0.26730.15
 MinimumVisualStudioVersion = 10.0.40219.1
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{CC434C83-D676-48B8-B5CB-AF2E53DEF649}"
+EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PolonyBot.Core", "PolonyBot.Core\PolonyBot.Core.csproj", "{19652C1F-16D2-4BE7-A9FA-F96B700A7D65}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PolonyBot.Domain.Danisen", "PolonyBot.Domain.Danisen\PolonyBot.Domain.Danisen.csproj", "{5C420E77-ED6B-4EB2-98A9-E5D1F766D917}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PolonyBot.UI.WinForm", "PolonyBot.UI.WinForm\PolonyBot.UI.WinForm.csproj", "{E0A74F34-2ED6-4917-9A21-92BA65FF1458}"
 EndProject
-Project("{8BB2217D-0F2D-49D1-97BC-3654ED321F3B}") = "PolonyBot.NetCore.Core", "PolonyBot.NetCore.Core\PolonyBot.NetCore.Core.xproj", "{D806FDEA-D65D-4084-A92E-2701295D5B65}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PolonyBot.NetCore.Core", "PolonyBot.NetCore.Core\PolonyBot.NetCore.Core.csproj", "{D806FDEA-D65D-4084-A92E-2701295D5B65}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{CC434C83-D676-48B8-B5CB-AF2E53DEF649}"
-	ProjectSection(SolutionItems) = preProject
-		global.json = global.json
-	EndProjectSection
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PolonyBot.Console", "PolonyBot.Console\PolonyBot.Console.csproj", "{C14B658B-3773-4A71-A5F5-016821ECE3C9}"
 EndProject
-Project("{8BB2217D-0F2D-49D1-97BC-3654ED321F3B}") = "PolonyBot.Console", "PolonyBot.Console\PolonyBot.Console.xproj", "{C14B658B-3773-4A71-A5F5-016821ECE3C9}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PolonyBot.Modules.LFG", "PolonyBot.Modules.LFG\PolonyBot.Modules.LFG.csproj", "{65922143-F20F-4ACA-9ABF-C15A09A3C367}"
 EndProject
-Project("{8BB2217D-0F2D-49D1-97BC-3654ED321F3B}") = "PolonyBot.Modules.LFG", "PolonyBot.Modules.LFG\PolonyBot.Modules.LFG.xproj", "{65922143-F20F-4ACA-9ABF-C15A09A3C367}"
-EndProject
-Project("{8BB2217D-0F2D-49D1-97BC-3654ED321F3B}") = "PolonyBot.Modules.Glossary", "PolonyBot.Modules.Glossary\PolonyBot.Modules.Glossary.xproj", "{D7D44A0D-2FC2-41EB-846F-98721EAE4CC8}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PolonyBot.Modules.Glossary", "PolonyBot.Modules.Glossary\PolonyBot.Modules.Glossary.csproj", "{D7D44A0D-2FC2-41EB-846F-98721EAE4CC8}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -74,5 +71,8 @@ Global
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {C6C4EC77-4CC9-45EC-BC1C-A13E43482B69}
 	EndGlobalSection
 EndGlobal
