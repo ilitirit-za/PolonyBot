@@ -13,16 +13,18 @@ using log4net;
 using Polony.Dal;
 using Polony.Domain.Danisen.Model;
 using RestSharp.Extensions;
+using Discord.WebSocket;
+using Microsoft.Extensions.DependencyInjection;
 
 namespace Polony
 {
     public class PolonyBot : IDisposable
     {
         private static readonly Random _random = new Random();
-        private readonly DiscordClient _client = new DiscordClient();
+        private readonly IDiscordClient _client = new DiscordSocketClient();
 
         private DanisenDao _dao;
-        private Server _server;
+        //private Server _server;
 
         private readonly string _botToken;
         private readonly ILog _logger;
@@ -31,6 +33,7 @@ namespace Polony
         private readonly TimeSpan _displayScoresTimeSpan;
         
         private readonly char _defaultPrefix;
+        private IServiceProvider services;
 
         public PolonyBot(ILog logger)
         {
@@ -78,6 +81,10 @@ namespace Polony
         private void InitCommandService()
         {
             _logger.Info("Creating command service...");
+
+            var commands = new CommandService();
+            services = new ServiceCollection().BuildServiceProvider();
+
             var commandService = new CommandService(new CommandServiceConfigBuilder
             {
                 PrefixChar = _defaultPrefix,

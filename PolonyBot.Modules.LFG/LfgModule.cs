@@ -4,6 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using Discord;
 using Discord.Commands;
+using System.IO;
 
 namespace PolonyBot.Modules.LFG
 {
@@ -11,6 +12,11 @@ namespace PolonyBot.Modules.LFG
     public class LfgModule : ModuleBase
     {
         private readonly Dictionary<string, string> _games = new Dictionary<string, string>(StringComparer.OrdinalIgnoreCase);
+
+        public LfgModule()
+        {
+            LoadGameList();
+        }
 
         //{
         //    { "2K2", "King Of Fighters 2002 on Fightcade" },
@@ -51,8 +57,6 @@ namespace PolonyBot.Modules.LFG
         {
             var response = "";
 
-            await LoadGameList();
-
             LfgList.RemoveAll(x => x.Expiry < DateTime.Now);
 
             if (String.IsNullOrWhiteSpace(game))
@@ -82,12 +86,12 @@ namespace PolonyBot.Modules.LFG
             }
         }
 
-        private async Task LoadGameList()
+        private void LoadGameList()
         {
             _games.Clear();
             try
             {
-                var lines = System.IO.File.ReadAllLines("games.txt");
+                var lines = File.ReadAllLines(Path.Combine(AppContext.BaseDirectory, "games.txt"));
                 foreach (var line in lines)
                 {
                     var split = line.Split('|');
@@ -95,9 +99,9 @@ namespace PolonyBot.Modules.LFG
                     _games.Add(split[0], split[1]);
                 }
             }
-            catch (Exception)
+            catch (Exception e)
             {
-                await ReplyAsync("Could not load game list.  Tell ilitirit about this!");
+                ReplyAsync("Could not load game list.  Tell ilitirit about this!");
             }
             
         }

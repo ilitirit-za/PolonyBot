@@ -26,15 +26,44 @@ namespace Polony.NetCore.Core
             _client = new DiscordSocketClient();
             _commands = new CommandService();
 
-            _services = new ServiceCollection()
-                    .BuildServiceProvider();
+            _services = new ServiceCollection().BuildServiceProvider();
 
             await InstallCommands();
 
+            
             await _client.LoginAsync(TokenType.Bot, _botToken);
+            await _client.SetStatusAsync(UserStatus.Online);
             await _client.StartAsync();
 
+            _client.Log += _client_Log;
             //await Task.Delay(-1);
+        }
+
+        private Task _client_Log(LogMessage message)
+        {
+
+            var cc = Console.ForegroundColor;
+            switch (message.Severity)
+            {
+                case LogSeverity.Critical:
+                case LogSeverity.Error:
+                    Console.ForegroundColor = ConsoleColor.Red;
+                    break;
+                case LogSeverity.Warning:
+                    Console.ForegroundColor = ConsoleColor.Yellow;
+                    break;
+                case LogSeverity.Info:
+                    Console.ForegroundColor = ConsoleColor.White;
+                    break;
+                case LogSeverity.Verbose:
+                case LogSeverity.Debug:
+                    Console.ForegroundColor = ConsoleColor.DarkGray;
+                    break;
+            }
+            Console.WriteLine($"{DateTime.Now,-19} [{message.Severity,8}] {message.Source}: {message.Message}");
+            Console.ForegroundColor = cc;
+
+            return Task.CompletedTask;
         }
 
         public async Task InstallCommands()
@@ -54,12 +83,17 @@ namespace Polony.NetCore.Core
             // Don't process the command if it was a System Message
             var message = messageParam as SocketUserMessage;
             if (message == null) return;
+
+
             // Create a number to track where the prefix ends and the command begins
             int argPos = 0;
+
             // Determine if the message is a command, based on if it starts with '!' or a mention prefix
             if (!(message.HasCharPrefix('.', ref argPos) || message.HasMentionPrefix(_client.CurrentUser, ref argPos))) return;
+
             // Create a Command Context
             var context = new CommandContext(_client, message);
+
             // Execute the command. (result does not indicate a return value, 
             // rather an object stating if the command executed successfully)
             var result = await _commands.ExecuteAsync(context, argPos, _services);

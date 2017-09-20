@@ -9,7 +9,7 @@ namespace Polony.Console
 
         public async Task Start()
         {
-            var polonyBot = new PolonyBot("MjI5OTMzNTczMjk2MDk1MjMy.Ct1XmA.0X1Y8PnTrtEDF6nlHRXnqLVNmkI");
+            var polonyBot = new PolonyBot("MjI5OTMzNTczMjk2MDk1MjMy.DKRv_g.CtAgnuT2zNt85QRXmu6yhPpGfCo");
             await polonyBot.Start();
             await Task.Delay(-1);
         }
