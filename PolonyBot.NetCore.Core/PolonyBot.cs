@@ -6,11 +6,17 @@ using Discord;
 using Discord.Commands;
 using Discord.WebSocket;
 using Microsoft.Extensions.DependencyInjection;
+using System.Collections.Generic;
+using System.Net.Http;
 
 namespace Polony.NetCore.Core
 {
     public class PolonyBot
     {
+        private const string BanListToken = "1JSORrwdF8";
+        private const string PublicDiscordBansApiUrl = "https://bans.discordlist.net/api";
+        private const ulong PolonyPlayGroundId = 229951183882551303;
+
         private readonly string _botToken;
         private CommandService _commands;
         private DiscordSocketClient _client;
@@ -70,6 +76,7 @@ namespace Polony.NetCore.Core
         {
             // Hook the MessageReceived Event into our Command Handler
             _client.MessageReceived += HandleCommand;
+            _client.UserJoined += UserJoined;
 
             var modulePath = Path.Combine(AppContext.BaseDirectory, @"PolonyBot.Modules.LFG.dll");
             var moduleAssembly = AssemblyLoadContext.Default.LoadFromAssemblyPath(modulePath);
@@ -77,7 +84,39 @@ namespace Polony.NetCore.Core
             // Discover all of the commands in this assembly and load them.
             await _commands.AddModulesAsync(moduleAssembly);
         }
+              
 
+        private async Task UserJoined(SocketGuildUser arg)
+        {
+            try
+            {
+                var httpClient = new HttpClient();
+
+                var values = new Dictionary<string, string>
+                {
+                    { "token", BanListToken },
+                    { "userid", arg.Id.ToString() }
+                };
+
+                var content = new FormUrlEncodedContent(values);
+
+                var response = await httpClient.PostAsync(PublicDiscordBansApiUrl, content);
+
+                var responseString = await response.Content.ReadAsStringAsync();
+
+                if (responseString.Equals("true", StringComparison.CurrentCultureIgnoreCase))
+                {
+                    await arg.Guild.AddBanAsync(arg.Id, 1, "Known offender on Public Discord Ban List");
+                }
+            }
+            catch (Exception e)
+            {
+                var channel = _client.GetChannel(PolonyPlayGroundId) as SocketTextChannel;
+
+                await channel?.SendMessageAsync($"I could not check if {arg.Username} is a known offender.  Please be cautious when interacting!");
+            }
+        }
+        
         public async Task HandleCommand(SocketMessage messageParam)
         {
             // Don't process the command if it was a System Message
