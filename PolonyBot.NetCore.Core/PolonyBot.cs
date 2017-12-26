@@ -1,100 +1,145 @@
 ﻿using System;
+using System.IO;
+using System.Runtime.Loader;
 using System.Threading.Tasks;
-using System.Reflection;
 using Discord;
-using Discord.WebSocket;
 using Discord.Commands;
+using Discord.WebSocket;
 using Microsoft.Extensions.DependencyInjection;
+using System.Collections.Generic;
+using System.Net.Http;
 
-public class Program
+namespace Polony.NetCore.Core
 {
-    private CommandService commands;
-    private DiscordSocketClient client;
-    private IServiceProvider services;
-
-    public static void Main(string[] args) => new Program().Start().GetAwaiter().GetResult();
-
-    public async Task Start()
+    public class PolonyBot
     {
-        client = new DiscordSocketClient();
-        commands = new CommandService();
+        private const string BanListToken = "1JSORrwdF8";
+        private const string PublicDiscordBansApiUrl = "https://bans.discordlist.net/api";
+        private const ulong PolonyPlayGroundId = 229951183882551303;
 
-        string token = "bot token here";
+        private readonly string _botToken;
+        private CommandService _commands;
+        private DiscordSocketClient _client;
+        private IServiceProvider _services;
 
-        services = new ServiceCollection()
-                .BuildServiceProvider();
+        public PolonyBot(string botToken)
+        {
+            _botToken = botToken;
+        }
 
-        await InstallCommands();
+        public async Task Start()
+        {
+            _client = new DiscordSocketClient();
+            _commands = new CommandService();
 
-        await client.LoginAsync(TokenType.Bot, token);
-        await client.StartAsync();
+            _services = new ServiceCollection().BuildServiceProvider();
 
-        await Task.Delay(-1);
-    }
+            await InstallCommands();
 
-    public async Task InstallCommands()
-    {
-        // Hook the MessageReceived Event into our Command Handler
-        client.MessageReceived += HandleCommand;
-        // Discover all of the commands in this assembly and load them.
-        await commands.AddModulesAsync(Assembly.GetEntryAssembly());
-    }
+            
+            await _client.LoginAsync(TokenType.Bot, _botToken);
+            await _client.SetStatusAsync(UserStatus.Online);
+            await _client.StartAsync();
 
-    public async Task HandleCommand(SocketMessage messageParam)
-    {
-        // Don't process the command if it was a System Message
-        var message = messageParam as SocketUserMessage;
-        if (message == null) return;
-        // Create a number to track where the prefix ends and the command begins
-        int argPos = 0;
-        // Determine if the message is a command, based on if it starts with '!' or a mention prefix
-        if (!(message.HasCharPrefix('!', ref argPos) || message.HasMentionPrefix(client.CurrentUser, ref argPos))) return;
-        // Create a Command Context
-        var context = new CommandContext(client, message);
-        // Execute the command. (result does not indicate a return value, 
-        // rather an object stating if the command executed successfully)
-        var result = await commands.ExecuteAsync(context, argPos, services);
-        if (!result.IsSuccess)
-            await context.Channel.SendMessageAsync(result.ErrorReason);
+            _client.Log += _client_Log;
+            //await Task.Delay(-1);
+        }
+
+        private Task _client_Log(LogMessage message)
+        {
+
+            var cc = Console.ForegroundColor;
+            switch (message.Severity)
+            {
+                case LogSeverity.Critical:
+                case LogSeverity.Error:
+                    Console.ForegroundColor = ConsoleColor.Red;
+                    break;
+                case LogSeverity.Warning:
+                    Console.ForegroundColor = ConsoleColor.Yellow;
+                    break;
+                case LogSeverity.Info:
+                    Console.ForegroundColor = ConsoleColor.White;
+                    break;
+                case LogSeverity.Verbose:
+                case LogSeverity.Debug:
+                    Console.ForegroundColor = ConsoleColor.DarkGray;
+                    break;
+            }
+            Console.WriteLine($"{DateTime.Now,-19} [{message.Severity,8}] {message.Source}: {message.Message}");
+            Console.ForegroundColor = cc;
+
+            return Task.CompletedTask;
+        }
+
+        public async Task InstallCommands()
+        {
+            // Hook the MessageReceived Event into our Command Handler
+            _client.MessageReceived += HandleCommand;
+            _client.UserJoined += UserJoined;
+
+            var modulePath = Path.Combine(AppContext.BaseDirectory, @"PolonyBot.Modules.LFG.dll");
+            var moduleAssembly = AssemblyLoadContext.Default.LoadFromAssemblyPath(modulePath);
+
+            // Discover all of the commands in this assembly and load them.
+            await _commands.AddModulesAsync(moduleAssembly);
+        }
+              
+
+        private async Task UserJoined(SocketGuildUser arg)
+        {
+            try
+            {
+                var httpClient = new HttpClient();
+
+                var values = new Dictionary<string, string>
+                {
+                    { "token", BanListToken },
+                    { "userid", arg.Id.ToString() }
+                };
+
+                var content = new FormUrlEncodedContent(values);
+
+                var response = await httpClient.PostAsync(PublicDiscordBansApiUrl, content);
+
+                var responseString = await response.Content.ReadAsStringAsync();
+
+                if (responseString.Equals("true", StringComparison.CurrentCultureIgnoreCase))
+                {
+                    await arg.Guild.AddBanAsync(arg.Id, 1, "Known offender on Public Discord Ban List");
+                }
+            }
+            catch (Exception e)
+            {
+                var channel = _client.GetChannel(PolonyPlayGroundId) as SocketTextChannel;
+
+                await channel?.SendMessageAsync($"I could not check if {arg.Username} is a known offender.  Please be cautious when interacting!");
+            }
+        }
+        
+        public async Task HandleCommand(SocketMessage messageParam)
+        {
+            // Don't process the command if it was a System Message
+            var message = messageParam as SocketUserMessage;
+            if (message == null) return;
+
+
+            // Create a number to track where the prefix ends and the command begins
+            int argPos = 0;
+
+            // Determine if the message is a command, based on if it starts with '!' or a mention prefix
+            if (!(message.HasCharPrefix('.', ref argPos) || message.HasMentionPrefix(_client.CurrentUser, ref argPos))) return;
+
+            // Create a Command Context
+            var context = new CommandContext(_client, message);
+
+            // Execute the command. (result does not indicate a return value, 
+            // rather an object stating if the command executed successfully)
+            var result = await _commands.ExecuteAsync(context, argPos, _services);
+            if (!result.IsSuccess)
+                await context.Channel.SendMessageAsync(result.ErrorReason);
+        }
     }
 }
 
-// Create a module with no prefix
-public class Info : ModuleBase
-{
-    // ~say hello -> hello
-    [Command("say"), Summary("Echos a message.")]
-    public async Task Say([Remainder, Summary("The text to echo")] string echo)
-    {
-        // ReplyAsync is a method on ModuleBase
-        await ReplyAsync(echo);
-    }
-}
-
-// Create a module with the 'sample' prefix
-[Group("sample")]
-public class Sample : ModuleBase
-{
-    // ~sample square 20 -> 400
-    [Command("square"), Summary("Squares a number.")]
-    public async Task Square([Summary("The number to square.")] int num)
-    {
-        // We can also access the channel from the Command Context.
-        await Context.Channel.SendMessageAsync($"{num}^2 = {Math.Pow(num, 2)}");
-    }
-
-    // ~sample userinfo --> foxbot#0282
-    // ~sample userinfo @Khionu --> Khionu#8708
-    // ~sample userinfo Khionu#8708 --> Khionu#8708
-    // ~sample userinfo Khionu --> Khionu#8708
-    // ~sample userinfo 96642168176807936 --> Khionu#8708
-    // ~sample whois 96642168176807936 --> Khionu#8708
-    [Command("userinfo"), Summary("Returns info about the current user, or the user parameter, if one passed.")]
-    [Alias("user", "whois")]
-    public async Task UserInfo([Summary("The (optional) user to get info for")] IUser user = null)
-    {
-        var userInfo = user ?? Context.Client.CurrentUser;
-        await ReplyAsync($"{userInfo.Username}#{userInfo.Discriminator}");
-    }
-}
 

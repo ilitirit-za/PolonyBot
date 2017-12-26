@@ -248,3 +248,6 @@ app.Debug.config
 
 # Key files
 *.pfx
+
+# Secrets
+PolonyBot.key

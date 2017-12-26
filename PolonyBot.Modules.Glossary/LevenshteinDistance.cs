@@ -1,9 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 
-namespace Polony.Console
+namespace PolonyBot.Modules.Glossary
 {
     /// <summary>
     /// Contains approximate string matching
