@@ -1,5 +1,6 @@
 ﻿using System.Threading.Tasks;
 using Polony.NetCore.Core;
+using System.IO;
 
 namespace Polony.Console
 {
@@ -9,9 +10,18 @@ namespace Polony.Console
 
         public async Task Start()
         {
-            var polonyBot = new PolonyBot("MjI5OTMzNTczMjk2MDk1MjMy.DKRv_g.CtAgnuT2zNt85QRXmu6yhPpGfCo");
-            await polonyBot.Start();
-            await Task.Delay(-1);
+            try
+            { 
+                var key = File.ReadAllText("PolonyBot.key").Trim();
+
+                var polonyBot = new PolonyBot(key);
+                await polonyBot.Start();
+                await Task.Delay(-1);
+            }
+            catch
+            {
+                System.Console.WriteLine("Could not run for wahtever reason");
+            }
         }
     }
 }
