@@ -8,8 +8,8 @@ A3|Street Fighter Alpha 3 on Fightcade|FightCade
 BB-PC|Blazblue on PC|BlazBlue Central Fiction
 BB-PS4|Blazblue on PS4|
 BB-X|Blazblue on Xbox One|
-DB-PC|Dragon Ball FighterZ on PC|Dragon Ball FighterZ
-DB-PS4|Dragon Ball FighterZ on PS4|
+DBZ-PC|Dragon Ball FighterZ on PC|Dragon Ball FighterZ
+DBZ-PS4|Dragon Ball FighterZ on PS4|
 FC|Any game on Fightcade|FightCade
 I2-PS4|Injustice 2 on PS4|
 I2-X|Injustice 2 on Xbox One|
