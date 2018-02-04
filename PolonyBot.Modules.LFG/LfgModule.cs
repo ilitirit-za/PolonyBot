@@ -13,14 +13,14 @@ namespace PolonyBot.Modules.LFG
     {
         private class GameLabel
         {
-            public static readonly GameLabel BlankLabel = new GameLabel { label = "", userStatusLabel = "" };
-            public string label { get; set; }
-            public string userStatusLabel { get; set; }
+            public static readonly GameLabel BlankLabel = new GameLabel { Label = "", UserStatusLabel = "" };
+            public string Label { get; set; }
+            public string UserStatusLabel { get; set; }
 
 
             public override string ToString()
             {
-                return label;
+                return Label;
             }
         }
         private readonly Dictionary<string, GameLabel> _games = new Dictionary<string, GameLabel>(StringComparer.OrdinalIgnoreCase);
@@ -114,7 +114,7 @@ namespace PolonyBot.Modules.LFG
             Func<IGuildUser, bool> botFilter = (x) => !(x.IsBot);
 
             //Filter out users not playing anything, not playing a fighting game or not playing requested game.
-            Func<IGuildUser, bool> gameFilter = (game == null) ? ((x) => (!String.IsNullOrWhiteSpace(x.Game.ToString()) && fgUserGameList.Contains(x.Game.ToString()))) : gameFilter = (x) => x.Game.ToString() == gameLabel.userStatusLabel;
+            Func<IGuildUser, bool> gameFilter = (game == null) ? ((x) => (!String.IsNullOrWhiteSpace(x.Game.ToString()) && fgUserGameList.Contains(x.Game.ToString()))) : gameFilter = (x) => x.Game.ToString() == gameLabel.UserStatusLabel;
 
             //Remove current user from list.
             Func<IGuildUser, bool> userFilter = (excludeCurrentUser) ? (Func<IGuildUser, bool>)((x) => x.Id != Context.User.Id) : ((x) => true);
@@ -146,7 +146,7 @@ namespace PolonyBot.Modules.LFG
                 {
                     var split = line.Split('|');
 
-                    _games.Add(split[0], new GameLabel { label = split[1], userStatusLabel = split[2] });
+                    _games.Add(split[0], new GameLabel { Label = split[1], UserStatusLabel = split[2] });
                     fgUserGameList.Add(split[2]);
                 }
             }
