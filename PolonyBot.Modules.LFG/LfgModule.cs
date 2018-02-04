@@ -79,11 +79,29 @@ namespace PolonyBot.Modules.LFG
                 LfgList.RemoveAll(x => x.User.Id == Context.User.Id);
                 await Context.User.SendMessageAsync($"You have been removed from all LFG queues");
             }
+            else if (game == "%")
+            {
+                response = await ListGuildUsersPlayingAsync();
+                await ReplyAsync(response);
+            }
             else
             {
                 response = RegisterPlayer(Context.User, game, (command ?? "").Trim());
                 await ReplyAsync(response);
             }
+        }
+
+        private async Task<string> ListGuildUsersPlayingAsync()
+        {
+            var response = "";
+            IReadOnlyCollection<IGuildUser> guildUsers = await Context.Guild.GetUsersAsync();
+
+            foreach(var user in guildUsers)
+            {
+                response += $"{user.Username} is currently playing {user.Game}." + Environment.NewLine;
+            }
+
+            return response;
         }
 
         private void LoadGameList()
