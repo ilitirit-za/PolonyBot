@@ -24,4 +24,8 @@
     </None>
   </ItemGroup>
 
+  <Target Name="PostBuild" AfterTargets="PostBuildEvent">
+    <Exec Command="xcopy /y $(TargetPath) $(SolutionDir)PolonyBot.Console\bin\Debug\netcoreapp1.1\&#xD;&#xA;xcopy /y $(TargetPath) $(SolutionDir)PolonyBot.Console\bin\Release\netcoreapp1.1\" />
+  </Target>
+
 </Project>
