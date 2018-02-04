@@ -11,7 +11,18 @@ namespace PolonyBot.Modules.LFG
     // Create a module with no prefix
     public class LfgModule : ModuleBase
     {
-        private readonly Dictionary<string, string> _games = new Dictionary<string, string>(StringComparer.OrdinalIgnoreCase);
+        private class GameLabel
+        {
+            public string label { get; set; }
+            public string userStatusLabel { get; set; }
+
+
+            public override string ToString()
+            {
+                return label;
+            }
+        }
+        private readonly Dictionary<string, GameLabel> _games = new Dictionary<string, GameLabel>(StringComparer.OrdinalIgnoreCase);
 
         public LfgModule()
         {
@@ -114,7 +125,7 @@ namespace PolonyBot.Modules.LFG
                 {
                     var split = line.Split('|');
 
-                    _games.Add(split[0], split[1]);
+                    _games.Add(split[0], new GameLabel { label = split[1], userStatusLabel = split[2] });
                 }
             }
             catch (Exception e)
@@ -146,7 +157,7 @@ namespace PolonyBot.Modules.LFG
 
         private string RegisterPlayer(IUser user, string game, string command)
         {
-            var description = "";
+            GameLabel description;
             if (!_games.TryGetValue(game, out description))
             {
                 return $"Game {game} is not supported.  Use the \"lfg ?\" command to list supported games";

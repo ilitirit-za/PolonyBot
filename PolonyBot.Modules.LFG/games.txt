@@ -1,31 +1,31 @@
-﻿2K2|King Of Fighters 2002 on Fightcade
-3S|Street Fighter 3: 3rd Strike on Fightcade
-98|King Of Fighters 98 on Fightcade
-A2|Street Fighter Alpha 2 on Fightcade
-A3|Street Fighter Alpha 3 on Fightcade
-BB-PC|Blazblue on PC
-BB-PS4|Blazblue on PS4
-BB-X|Blazblue on Xbox One
-FC|Any game on Fightcade
-I2-PS4|Injustice 2 on PS4
-I2-X|Injustice 2 on Xbox One
-KOF13|King of Fighters 13 on PC
-KOF14-PC|King Of Fighters 14 on PC
-KOF14-PS4|King Of Fighters 14 on PS4
-LB2|Last Blade 2 on Fightcade
-MKX-PC|Mortal Kombat X on PC
-MKX-PS4|Mortal Kombat X on PS4
-MKX-X|Mortal Kombat X on Xbox One
-MVCI-PC|Marvel vs Capcom Infinite on PC
-MVCI-PS4|Marvel vs Capcom Infinite on PS4
-SFV|Street Fighter V
-SG|Skullgirls on PC
-ST|Super Street Fighter 2 Turbo on Fightcade
-SVC|SNK vs Capcom Chaos on Fightcade
-T7-PC|Tekken 7 on PC
-T7-PS4|Tekken 7 on PS4
-T7-X|Tekken 7 on Xbox One
-SF4-PC|Ultra Street Fighter IV on PC
-SF4-PS4|Ultra Street Fighter IV on PS4
-XRD-PC|Guilty Gear Xrd on PC
-XRD-PS4|Guilty Gear Xrd on PS4
+﻿2K2|King Of Fighters 2002 on Fightcade|Fightcade
+3S|Street Fighter 3: 3rd Strike on Fightcade|Fightcade
+98|King Of Fighters 98 on Fightcade|Fightcade
+A2|Street Fighter Alpha 2 on Fightcade|Fightcade
+A3|Street Fighter Alpha 3 on Fightcade|Fightcade
+BB-PC|Blazblue on PC|BlazBlue Central Fiction
+BB-PS4|Blazblue on PS4|
+BB-X|Blazblue on Xbox One|
+FC|Any game on Fightcade|Fightcade
+I2-PS4|Injustice 2 on PS4|
+I2-X|Injustice 2 on Xbox One|
+KOF13|King of Fighters 13 on PC|THE KING OF FIGHTERS XIII STEAM EDITION
+KOF14-PC|King Of Fighters 14 on PC|THE KING OF FIGHTERS XIV STEAM EDITION
+KOF14-PS4|King Of Fighters 14 on PS4|
+LB2|Last Blade 2 on Fightcade|Fightcade
+MKX-PC|Mortal Kombat X on PC|
+MKX-PS4|Mortal Kombat X on PS4|
+MKX-X|Mortal Kombat X on Xbox One|
+MVCI-PC|Marvel vs Capcom Infinite on PC|Marvel vs Capcom : Infinite
+MVCI-PS4|Marvel vs Capcom Infinite on PS4|
+SFV|Street Fighter V|Street Fighter V
+SG|Skullgirls on PC|Skullgirls
+ST|Super Street Fighter 2 Turbo on Fightcade|Fightcade
+SVC|SNK vs Capcom Chaos on Fightcade|Fightcade
+T7-PC|Tekken 7 on PC|Tekken 7
+T7-PS4|Tekken 7 on PS4|
+T7-X|Tekken 7 on Xbox One|
+SF4-PC|Ultra Street Fighter IV on PC|Ultra Street Fighter IV
+SF4-PS4|Ultra Street Fighter IV on PS4|
+XRD-PC|Guilty Gear Xrd on PC|GUILTY GEAR Xrd -REVELATOR-
+XRD-PS4|Guilty Gear Xrd on PS4|
