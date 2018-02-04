@@ -145,9 +145,14 @@ namespace PolonyBot.Modules.LFG
                 foreach (var line in lines)
                 {
                     var split = line.Split('|');
+                    split[0] = split[0].Trim();
+                    split[1] = split[1].Trim();
+                    split[2] = split[2].Trim();
 
                     _games.Add(split[0], new GameLabel { Label = split[1], UserStatusLabel = split[2] });
-                    fgUserGameList.Add(split[2]);
+                    if (!String.IsNullOrEmpty(split[2]) || !fgUserGameList.Contains(split[2])) {
+                        fgUserGameList.Add(split[2]);
+                    }
                 }
             }
             catch (Exception e)
@@ -182,7 +187,7 @@ namespace PolonyBot.Modules.LFG
             GameLabel description;
             if (!_games.TryGetValue(game, out description))
             {
-                return $"Game {game} is not supported.  Use the \"lfg ?\" command to list supported games";
+                return $"Game {game} is not supported. Use the \"lfg ?\" command to list supported games";
             }
             game = game.ToUpper();
 
@@ -256,6 +261,7 @@ namespace PolonyBot.Modules.LFG
                 response = $"Noone{extra}is looking for games right now.";
                 response += Environment.NewLine;
             }
+            response += Environment.NewLine;
 
             response += await ListGuildUsersPlayingAsync(game);
 
