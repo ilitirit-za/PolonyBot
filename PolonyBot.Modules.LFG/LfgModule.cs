@@ -102,16 +102,36 @@ namespace PolonyBot.Modules.LFG
             }
         }
 
-        private async Task<string> ListGuildUsersPlayingAsync()
+        private async Task<string> ListGuildUsersPlayingAsync(string game = null)
         {
             var response = "";
-            IReadOnlyCollection<IGuildUser> guildUsers = await Context.Guild.GetUsersAsync();
+            IReadOnlyCollection<IGuildUser> guildUsers = await Context.Guild.GetUsersAsync();       //Retrieve all users (+ statuses) from server.
 
-            foreach(var user in guildUsers)
+            //Covert game key to discord playing label
+            GameLabel gameLabel;
+            _games.TryGetValue(game, out gameLabel);
+
+            //Filter out any bots.
+            Func<IGuildUser, bool> botFilter = (x) => !(x.IsBot);
+            
+            //Filter out users not playing anything or not playing requested game.
+            Func<IGuildUser, bool> gameFilter = (game == null) ? ((x) => !String.IsNullOrWhiteSpace(x.Game.ToString())) : gameFilter = (x) => x.Game.ToString() == gameLabel.userStatusLabel;
+
+            List<IGuildUser> users = guildUsers
+                .Where(gameFilter)
+                .Where(botFilter)
+                .ToList();
+
+            if (users.Count == 0)
             {
-                response += $"{user.Username} is currently playing {user.Game}." + Environment.NewLine;
+                response = "Noone is currently playing anything.";
+            }
+            foreach (var u in users)
+            {
+                response += $"{u.Username} is currently playing {u.Game}." + Environment.NewLine;
             }
 
+            
             return response;
         }
 
