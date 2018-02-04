@@ -13,6 +13,7 @@ namespace PolonyBot.Modules.LFG
     {
         private class GameLabel
         {
+            public static readonly GameLabel BlankLabel = new GameLabel { label = "", userStatusLabel = "" };
             public string label { get; set; }
             public string userStatusLabel { get; set; }
 
@@ -72,7 +73,7 @@ namespace PolonyBot.Modules.LFG
 
             if (String.IsNullOrWhiteSpace(game))
             {
-                response = ListPlayersLookingForGames();
+                response = await ListPlayersLookingForGamesAsync();
                 await Context.User.SendMessageAsync(response);
             }
             else if (game == "?")
@@ -90,26 +91,24 @@ namespace PolonyBot.Modules.LFG
                 LfgList.RemoveAll(x => x.User.Id == Context.User.Id);
                 await Context.User.SendMessageAsync($"You have been removed from all LFG queues");
             }
-            else if (game == "%")
-            {
-                response = await ListGuildUsersPlayingAsync();
-                await ReplyAsync(response);
-            }
             else
             {
-                response = RegisterPlayer(Context.User, game, (command ?? "").Trim());
+                response = await RegisterPlayerAsync(Context.User, game, (command ?? "").Trim());
                 await ReplyAsync(response);
             }
         }
 
-        private async Task<string> ListGuildUsersPlayingAsync(string game = null)
+        private async Task<string> ListGuildUsersPlayingAsync(string game = null, bool excludeCurrentUser = false)
         {
             var response = "";
             IReadOnlyCollection<IGuildUser> guildUsers = await Context.Guild.GetUsersAsync();       //Retrieve all users (+ statuses) from server.
 
-            //Covert game key to discord playing label
-            GameLabel gameLabel;
-            _games.TryGetValue(game, out gameLabel);
+            GameLabel gameLabel = GameLabel.BlankLabel;
+            if (game != null)
+            {
+                //Convert game key to discord playing label
+                _games.TryGetValue(game, out gameLabel);
+            }
 
             //Filter out any bots.
             Func<IGuildUser, bool> botFilter = (x) => !(x.IsBot);
@@ -120,12 +119,10 @@ namespace PolonyBot.Modules.LFG
             List<IGuildUser> users = guildUsers
                 .Where(gameFilter)
                 .Where(botFilter)
+                .Where((x) => !x.Equals(Context.User))
                 .ToList();
+            
 
-            if (users.Count == 0)
-            {
-                response = "Noone is currently playing anything.";
-            }
             foreach (var u in users)
             {
                 response += $"{u.Username} is currently playing {u.Game}." + Environment.NewLine;
@@ -175,7 +172,7 @@ namespace PolonyBot.Modules.LFG
             return $"```{response}```";
         }
 
-        private string RegisterPlayer(IUser user, string game, string command)
+        private async Task<string> RegisterPlayerAsync(IUser user, string game, string command)
         {
             GameLabel description;
             if (!_games.TryGetValue(game, out description))
@@ -204,12 +201,14 @@ namespace PolonyBot.Modules.LFG
             response += Environment.NewLine;
             response += Environment.NewLine;
 
-            response += ListPlayersLookingForGames(game, true, true);
+            response += await ListPlayersLookingForGamesAsync(game, true, true);
+            response += Environment.NewLine;
+            
             return response;
 
         }
 
-        private string ListPlayersLookingForGames(string game = null, bool excludeCurrentUser = false, bool enableMentions = false)
+        private async Task<string> ListPlayersLookingForGamesAsync(string game = null, bool excludeCurrentUser = false, bool enableMentions = false)
         {
             var response = "";
             var gameFilter = (game == null) ? (Func<string, bool>)((x) => true) : ((x) => x == game);
@@ -249,8 +248,11 @@ namespace PolonyBot.Modules.LFG
             var extra = excludeCurrentUser ? " else " : " ";
             if (String.IsNullOrWhiteSpace(response))
             {
-                response = $"Noone{extra}is looking for games right now";
+                response = $"Noone{extra}is looking for games right now.";
+                response += Environment.NewLine;
             }
+
+            response += await ListGuildUsersPlayingAsync(game);
 
             return response;
         }
