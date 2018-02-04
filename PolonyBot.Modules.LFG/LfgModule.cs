@@ -24,7 +24,7 @@ namespace PolonyBot.Modules.LFG
             }
         }
         private readonly Dictionary<string, GameLabel> _games = new Dictionary<string, GameLabel>(StringComparer.OrdinalIgnoreCase);
-
+        private static readonly List<string> fgUserGameList = new List<string> { };
         public LfgModule()
         {
             LoadGameList();
@@ -112,14 +112,18 @@ namespace PolonyBot.Modules.LFG
 
             //Filter out any bots.
             Func<IGuildUser, bool> botFilter = (x) => !(x.IsBot);
-            
-            //Filter out users not playing anything or not playing requested game.
-            Func<IGuildUser, bool> gameFilter = (game == null) ? ((x) => !String.IsNullOrWhiteSpace(x.Game.ToString())) : gameFilter = (x) => x.Game.ToString() == gameLabel.userStatusLabel;
 
+            //Filter out users not playing anything, not playing a fighting game or not playing requested game.
+            Func<IGuildUser, bool> gameFilter = (game == null) ? ((x) => (!String.IsNullOrWhiteSpace(x.Game.ToString()) && fgUserGameList.Contains(x.Game.ToString()))) : gameFilter = (x) => x.Game.ToString() == gameLabel.userStatusLabel;
+
+            //Remove current user from list.
+            Func<IGuildUser, bool> userFilter = (excludeCurrentUser) ? (Func<IGuildUser, bool>)((x) => x.Id != Context.User.Id) : ((x) => true);
+
+            
             List<IGuildUser> users = guildUsers
                 .Where(gameFilter)
                 .Where(botFilter)
-                .Where((x) => !x.Equals(Context.User))
+                .Where(userFilter)
                 .ToList();
             
 
@@ -143,6 +147,7 @@ namespace PolonyBot.Modules.LFG
                     var split = line.Split('|');
 
                     _games.Add(split[0], new GameLabel { label = split[1], userStatusLabel = split[2] });
+                    fgUserGameList.Add(split[2]);
                 }
             }
             catch (Exception e)
