@@ -11,8 +11,20 @@ namespace PolonyBot.Modules.LFG
     // Create a module with no prefix
     public class LfgModule : ModuleBase
     {
-        private readonly Dictionary<string, string> _games = new Dictionary<string, string>(StringComparer.OrdinalIgnoreCase);
+        private class GameLabel
+        {
+            public static readonly GameLabel BlankLabel = new GameLabel { Label = "", UserStatusLabel = "" };
+            public string Label { get; set; }
+            public string UserStatusLabel { get; set; }
 
+
+            public override string ToString()
+            {
+                return Label;
+            }
+        }
+        private readonly Dictionary<string, GameLabel> _games = new Dictionary<string, GameLabel>(StringComparer.OrdinalIgnoreCase);
+        private static readonly List<string> fgUserGameList = new List<string> { };
         public LfgModule()
         {
             LoadGameList();
@@ -61,7 +73,7 @@ namespace PolonyBot.Modules.LFG
 
             if (String.IsNullOrWhiteSpace(game))
             {
-                response = ListPlayersLookingForGames();
+                response = await ListPlayersLookingForGamesAsync();
                 await Context.User.SendMessageAsync(response);
             }
             else if (game == "?")
@@ -81,9 +93,47 @@ namespace PolonyBot.Modules.LFG
             }
             else
             {
-                response = RegisterPlayer(Context.User, game, (command ?? "").Trim());
+                response = await RegisterPlayerAsync(Context.User, game, (command ?? "").Trim());
                 await ReplyAsync(response);
             }
+        }
+
+        private async Task<string> ListGuildUsersPlayingAsync(string game = null, bool excludeCurrentUser = false)
+        {
+            var response = "";
+            IReadOnlyCollection<IGuildUser> guildUsers = await Context.Guild.GetUsersAsync();       //Retrieve all users (+ statuses) from server.
+
+            GameLabel gameLabel = GameLabel.BlankLabel;
+            if (game != null)
+            {
+                //Convert game key to discord playing label
+                _games.TryGetValue(game, out gameLabel);
+            }
+
+            //Filter out any bots.
+            Func<IGuildUser, bool> botFilter = (x) => !(x.IsBot);
+
+            //Filter out users not playing anything, not playing a fighting game or not playing requested game.
+            Func<IGuildUser, bool> gameFilter = (game == null) ? ((x) => (!String.IsNullOrWhiteSpace(x.Game.ToString()) && fgUserGameList.Contains(x.Game.ToString()))) : gameFilter = (x) => x.Game.ToString() == gameLabel.UserStatusLabel;
+
+            //Remove current user from list.
+            Func<IGuildUser, bool> userFilter = (excludeCurrentUser) ? (Func<IGuildUser, bool>)((x) => x.Id != Context.User.Id) : ((x) => true);
+
+            
+            List<IGuildUser> users = guildUsers
+                .Where(gameFilter)
+                .Where(botFilter)
+                .Where(userFilter)
+                .ToList();
+            
+
+            foreach (var u in users)
+            {
+                response += $"{u.Username} is currently playing {u.Game}." + Environment.NewLine;
+            }
+
+            
+            return response;
         }
 
         private void LoadGameList()
@@ -95,8 +145,14 @@ namespace PolonyBot.Modules.LFG
                 foreach (var line in lines)
                 {
                     var split = line.Split('|');
+                    split[0] = split[0].Trim();
+                    split[1] = split[1].Trim();
+                    split[2] = split[2].Trim();
 
-                    _games.Add(split[0], split[1]);
+                    _games.Add(split[0], new GameLabel { Label = split[1], UserStatusLabel = split[2] });
+                    if (!String.IsNullOrEmpty(split[2]) || !fgUserGameList.Contains(split[2])) {
+                        fgUserGameList.Add(split[2]);
+                    }
                 }
             }
             catch (Exception e)
@@ -126,12 +182,12 @@ namespace PolonyBot.Modules.LFG
             return $"```{response}```";
         }
 
-        private string RegisterPlayer(IUser user, string game, string command)
+        private async Task<string> RegisterPlayerAsync(IUser user, string game, string command)
         {
-            var description = "";
+            GameLabel description;
             if (!_games.TryGetValue(game, out description))
             {
-                return $"Game {game} is not supported.  Use the \"lfg ?\" command to list supported games";
+                return $"Game {game} is not supported. Use the \"lfg ?\" command to list supported games";
             }
             game = game.ToUpper();
 
@@ -155,12 +211,14 @@ namespace PolonyBot.Modules.LFG
             response += Environment.NewLine;
             response += Environment.NewLine;
 
-            response += ListPlayersLookingForGames(game, true, true);
+            response += await ListPlayersLookingForGamesAsync(game, true, true);
+            response += Environment.NewLine;
+            
             return response;
 
         }
 
-        private string ListPlayersLookingForGames(string game = null, bool excludeCurrentUser = false, bool enableMentions = false)
+        private async Task<string> ListPlayersLookingForGamesAsync(string game = null, bool excludeCurrentUser = false, bool enableMentions = false)
         {
             var response = "";
             var gameFilter = (game == null) ? (Func<string, bool>)((x) => true) : ((x) => x == game);
@@ -200,8 +258,12 @@ namespace PolonyBot.Modules.LFG
             var extra = excludeCurrentUser ? " else " : " ";
             if (String.IsNullOrWhiteSpace(response))
             {
-                response = $"Noone{extra}is looking for games right now";
+                response = $"Noone{extra}is looking for games right now.";
+                response += Environment.NewLine;
             }
+            response += Environment.NewLine;
+
+            response += await ListGuildUsersPlayingAsync(game);
 
             return response;
         }

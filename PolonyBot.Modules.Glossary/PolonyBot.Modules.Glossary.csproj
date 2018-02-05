@@ -18,4 +18,8 @@
     <PackageReference Include="log4net" Version="2.0.8" />
   </ItemGroup>
 
+  <Target Name="PostBuild" AfterTargets="PostBuildEvent">
+    <Exec Command="xcopy /y $(TargetPath) $(SolutionDir)PolonyBot.Console\bin\Debug\netcoreapp1.1\&#xD;&#xA;xcopy /y $(TargetPath) $(SolutionDir)PolonyBot.Console\bin\Release\netcoreapp1.1\" />
+  </Target>
+
 </Project>
