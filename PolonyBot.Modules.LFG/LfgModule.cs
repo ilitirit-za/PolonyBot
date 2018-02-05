@@ -100,6 +100,7 @@ namespace PolonyBot.Modules.LFG
 
         private async Task<string> ListGuildUsersPlayingAsync(string game = null, bool excludeCurrentUser = false)
         {
+            
             var response = "";
             IReadOnlyCollection<IGuildUser> guildUsers = await Context.Guild.GetUsersAsync();       //Retrieve all users (+ statuses) from server.
 
@@ -117,7 +118,7 @@ namespace PolonyBot.Modules.LFG
             Func<IGuildUser, bool> gameFilter = (game == null) ? ((x) => (!String.IsNullOrWhiteSpace(x.Game.ToString()) && fgUserGameList.Contains(x.Game.ToString()))) : gameFilter = (x) => x.Game.ToString() == gameLabel.UserStatusLabel;
 
             //Remove current user from list.
-            Func<IGuildUser, bool> userFilter = (excludeCurrentUser) ? (Func<IGuildUser, bool>)((x) => x.Id != Context.User.Id) : ((x) => true);
+            Func<IGuildUser, bool> userFilter = (excludeCurrentUser) ? (Func<IGuildUser, bool>)((x) => x.DiscriminatorValue != Context.User.DiscriminatorValue) : ((x) => true);
 
             
             List<IGuildUser> users = guildUsers
@@ -125,13 +126,27 @@ namespace PolonyBot.Modules.LFG
                 .Where(botFilter)
                 .Where(userFilter)
                 .ToList();
-            
 
-            foreach (var u in users)
+
+            IGuildUser u;
+            switch (users.Count)
             {
-                response += $"{u.Username} is currently playing {u.Game}." + Environment.NewLine;
+                case 0:
+                    break;
+                case 1:
+                    u = users.First();
+                    response += $"{u.Username} is currently playing {u.Game}." + Environment.NewLine;
+                    break;
+                default:
+                    u = users.First();
+                    response += $"The following players are playing {gameLabel}: {u.Username}" + Environment.NewLine;
+                    users.RemoveAt(0);
+                    foreach (var user in users)
+                    {
+                        response += new String(' ',  gameLabel.UserStatusLabel.Length+63) + $"{user.Username}" + Environment.NewLine;
+                    }
+                    break;
             }
-
             
             return response;
         }
