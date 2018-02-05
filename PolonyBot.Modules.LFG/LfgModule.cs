@@ -98,7 +98,7 @@ namespace PolonyBot.Modules.LFG
             }
         }
 
-        private async Task<string> ListGuildUsersPlayingAsync(string game = null, bool excludeCurrentUser = true)
+        private async Task<string> ListGuildUsersPlayingAsync(string game = null, bool excludeCurrentUser = false)
         {
             var response = "";
             IReadOnlyCollection<IGuildUser> guildUsers = await Context.Guild.GetUsersAsync();       //Retrieve all users (+ statuses) from server.
