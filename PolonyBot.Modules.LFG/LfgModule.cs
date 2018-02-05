@@ -98,7 +98,7 @@ namespace PolonyBot.Modules.LFG
             }
         }
 
-        private async Task<string> ListGuildUsersPlayingAsync(string game = null, bool excludeCurrentUser = false)
+        private async Task<string> ListGuildUsersPlayingAsync(string game = null, bool excludeCurrentUser = true)
         {
             
             var response = "";
