@@ -118,7 +118,7 @@ namespace PolonyBot.Modules.LFG
             Func<IGuildUser, bool> gameFilter = (game == null) ? ((x) => (!String.IsNullOrWhiteSpace(x.Game.ToString()) && fgUserGameList.Contains(x.Game.ToString()))) : gameFilter = (x) => x.Game.ToString() == gameLabel.UserStatusLabel;
 
             //Remove current user from list.
-            Func<IGuildUser, bool> userFilter = (excludeCurrentUser) ? (Func<IGuildUser, bool>)((x) => x.DiscriminatorValue != Context.User.DiscriminatorValue) : ((x) => true);
+            Func<IGuildUser, bool> userFilter = (excludeCurrentUser) ? (Func<IGuildUser, bool>)((x) => x.Id != Context.User.Id) : ((x) => true);
 
             
             List<IGuildUser> users = guildUsers
