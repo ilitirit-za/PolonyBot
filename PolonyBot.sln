@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
-VisualStudioVersion = 15.0.26730.15
+VisualStudioVersion = 15.0.27130.2027
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{CC434C83-D676-48B8-B5CB-AF2E53DEF649}"
 EndProject
@@ -14,6 +14,10 @@ EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PolonyBot.NetCore.Core", "PolonyBot.NetCore.Core\PolonyBot.NetCore.Core.csproj", "{D806FDEA-D65D-4084-A92E-2701295D5B65}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PolonyBot.Console", "PolonyBot.Console\PolonyBot.Console.csproj", "{C14B658B-3773-4A71-A5F5-016821ECE3C9}"
+	ProjectSection(ProjectDependencies) = postProject
+		{D7D44A0D-2FC2-41EB-846F-98721EAE4CC8} = {D7D44A0D-2FC2-41EB-846F-98721EAE4CC8}
+		{65922143-F20F-4ACA-9ABF-C15A09A3C367} = {65922143-F20F-4ACA-9ABF-C15A09A3C367}
+	EndProjectSection
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PolonyBot.Modules.LFG", "PolonyBot.Modules.LFG\PolonyBot.Modules.LFG.csproj", "{65922143-F20F-4ACA-9ABF-C15A09A3C367}"
 EndProject
