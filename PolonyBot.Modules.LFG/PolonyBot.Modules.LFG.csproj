@@ -25,7 +25,7 @@
   </ItemGroup>
 
   <Target Name="PostBuild" AfterTargets="PostBuildEvent">
-    <Exec Command="xcopy /y &quot;$(TargetPath) &quot;$(SolutionDir)PolonyBot.Console\bin\Debug\netcoreapp1.1\&quot;&#xD;&#xA;xcopy /y &quot;$(TargetPath) &quot;$(SolutionDir)PolonyBot.Console\bin\Release\netcoreapp1.1\&quot;&#xD;&#xA;xcopy /y &quot;$(TargetDir)games.txt&quot; &quot;$(SolutionDir)PolonyBot.Console\bin\Debug\netcoreapp1.1\&quot;&#xD;&#xA;xcopy /y &quot;$(TargetDir)games.txt&quot; &quot;$(SolutionDir)PolonyBot.Console\bin\Release\netcoreapp1.1\&quot;" />
+    <Exec Command="xcopy /y &quot;$(TargetPath)&quot; &quot;$(SolutionDir)PolonyBot.Console\bin\Debug\netcoreapp1.1\&quot;&#xD;&#xA;xcopy /y &quot;$(TargetPath)&quot; &quot;$(SolutionDir)PolonyBot.Console\bin\Release\netcoreapp1.1\&quot;&#xD;&#xA;xcopy /y &quot;$(TargetDir)games.txt&quot; &quot;$(SolutionDir)PolonyBot.Console\bin\Debug\netcoreapp1.1\&quot;&#xD;&#xA;xcopy /y &quot;$(TargetDir)games.txt&quot; &quot;$(SolutionDir)PolonyBot.Console\bin\Release\netcoreapp1.1\&quot;" />
   </Target>
 
 </Project>

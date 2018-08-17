@@ -1,0 +1,25 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp1.1</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Discord.Net" Version="1.0.2" />
+    <PackageReference Include="Discord.Net.Commands" Version="1.0.2" />
+    <PackageReference Include="Discord.Net.Core" Version="1.0.2" />
+    <PackageReference Include="Discord.Net.Rest" Version="1.0.2" />
+    <PackageReference Include="Discord.Net.WebSocket" Version="1.0.2" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Update="challonge.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
+
+  <Target Name="PostBuild" AfterTargets="PostBuildEvent">
+    <Exec Command="xcopy /y $(TargetPath) $(SolutionDir)PolonyBot.Console\bin\Debug\netcoreapp2.1\&#xD;&#xA;xcopy /y $(TargetPath) $(SolutionDir)PolonyBot.Console\bin\Release\netcoreapp2.1\&#xD;&#xA;xcopy /y $(TargetDir)challonge.png $(SolutionDir)PolonyBot.Console\bin\Release\netcoreapp2.1\" />
+  </Target>
+
+</Project>

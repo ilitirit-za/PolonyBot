@@ -5,12 +5,6 @@ VisualStudioVersion = 15.0.27130.2027
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{CC434C83-D676-48B8-B5CB-AF2E53DEF649}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PolonyBot.Core", "PolonyBot.Core\PolonyBot.Core.csproj", "{19652C1F-16D2-4BE7-A9FA-F96B700A7D65}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PolonyBot.Domain.Danisen", "PolonyBot.Domain.Danisen\PolonyBot.Domain.Danisen.csproj", "{5C420E77-ED6B-4EB2-98A9-E5D1F766D917}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PolonyBot.UI.WinForm", "PolonyBot.UI.WinForm\PolonyBot.UI.WinForm.csproj", "{E0A74F34-2ED6-4917-9A21-92BA65FF1458}"
-EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PolonyBot.NetCore.Core", "PolonyBot.NetCore.Core\PolonyBot.NetCore.Core.csproj", "{D806FDEA-D65D-4084-A92E-2701295D5B65}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PolonyBot.Console", "PolonyBot.Console\PolonyBot.Console.csproj", "{C14B658B-3773-4A71-A5F5-016821ECE3C9}"
@@ -30,24 +24,6 @@ Global
 		Test|Any CPU = Test|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{19652C1F-16D2-4BE7-A9FA-F96B700A7D65}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{19652C1F-16D2-4BE7-A9FA-F96B700A7D65}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{19652C1F-16D2-4BE7-A9FA-F96B700A7D65}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{19652C1F-16D2-4BE7-A9FA-F96B700A7D65}.Release|Any CPU.Build.0 = Release|Any CPU
-		{19652C1F-16D2-4BE7-A9FA-F96B700A7D65}.Test|Any CPU.ActiveCfg = Test|Any CPU
-		{19652C1F-16D2-4BE7-A9FA-F96B700A7D65}.Test|Any CPU.Build.0 = Test|Any CPU
-		{5C420E77-ED6B-4EB2-98A9-E5D1F766D917}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{5C420E77-ED6B-4EB2-98A9-E5D1F766D917}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{5C420E77-ED6B-4EB2-98A9-E5D1F766D917}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{5C420E77-ED6B-4EB2-98A9-E5D1F766D917}.Release|Any CPU.Build.0 = Release|Any CPU
-		{5C420E77-ED6B-4EB2-98A9-E5D1F766D917}.Test|Any CPU.ActiveCfg = Test|Any CPU
-		{5C420E77-ED6B-4EB2-98A9-E5D1F766D917}.Test|Any CPU.Build.0 = Test|Any CPU
-		{E0A74F34-2ED6-4917-9A21-92BA65FF1458}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{E0A74F34-2ED6-4917-9A21-92BA65FF1458}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{E0A74F34-2ED6-4917-9A21-92BA65FF1458}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{E0A74F34-2ED6-4917-9A21-92BA65FF1458}.Release|Any CPU.Build.0 = Release|Any CPU
-		{E0A74F34-2ED6-4917-9A21-92BA65FF1458}.Test|Any CPU.ActiveCfg = Test|Any CPU
-		{E0A74F34-2ED6-4917-9A21-92BA65FF1458}.Test|Any CPU.Build.0 = Test|Any CPU
 		{D806FDEA-D65D-4084-A92E-2701295D5B65}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{D806FDEA-D65D-4084-A92E-2701295D5B65}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{D806FDEA-D65D-4084-A92E-2701295D5B65}.Release|Any CPU.ActiveCfg = Release|Any CPU

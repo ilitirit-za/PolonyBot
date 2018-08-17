@@ -20,13 +20,15 @@ namespace Polony.NetCore.Core
         private const ulong PolonyPlayGroundId = 229951183882551303;
 
         private readonly string _botToken;
+        private readonly char _commandPrefix;
         private CommandService _commands;
         private DiscordSocketClient _client;
         private IServiceProvider _services;
 
-        public PolonyBot(string botToken)
+        public PolonyBot(string botToken, char commandPrefix = '.')
         {
             _botToken = botToken;
+            _commandPrefix = commandPrefix;
         }
 
         public async Task Start()
@@ -136,7 +138,7 @@ namespace Polony.NetCore.Core
             int argPos = 0;
 
             // Determine if the message is a command, based on if it starts with '!' or a mention prefix
-            if (!(message.HasCharPrefix('.', ref argPos) || message.HasMentionPrefix(_client.CurrentUser, ref argPos))) return;
+            if (!(message.HasCharPrefix(_commandPrefix, ref argPos) || message.HasMentionPrefix(_client.CurrentUser, ref argPos))) return;
 
             // Create a Command Context
             var context = new CommandContext(_client, message);

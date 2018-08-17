@@ -1,4 +1,5 @@
-﻿using System.Threading.Tasks;
+﻿using System;
+using System.Threading.Tasks;
 using Polony.NetCore.Core;
 using System.IO;
 
@@ -14,13 +15,13 @@ namespace Polony.Console
             { 
                 var key = File.ReadAllText("PolonyBot.key").Trim();
 
-                var polonyBot = new PolonyBot(key);
+                var polonyBot = new PolonyBot(key, '%');
                 await polonyBot.Start();
                 await Task.Delay(-1);
             }
-            catch
+            catch (Exception e)
             {
-                System.Console.WriteLine("Could not run for wahtever reason");
+                System.Console.WriteLine($"Could not run: {e.Message}");
             }
         }
     }
