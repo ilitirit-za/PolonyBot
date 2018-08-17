@@ -19,7 +19,7 @@
   </ItemGroup>
 
   <Target Name="PostBuild" AfterTargets="PostBuildEvent">
-    <Exec Command="xcopy /y $(TargetPath) $(SolutionDir)PolonyBot.Console\bin\Debug\netcoreapp2.1\&#xD;&#xA;xcopy /y $(TargetPath) $(SolutionDir)PolonyBot.Console\bin\Release\netcoreapp2.1\&#xD;&#xA;xcopy /y $(TargetDir)challonge.png $(SolutionDir)PolonyBot.Console\bin\Release\netcoreapp2.1\" />
+    <Exec Command="xcopy /y &quot;$(TargetPath)&quot; &quot;$(SolutionDir)PolonyBot.Console\bin\Debug\netcoreapp1.1\&quot;&#xD;&#xA;xcopy /y &quot;$(TargetPath)&quot; &quot;$(SolutionDir)PolonyBot.Console\bin\Release\netcoreapp1.1\&quot;" />
   </Target>
 
 </Project>
