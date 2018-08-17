@@ -1,35 +1,35 @@
-﻿2K2|King Of Fighters 2002 on Fightcade|FightCade
-2K2UM|King Of Fighters 2002 Unlimited Match on PC|The King Of Fighters 2002 Unlimited Match
-3S|Street Fighter 3: 3rd Strike on Fightcade|FightCade
-98|King Of Fighters 98 on Fightcade|FightCade
-98UM|King Of Fighters 2002 Ultimate Match on PC|The King Of Fighters 98 Ultimate Match
-A2|Street Fighter Alpha 2 on Fightcade|FightCade
-A3|Street Fighter Alpha 3 on Fightcade|FightCade
-BB-PC|Blazblue on PC|BlazBlue Central Fiction
-BB-PS4|Blazblue on PS4|
-BB-X|Blazblue on Xbox One|
-DBZ-PC|Dragon Ball FighterZ on PC|Dragon Ball FighterZ
-DBZ-PS4|Dragon Ball FighterZ on PS4|
-FC|Any game on Fightcade|FightCade
-I2-PS4|Injustice 2 on PS4|
-I2-X|Injustice 2 on Xbox One|
-KOF13|King of Fighters 13 on PC|THE KING OF FIGHTERS XIII STEAM EDITION
-KOF14-PC|King Of Fighters 14 on PC|THE KING OF FIGHTERS XIV STEAM EDITION
-KOF14-PS4|King Of Fighters 14 on PS4|
-LB2|Last Blade 2 on Fightcade|FightCade
-MKX-PC|Mortal Kombat X on PC|
-MKX-PS4|Mortal Kombat X on PS4|
-MKX-X|Mortal Kombat X on Xbox One|
-MVCI-PC|Marvel vs Capcom Infinite on PC|Marvel vs Capcom : Infinite
-MVCI-PS4|Marvel vs Capcom Infinite on PS4|
-SFV|Street Fighter V|Street Fighter V
-SG|Skullgirls on PC|Skullgirls
-ST|Super Street Fighter 2 Turbo on Fightcade|FightCade
-SVC|SNK vs Capcom Chaos on Fightcade|FightCade
-T7-PC|Tekken 7 on PC|TEKKEN 7
-T7-PS4|Tekken 7 on PS4|
-T7-X|Tekken 7 on Xbox One|
-SF4-PC|Ultra Street Fighter IV on PC|Ultra Street Fighter IV
-SF4-PS4|Ultra Street Fighter IV on PS4|
-XRD-PC|Guilty Gear Xrd on PC|Guilty Gear Xrd -REVELATOR-
-XRD-PS4|Guilty Gear Xrd on PS4|
+2K2|King Of Fighters 2002 on Fightcade
+3S|Street Fighter 3: 3rd Strike on Fightcade
+98|King Of Fighters 98 on Fightcade
+A2|Street Fighter Alpha 2 on Fightcade
+A3|Street Fighter Alpha 3 on Fightcade
+BB-PC|Blazblue on PC
+BB-PS4|Blazblue on PS4
+BB-X|Blazblue on Xbox One
+DBZ-PC|Dragonball FighterZ on PC
+DBZ-PS4|Dragonball FighterZ on PS4
+FC|Any game on Fightcade
+I2-PS4|Injustice 2 on PS4
+I2-X|Injustice 2 on Xbox One
+I2-PC|Injustice 2 on PC
+KI-PC|Killer Instinct on PC
+KOF13|King of Fighters 13 on PC
+KOF14-PC|King Of Fighters 14 on PC
+KOF14-PS4|King Of Fighters 14 on PS4
+LB2|Last Blade 2 on Fightcade
+MKX-PC|Mortal Kombat X on PC
+MKX-PS4|Mortal Kombat X on PS4
+MKX-X|Mortal Kombat X on Xbox One
+MVCI-PC|Marvel vs Capcom Infinite on PC
+MVCI-PS4|Marvel vs Capcom Infinite on PS4
+SFV|Street Fighter V
+SG|Skullgirls on PC
+ST|Super Street Fighter 2 Turbo on Fightcade
+SVC|SNK vs Capcom Chaos on Fightcade
+T7-PC|Tekken 7 on PC
+T7-PS4|Tekken 7 on PS4
+T7-X|Tekken 7 on Xbox One
+SF4-PC|Ultra Street Fighter IV on PC
+SF4-PS4|Ultra Street Fighter IV on PS4
+XRD-PC|Guilty Gear Xrd on PC
+XRD-PS4|Guilty Gear Xrd on PS4

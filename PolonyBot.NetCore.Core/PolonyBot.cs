@@ -8,13 +8,15 @@ using Discord.WebSocket;
 using Microsoft.Extensions.DependencyInjection;
 using System.Collections.Generic;
 using System.Net.Http;
+using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
 
 namespace Polony.NetCore.Core
 {
     public class PolonyBot
     {
-        private const string BanListToken = "1JSORrwdF8";
-        private const string PublicDiscordBansApiUrl = "https://bans.discordlist.net/api";
+        private const string BanListToken = "GVnPX_UmfTTE7yLA6TGHDsC4nptgnKFaljlWuuwtBog";
+        private const string PublicDiscordBansApiUrl = "https://bans.discord.id/api/check.php?user_id={0}";
         private const ulong PolonyPlayGroundId = 229951183882551303;
 
         private readonly string _botToken;
@@ -84,30 +86,36 @@ namespace Polony.NetCore.Core
             // Discover all of the commands in this assembly and load them.
             await _commands.AddModulesAsync(moduleAssembly);
         }
-              
 
+        [Command("join", RunMode = RunMode.Async)]
         private async Task UserJoined(SocketGuildUser arg)
         {
             try
             {
+                var userId = arg.Id.ToString();
                 var httpClient = new HttpClient();
 
                 var values = new Dictionary<string, string>
                 {
                     { "token", BanListToken },
-                    { "userid", arg.Id.ToString() }
+                    { "userid", userId }
                 };
 
                 var content = new FormUrlEncodedContent(values);
+                httpClient.DefaultRequestHeaders.Authorization = new System.Net.Http.Headers.AuthenticationHeaderValue(BanListToken);
 
-                var response = await httpClient.PostAsync(PublicDiscordBansApiUrl, content);
+                //var response = await httpClient.PostAsync(PublicDiscordBansApiUrl, content);
+                var response = await httpClient.GetAsync(String.Format(PublicDiscordBansApiUrl, userId));
 
                 var responseString = await response.Content.ReadAsStringAsync();
 
-                if (responseString.Equals("true", StringComparison.CurrentCultureIgnoreCase))
+                var responseObject = JObject.Parse(responseString);
+                if (responseObject["banned"].Value<string>().Equals("1"))
                 {
-                    await arg.Guild.AddBanAsync(arg.Id, 1, "Known offender on Public Discord Ban List");
+                    await arg.Guild.AddBanAsync(arg.Id, 1, $"Banned: {responseObject["reason"].Value<string>()}");
                 }
+                
+                    
             }
             catch (Exception e)
             {
@@ -136,8 +144,10 @@ namespace Polony.NetCore.Core
             // Execute the command. (result does not indicate a return value, 
             // rather an object stating if the command executed successfully)
             var result = await _commands.ExecuteAsync(context, argPos, _services);
-            if (!result.IsSuccess)
+            if (!result.IsSuccess && result.Error != CommandError.UnknownCommand)
+            { 
                 await context.Channel.SendMessageAsync(result.ErrorReason);
+            }
         }
     }
 }
