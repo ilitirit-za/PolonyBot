@@ -82,11 +82,19 @@ namespace Polony.NetCore.Core
             _client.MessageReceived += HandleCommand;
             _client.UserJoined += UserJoined;
 
+            // TODO:  Move to config in the driver APP
             var modulePath = Path.Combine(AppContext.BaseDirectory, @"PolonyBot.Modules.LFG.dll");
             var moduleAssembly = AssemblyLoadContext.Default.LoadFromAssemblyPath(modulePath);
 
             // Discover all of the commands in this assembly and load them.
             await _commands.AddModulesAsync(moduleAssembly);
+
+            var challongeModulePath = Path.Combine(AppContext.BaseDirectory, @"PolonyBot.Modules.Challonge.dll");
+            var challongeModuleAssembly = AssemblyLoadContext.Default.LoadFromAssemblyPath(challongeModulePath);
+
+            // Discover all of the commands in this assembly and load them.
+            await _commands.AddModulesAsync(challongeModuleAssembly);
+
         }
 
         [Command("join", RunMode = RunMode.Async)]

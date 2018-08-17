@@ -100,55 +100,44 @@ namespace PolonyBot.Modules.LFG
 
         private async Task<string> ListGuildUsersPlayingAsync(string game = null, bool excludeCurrentUser = true)
         {
-            
+            var guildUsers = await Context.Guild.GetUsersAsync();       //Retrieve all users (+ statuses) from server.
+            var users = guildUsers
+                .Where(user => !user.IsBot) // No bots
+                .Where(user => user.Id != Context.User.Id); // Ignore current user
+
             var response = "";
-            IReadOnlyCollection<IGuildUser> guildUsers = await Context.Guild.GetUsersAsync();       //Retrieve all users (+ statuses) from server.
-
-            GameLabel gameLabel = GameLabel.BlankLabel;
-            if (game != null)
+            var gameLabel = ConvertGameNameToLabel(game);
+            if (gameLabel != GameLabel.BlankLabel)
             {
-                //Convert game key to discord playing label
-                _games.TryGetValue(game, out gameLabel);
-            }
-
-            //Filter out any bots.
-            Func<IGuildUser, bool> botFilter = (x) => !(x.IsBot);
-
-            //Filter out users not playing anything, not playing a fighting game or not playing requested game.
-            Func<IGuildUser, bool> gameFilter = (game == null) ? ((x) => (!String.IsNullOrWhiteSpace(x.Game.ToString()) && fgUserGameList.Contains(x.Game.ToString()))) : gameFilter = (x) => x.Game.ToString() == gameLabel.UserStatusLabel;
-
-            //Remove current user from list.
-            Func<IGuildUser, bool> userFilter = (excludeCurrentUser) ? (Func<IGuildUser, bool>)((x) => x.Id != Context.User.Id) : ((x) => true);
-
-            
-            List<IGuildUser> users = guildUsers
-                .Where(gameFilter)
-                .Where(botFilter)
-                .Where(userFilter)
-                .ToList();
-
-
-            IGuildUser u;
-            switch (users.Count)
-            {
-                case 0:
-                    break;
-                case 1:
-                    u = users.First();
-                    response += $"{u.Username} is currently playing {u.Game}." + Environment.NewLine;
-                    break;
-                default:
-                    u = users.First();
-                    response += $"The following players are playing {gameLabel}: {u.Username}" + Environment.NewLine;
-                    users.RemoveAt(0);
-                    foreach (var user in users)
+                var filteredUsers = guildUsers.Where(u => u.Game?.Name == gameLabel.UserStatusLabel);
+                if (filteredUsers.Any())
+                {
+                    response += $"The following players are playing {gameLabel}: " + Environment.NewLine;
+                    foreach (var user in filteredUsers)
                     {
-                        response += new String(' ',  gameLabel.UserStatusLabel.Length+63) + $"{user.Username}" + Environment.NewLine;
+                        response += user.Username + Environment.NewLine;
                     }
-                    break;
+                }
             }
-            
+            else
+            {
+                var filteredUsers = guildUsers.Where(u => fgUserGameList.Contains(u.Game?.Name)).OrderBy(u => (u.Game?.Name ?? ""));
+                response += $"The following players are playing: " + Environment.NewLine;
+                foreach (var user in filteredUsers)
+                {
+                    response += $"{user.Username} ({user.Game})" + Environment.NewLine;
+                }
+            }
+
             return response;
+        }
+
+        private GameLabel ConvertGameNameToLabel(string game)
+        {
+            if (game == null || !_games.TryGetValue(game, out var gameLabel))
+                return GameLabel.BlankLabel;
+
+            return gameLabel;
         }
 
         private void LoadGameList()
