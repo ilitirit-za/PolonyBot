@@ -89,11 +89,12 @@ namespace Polony.NetCore.Core
             // Discover all of the commands in this assembly and load them.
             await _commands.AddModulesAsync(moduleAssembly);
 
-            var challongeModulePath = Path.Combine(AppContext.BaseDirectory, @"PolonyBot.Modules.Challonge.dll");
-            var challongeModuleAssembly = AssemblyLoadContext.Default.LoadFromAssemblyPath(challongeModulePath);
+            // Disabled in master until ready
+            //var challongeModulePath = Path.Combine(AppContext.BaseDirectory, @"PolonyBot.Modules.Challonge.dll");
+            //var challongeModuleAssembly = AssemblyLoadContext.Default.LoadFromAssemblyPath(challongeModulePath);
 
-            // Discover all of the commands in this assembly and load them.
-            await _commands.AddModulesAsync(challongeModuleAssembly);
+            //// Discover all of the commands in this assembly and load them.
+            //await _commands.AddModulesAsync(challongeModuleAssembly);
 
         }
 
