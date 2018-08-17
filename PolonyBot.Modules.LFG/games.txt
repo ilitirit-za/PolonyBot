@@ -6,9 +6,13 @@ A3|Street Fighter Alpha 3 on Fightcade
 BB-PC|Blazblue on PC
 BB-PS4|Blazblue on PS4
 BB-X|Blazblue on Xbox One
+DBZ-PC|Dragonball FighterZ on PC
+DBZ-PS4|Dragonball FighterZ on PS4
 FC|Any game on Fightcade
 I2-PS4|Injustice 2 on PS4
 I2-X|Injustice 2 on Xbox One
+I2-PC|Injustice 2 on PC
+KI-PC|Killer Instinct on PC
 KOF13|King of Fighters 13 on PC
 KOF14-PC|King Of Fighters 14 on PC
 KOF14-PS4|King Of Fighters 14 on PS4
