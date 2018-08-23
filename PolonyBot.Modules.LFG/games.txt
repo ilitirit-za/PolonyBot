@@ -33,3 +33,5 @@ SF4-PC|Ultra Street Fighter IV on PC|Ultra Street Fighter IV
 SF4-PS4|Ultra Street Fighter IV on PS4|
 XRD-PC|Guilty Gear Xrd on PC|Guilty Gear Xrd -REVELATOR-
 XRD-PS4|Guilty Gear Xrd on PS4|
+UNIST-PC|UNDER NIGHT IN-BIRTH Exe:Late[st] on PC|UNDER NIGHT IN-BIRTH Exe:Late[st]
+UNIST-PS4|UNDER NIGHT IN-BIRTH Exe:Late[st] on PS4|
