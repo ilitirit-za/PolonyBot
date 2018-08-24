@@ -3,7 +3,7 @@
   <PropertyGroup>
     <TargetFramework>netstandard2.0</TargetFramework>
     <AssemblyName>PolonyBot.Modules.Challonge</AssemblyName>
-    <RootNamespace>PolonyBot.Modules.LFG</RootNamespace>
+    <RootNamespace>PolonyBot.Modules.Challonge</RootNamespace>
     <AssemblyVersion>1.0.0.0</AssemblyVersion>
   </PropertyGroup>
 
