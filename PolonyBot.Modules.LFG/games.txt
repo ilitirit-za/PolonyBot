@@ -1,4 +1,4 @@
-2K2|King Of Fighters 2002 on Fightcade|FightCade
+﻿2K2|King Of Fighters 2002 on Fightcade|FightCade
 2K2UM|King Of Fighters 2002 Unlimited Match on PC|The King Of Fighters 2002 Unlimited Match
 3S|Street Fighter 3: 3rd Strike on Fightcade|FightCade
 98|King Of Fighters 98 on Fightcade|FightCade

@@ -154,7 +154,8 @@ namespace PolonyBot.Modules.LFG
                     split[2] = split[2].Trim();
 
                     _games.Add(split[0], new GameLabel { Label = split[1], UserStatusLabel = split[2] });
-                    if (!String.IsNullOrEmpty(split[2]) || !fgUserGameList.Contains(split[2])) {
+                    if (!String.IsNullOrEmpty(split[2]) || !fgUserGameList.Contains(split[2]))
+                    {
                         fgUserGameList.Add(split[2]);
                     }
                 }
@@ -163,7 +164,7 @@ namespace PolonyBot.Modules.LFG
             {
                 ReplyAsync("Could not load game list.  Tell ilitirit about this!");
             }
-            
+
         }
 
         private string GetHelpMessage()
@@ -217,7 +218,7 @@ namespace PolonyBot.Modules.LFG
 
             response += await ListPlayersLookingForGamesAsync(game, true, true);
             response += Environment.NewLine;
-            
+
             return response;
 
         }

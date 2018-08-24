@@ -1,17 +1,16 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.IO;
+using System.Net.Http;
 using System.Runtime.Loader;
 using System.Threading.Tasks;
 using Discord;
 using Discord.Commands;
 using Discord.WebSocket;
 using Microsoft.Extensions.DependencyInjection;
-using System.Collections.Generic;
-using System.Net.Http;
-using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 
-namespace Polony.NetCore.Core
+namespace PolonyBot.Core
 {
     public class PolonyBot
     {
@@ -40,7 +39,7 @@ namespace Polony.NetCore.Core
 
             await InstallCommands();
 
-            
+
             await _client.LoginAsync(TokenType.Bot, _botToken);
             await _client.SetStatusAsync(UserStatus.Online);
             await _client.StartAsync();
@@ -86,56 +85,48 @@ namespace Polony.NetCore.Core
             var modulePath = Path.Combine(AppContext.BaseDirectory, @"PolonyBot.Modules.LFG.dll");
             var moduleAssembly = AssemblyLoadContext.Default.LoadFromAssemblyPath(modulePath);
 
-            // Discover all of the commands in this assembly and load them.
+            //// Discover all of the commands in this assembly and load them.
             await _commands.AddModulesAsync(moduleAssembly);
 
-            // Disabled in master until ready
-            //var challongeModulePath = Path.Combine(AppContext.BaseDirectory, @"PolonyBot.Modules.Challonge.dll");
-            //var challongeModuleAssembly = AssemblyLoadContext.Default.LoadFromAssemblyPath(challongeModulePath);
+            var challongeModulePath = Path.Combine(AppContext.BaseDirectory, @"PolonyBot.Modules.Challonge.dll");
+            var challongeModuleAssembly = AssemblyLoadContext.Default.LoadFromAssemblyPath(challongeModulePath);
 
-            //// Discover all of the commands in this assembly and load them.
-            //await _commands.AddModulesAsync(challongeModuleAssembly);
+            // Discover all of the commands in this assembly and load them.
+            await _commands.AddModulesAsync(challongeModuleAssembly);
 
         }
 
         [Command("join", RunMode = RunMode.Async)]
         private async Task UserJoined(SocketGuildUser arg)
         {
+            var responseString = "";
             try
             {
                 var userId = arg.Id.ToString();
                 var httpClient = new HttpClient();
 
-                var values = new Dictionary<string, string>
-                {
-                    { "token", BanListToken },
-                    { "userid", userId }
-                };
-
-                var content = new FormUrlEncodedContent(values);
                 httpClient.DefaultRequestHeaders.Authorization = new System.Net.Http.Headers.AuthenticationHeaderValue(BanListToken);
-
-                //var response = await httpClient.PostAsync(PublicDiscordBansApiUrl, content);
                 var response = await httpClient.GetAsync(String.Format(PublicDiscordBansApiUrl, userId));
 
-                var responseString = await response.Content.ReadAsStringAsync();
+                responseString = await response.Content.ReadAsStringAsync();
 
-                var responseObject = JObject.Parse(responseString);
+                var responseObject = JArray.Parse(responseString)[0];
                 if (responseObject["banned"].Value<string>().Equals("1"))
                 {
                     await arg.Guild.AddBanAsync(arg.Id, 1, $"Banned: {responseObject["reason"].Value<string>()}");
                 }
-                
-                    
+
+
             }
             catch (Exception e)
             {
                 var channel = _client.GetChannel(PolonyPlayGroundId) as SocketTextChannel;
 
-                await channel?.SendMessageAsync($"I could not check if {arg.Username} is a known offender.  Please be cautious when interacting!");
+                await channel?.SendMessageAsync($"I could not check if {arg.Username} is a known offender ({e.Message})");
+                await channel?.SendMessageAsync($"Response was: {responseString}");
             }
         }
-        
+
         public async Task HandleCommand(SocketMessage messageParam)
         {
             // Don't process the command if it was a System Message
@@ -156,11 +147,9 @@ namespace Polony.NetCore.Core
             // rather an object stating if the command executed successfully)
             var result = await _commands.ExecuteAsync(context, argPos, _services);
             if (!result.IsSuccess && result.Error != CommandError.UnknownCommand)
-            { 
+            {
                 await context.Channel.SendMessageAsync(result.ErrorReason);
             }
         }
     }
 }
-
-
