@@ -1,9 +1,8 @@
 ﻿using System;
-using System.Threading.Tasks;
-using Polony.NetCore.Core;
 using System.IO;
+using System.Threading.Tasks;
 
-namespace Polony.Console
+namespace PolonyBot.ConsoleApp
 {
     class Program
     {
@@ -12,10 +11,10 @@ namespace Polony.Console
         public async Task Start()
         {
             try
-            { 
+            {
                 var key = File.ReadAllText("PolonyBot.key").Trim();
 
-                var polonyBot = new PolonyBot(key, '%');
+                var polonyBot = new PolonyBot.Core.PolonyBot(key, '%');
                 await polonyBot.Start();
                 await Task.Delay(-1);
             }

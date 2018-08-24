@@ -1,21 +1,13 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <TargetFramework>netcoreapp1.1</TargetFramework>
+    <TargetFramework>netstandard2.0</TargetFramework>
     <AssemblyName>PolonyBot.Modules.LFG</AssemblyName>
-    <PackageId>PolonyBot.Modules.LFG</PackageId>
-    <PackageTargetFallback>$(PackageTargetFallback);dnxcore50;portable-net45+win8</PackageTargetFallback>
-    <RuntimeFrameworkVersion>1.1.1</RuntimeFrameworkVersion>
-    <GenerateAssemblyConfigurationAttribute>false</GenerateAssemblyConfigurationAttribute>
-    <GenerateAssemblyCompanyAttribute>false</GenerateAssemblyCompanyAttribute>
-    <GenerateAssemblyProductAttribute>false</GenerateAssemblyProductAttribute>
+    <RootNamespace>PolonyBot.Modules.LFG</RootNamespace>
   </PropertyGroup>
 
   <ItemGroup>
     <PackageReference Include="Discord.Net" Version="1.0.2" />
-    <PackageReference Include="Discord.Net.Commands" Version="1.0.2" />
-    <PackageReference Include="Discord.Net.Core" Version="1.0.2" />
-    <PackageReference Include="log4net" Version="2.0.8" />
   </ItemGroup>
 
   <ItemGroup>
@@ -25,7 +17,7 @@
   </ItemGroup>
 
   <Target Name="PostBuild" AfterTargets="PostBuildEvent">
-    <Exec Command="xcopy /y &quot;$(TargetPath)&quot; &quot;$(SolutionDir)PolonyBot.Console\bin\Debug\netcoreapp1.1\&quot;&#xD;&#xA;xcopy /y &quot;$(TargetPath)&quot; &quot;$(SolutionDir)PolonyBot.Console\bin\Release\netcoreapp1.1\&quot;&#xD;&#xA;xcopy /y &quot;$(TargetDir)games.txt&quot; &quot;$(SolutionDir)PolonyBot.Console\bin\Debug\netcoreapp1.1\&quot;&#xD;&#xA;xcopy /y &quot;$(TargetDir)games.txt&quot; &quot;$(SolutionDir)PolonyBot.Console\bin\Release\netcoreapp1.1\&quot;" />
+    <Exec Command="xcopy /y &quot;$(TargetPath)&quot; &quot;$(SolutionDir)PolonyBot.ConsoleApp\bin\$(ConfigurationName)\netcoreapp2.1\&quot;&#xD;&#xA;xcopy /y &quot;$(TargetDir)games.txt&quot; &quot;$(SolutionDir)PolonyBot.ConsoleApp\bin\$(ConfigurationName)\netcoreapp2.1\&quot;" />
   </Target>
 
 </Project>

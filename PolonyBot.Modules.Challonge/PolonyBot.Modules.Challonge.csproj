@@ -1,25 +1,24 @@
-<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <TargetFramework>netcoreapp1.1</TargetFramework>
+    <TargetFramework>netstandard2.0</TargetFramework>
+    <AssemblyName>PolonyBot.Modules.Challonge</AssemblyName>
+    <RootNamespace>PolonyBot.Modules.Challonge</RootNamespace>
+    <AssemblyVersion>1.0.0.0</AssemblyVersion>
   </PropertyGroup>
 
   <ItemGroup>
     <PackageReference Include="Discord.Net" Version="1.0.2" />
-    <PackageReference Include="Discord.Net.Commands" Version="1.0.2" />
-    <PackageReference Include="Discord.Net.Core" Version="1.0.2" />
-    <PackageReference Include="Discord.Net.Rest" Version="1.0.2" />
-    <PackageReference Include="Discord.Net.WebSocket" Version="1.0.2" />
   </ItemGroup>
 
   <ItemGroup>
-    <None Update="challonge.png">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    <None Update="games.txt">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
   </ItemGroup>
 
   <Target Name="PostBuild" AfterTargets="PostBuildEvent">
-    <Exec Command="xcopy /y &quot;$(TargetPath)&quot; &quot;$(SolutionDir)PolonyBot.Console\bin\Debug\netcoreapp1.1\&quot;&#xD;&#xA;xcopy /y &quot;$(TargetPath)&quot; &quot;$(SolutionDir)PolonyBot.Console\bin\Release\netcoreapp1.1\&quot;" />
+    <Exec Command="xcopy /y &quot;$(TargetPath)&quot; &quot;$(SolutionDir)PolonyBot.ConsoleApp\bin\$(ConfigurationName)\netcoreapp2.1\&quot;" />
   </Target>
 
 </Project>

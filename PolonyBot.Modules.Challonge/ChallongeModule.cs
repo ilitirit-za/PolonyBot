@@ -9,6 +9,7 @@ using Challonge.Infrastructure;
 using Challonge.Models;
 using Discord;
 using Discord.Commands;
+using Discord.WebSocket;
 
 namespace PolonyBot.Modules.Challonge
 {
@@ -24,6 +25,10 @@ namespace PolonyBot.Modules.Challonge
         [Command("chal"), Summary("Challonge")]
         public async Task Chal(string url = null, string command = null)
         {
+            var user = Context.User as SocketGuildUser;
+            if (!user.Roles.Any(r => r.Name == "PolonyAdmin" || r.Name == "PolonyBot-Dev"))
+                return;
+
             if (String.IsNullOrEmpty(url))
             {
                 await ReplyAsync($"Please supply a tournament ID");
