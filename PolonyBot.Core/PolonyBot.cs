@@ -8,7 +8,9 @@ using Discord;
 using Discord.Commands;
 using Discord.WebSocket;
 using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.Configuration;
 using Newtonsoft.Json.Linq;
+using PolonyBot.Core.Configuration;
 
 namespace PolonyBot.Core
 {
@@ -19,15 +21,23 @@ namespace PolonyBot.Core
         private const ulong PolonyPlayGroundId = 229951183882551303;
 
         private readonly string _botToken;
-        private readonly char _commandPrefix;
+        private readonly PolonyBotSettings _settings;
         private CommandService _commands;
         private DiscordSocketClient _client;
         private IServiceProvider _services;
 
-        public PolonyBot(string botToken, char commandPrefix = '.')
+        public PolonyBot(string botToken)
         {
             _botToken = botToken;
-            _commandPrefix = commandPrefix;
+            
+            var builder = new ConfigurationBuilder()
+                .SetBasePath(Directory.GetCurrentDirectory())
+                .AddJsonFile("PolonyBot.settings.json", optional: false, reloadOnChange: true);
+            
+            var configuration = builder.Build();
+            _settings = configuration
+                .GetSection(nameof(PolonyBotSettings))
+                .Get<PolonyBotSettings>();
         }
 
         public async Task Start()
@@ -81,19 +91,15 @@ namespace PolonyBot.Core
             _client.MessageReceived += HandleCommand;
             _client.UserJoined += UserJoined;
 
-            // TODO:  Move to config in the driver APP
-            var modulePath = Path.Combine(AppContext.BaseDirectory, @"PolonyBot.Modules.LFG.dll");
-            var moduleAssembly = AssemblyLoadContext.Default.LoadFromAssemblyPath(modulePath);
+            foreach (var module in _settings.Modules)
+            {
+                // TODO:  Move to config in the driver APP
+                var modulePath = Path.Combine(AppContext.BaseDirectory, $"{module}.dll");
+                var moduleAssembly = AssemblyLoadContext.Default.LoadFromAssemblyPath(modulePath);
 
-            //// Discover all of the commands in this assembly and load them.
-            await _commands.AddModulesAsync(moduleAssembly);
-
-            var challongeModulePath = Path.Combine(AppContext.BaseDirectory, @"PolonyBot.Modules.Challonge.dll");
-            var challongeModuleAssembly = AssemblyLoadContext.Default.LoadFromAssemblyPath(challongeModulePath);
-
-            // Discover all of the commands in this assembly and load them.
-            await _commands.AddModulesAsync(challongeModuleAssembly);
-
+                // Discover all of the commands in this assembly and load them.
+                await _commands.AddModulesAsync(moduleAssembly);
+            }
         }
 
         [Command("join", RunMode = RunMode.Async)]
@@ -130,15 +136,14 @@ namespace PolonyBot.Core
         public async Task HandleCommand(SocketMessage messageParam)
         {
             // Don't process the command if it was a System Message
-            var message = messageParam as SocketUserMessage;
-            if (message == null) return;
+            if (!(messageParam is SocketUserMessage message)) return;
 
 
             // Create a number to track where the prefix ends and the command begins
             int argPos = 0;
 
             // Determine if the message is a command, based on if it starts with '!' or a mention prefix
-            if (!(message.HasCharPrefix(_commandPrefix, ref argPos) || message.HasMentionPrefix(_client.CurrentUser, ref argPos))) return;
+            if (!(message.HasCharPrefix(_settings.CommandPrefix, ref argPos) || message.HasMentionPrefix(_client.CurrentUser, ref argPos))) return;
 
             // Create a Command Context
             var context = new CommandContext(_client, message);

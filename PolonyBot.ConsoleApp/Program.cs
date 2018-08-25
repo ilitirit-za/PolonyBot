@@ -14,13 +14,14 @@ namespace PolonyBot.ConsoleApp
             {
                 var key = File.ReadAllText("PolonyBot.key").Trim();
 
-                var polonyBot = new PolonyBot.Core.PolonyBot(key, '%');
+                var polonyBot = new Core.PolonyBot(key);
                 await polonyBot.Start();
                 await Task.Delay(-1);
             }
             catch (Exception e)
             {
-                System.Console.WriteLine($"Could not run: {e.Message}");
+                Console.WriteLine($"Could not run: {e.Message}");
+                Console.WriteLine($"Stack Trace: {e.StackTrace}");
             }
         }
     }
