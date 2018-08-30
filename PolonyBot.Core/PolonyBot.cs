@@ -45,7 +45,9 @@ namespace PolonyBot.Core
             _client = new DiscordSocketClient();
             _commands = new CommandService();
 
-            _services = new ServiceCollection().BuildServiceProvider();
+            // FIXME: Dependency Injection is currently broken due to
+            // a breaking change in v2 of the DI Framework
+            // _services = new ServiceCollection().BuildServiceProvider();
 
             await InstallCommands();
 
