@@ -5,12 +5,12 @@ using System.Linq;
 using System.Net;
 using System.Net.Http;
 using System.Text;
+using System.Threading.Tasks;
 using Challonge.Abstract;
 using Challonge.Models;
 using Challonge.Models.Match;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
-using Result = Challonge.Models.Result;
 
 namespace Challonge.Infrastructure
 {
@@ -26,14 +26,9 @@ namespace Challonge.Infrastructure
 
         //public Result<Challonge> Challonge_ { get; private set; } //The private set is overkill, but just in case let's leave it there...
 
-        public Result Result { get; private set; }
-
-
         //Gets the information from the web.config file
         public ChallongeApi(string username, string apikey)
         {
-            Result = new Result(); //Could have done this in C#6, but since this is the only property, I decided
-                                   //not to break compatibility
             //Username = username;
             //Key = apikey;
 
@@ -45,19 +40,6 @@ namespace Challonge.Infrastructure
             Url = "https://" + Username + ":" + Key + "@api.challonge.com/v1/";
 
         }
-
-        private void SetResultOk()
-        {
-            Result.Succeeded = true;
-        }
-
-        private void SetResultError(string error = "")
-        {
-            //Challonge_ = Result.Fail<Challonge>(error);
-            Result.Succeeded = false;
-            Result.Message = error;
-        }
-
 
         /**
          * public JsonResult Load(string apiMethod)
@@ -89,18 +71,43 @@ namespace Challonge.Infrastructure
                     //httpClient.Encoding = System.Text.Encoding.UTF8;
 
                     string toReturn = httpClient.GetStringAsync(URL).Result;
-                    SetResultOk();
+
+                    // SetResultOk();
                     return toReturn;
                 }
             }
 
             catch (WebException ex)
             {
-                SetResultError(ex.Message);
+                // SetResultError(ex.Message);
                 return "";
             }
         }
 
+        private async Task<Result<string>> LoadAsync(string apiMethod = "", string query = "")
+        {
+            try
+            {
+                var credentials = new NetworkCredential(Username, Key);
+                using (var handler = new HttpClientHandler { Credentials = credentials })
+                using (var httpClient = new HttpClient(handler))
+                {
+                    var url = Url + apiMethod + ".json" + query;
+                    var response = await httpClient.GetAsync(url);
+                    if (response.IsSuccessStatusCode)
+                    { 
+                        var result = await response.Content.ReadAsStringAsync();
+                        return new Success<string>(result);
+                    }
+
+                    return new Failure<string>(response.ReasonPhrase);
+                }
+            }
+            catch (Exception ex)
+            {
+                return new Failure<string>(ex);
+            }
+        }
 
         /**
         *  private string Send(ChallongeTournament t)
@@ -149,7 +156,7 @@ namespace Challonge.Infrastructure
                 using (Stream responseStream = response.GetResponseStream())
                 {
                     StreamReader reader = new StreamReader(responseStream, Encoding.UTF8);
-                    SetResultOk();
+                    // SetResultOk();
                     return reader.ReadToEnd();
                 }
             }
@@ -161,7 +168,7 @@ namespace Challonge.Infrastructure
                     StreamReader reader = new StreamReader(responseStream, Encoding.GetEncoding("utf-8"));
                     String errorText = reader.ReadToEnd();
                     // log errorText
-                    SetResultError(ex.Message);
+                    // SetResultError(ex.Message);
                     return "";
                 }
             }
@@ -306,15 +313,17 @@ namespace Challonge.Infrastructure
             
         }
 
-        public ChallongeTournament ShowTournament(string tournamentUrl)
+        public async Task<Result<ChallongeTournament>> ShowTournamentAsync(string tournamentUrl)
         {
-            return ProcessJson<ChallongeTournament, JsonChallongeTournament>(
-                    JsonConvert.DeserializeObject<JsonChallongeTournament>(
-                        Load("tournaments/" + tournamentUrl)
-                        )
-                    );
+            var jsonResult = await LoadAsync("tournaments/" + tournamentUrl);
+            if (!jsonResult.Succeeded)
+                return new Failure<ChallongeTournament>(jsonResult.Message);
+            
+            var jsonChallongeTournament = JsonConvert.DeserializeObject<JsonChallongeTournament>(jsonResult.Value);
+
+            return new Success<ChallongeTournament>(ProcessJson<ChallongeTournament, JsonChallongeTournament>(jsonChallongeTournament));
         }
-        
+
         public ChallongeTournament UpdateTournament(string tournamentUrl, TournamentCreation t)
         {
             var tournament = new JsonTournamentCreation();
@@ -391,6 +400,17 @@ namespace Challonge.Infrastructure
             IList<ChallongeParticipant> participantResults = ProcessNonWrappedResults<ChallongeParticipant, JArray>(participants);
             return participantResults;
             //return (JsonConvert.DeserializeObject<IList<ChallongeParticipant>>(participantResults)).participant;
+        }
+
+        public async Task<Result<IEnumerable<ChallongeParticipant>>> AllParticipantsAsync(string tournamentUrl)
+        {
+            var jsonResult = await LoadAsync("tournaments/" + tournamentUrl + "/participants");
+            if (!jsonResult)
+                return new Failure<IEnumerable<ChallongeParticipant>>(jsonResult.Message);
+
+            var participants = JArray.Parse(jsonResult.Value);
+            ;
+            return new Success<IEnumerable<ChallongeParticipant>>(ProcessNonWrappedResults<ChallongeParticipant, JArray>(participants));
         }
 
         public ChallongeParticipant CreateParticipant(string tournamentUrl, CreateChallongeParticipant participant)

@@ -1,23 +1,23 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Threading.Tasks;
 using Challonge.Models;
 using Challonge.Models.Match;
-using Result = Challonge.Models.Result;
+
 
 namespace Challonge.Abstract
 {
     public interface IChallonge
     {
-        Result Result { get; }
         IList<ChallongeTournament> AllTournaments(string apiMethod = "tournaments");
         ChallongeTournament CreateTournament(TournamentCreation t);
         ChallongeTournament DeleteTournament(string tournamentUrl);
-        ChallongeTournament ShowTournament(string tournamentUrl);
+        Task<Result<ChallongeTournament>> ShowTournamentAsync(string tournamentUrl);
         ChallongeTournament UpdateTournament(string tournamentUrl, TournamentCreation t);
         ChallongeTournament CheckInTournament(string tournamentUrl);
         Tuple<ChallongeTournament, IEnumerable<MatchChallonge>> StartTournament(string tournamentUrl, bool includeMatches = true);
         ChallongeTournament FinalizeTournament(string tournamentUrl, bool includeParticipants = false);
-        IEnumerable<ChallongeParticipant> AllParticipants(string tournamentUrl);
+        Task<Result<IEnumerable<ChallongeParticipant>>> AllParticipantsAsync(string tournamentUrl);
         ChallongeParticipant CreateParticipant(string tournamentUrl, CreateChallongeParticipant participant);
         ChallongeParticipant ShowParticipant(string tournamentUrl, int participantID);
         //IEnumerable<ChallongeParticipant> BulkCreateParticipants(string tournamentUrl, IEnumerable<CreateChallongeParticipant> participantList);

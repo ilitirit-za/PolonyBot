@@ -40,7 +40,7 @@ namespace PolonyBot.Core
                 .Get<PolonyBotSettings>();
         }
 
-        public async Task Start()
+        public async Task StartAsync()
         {
             _client = new DiscordSocketClient();
             _commands = new CommandService();
@@ -49,7 +49,7 @@ namespace PolonyBot.Core
             // a breaking change in v2 of the DI Framework
             // _services = new ServiceCollection().BuildServiceProvider();
 
-            await InstallCommands();
+            await InstallCommandsAsync();
 
 
             await _client.LoginAsync(TokenType.Bot, _botToken);
@@ -57,7 +57,7 @@ namespace PolonyBot.Core
             await _client.StartAsync();
 
             _client.Log += _client_Log;
-            //await Task.Delay(-1);
+            await Task.Delay(-1);
         }
 
         private Task _client_Log(LogMessage message)
@@ -87,15 +87,14 @@ namespace PolonyBot.Core
             return Task.CompletedTask;
         }
 
-        public async Task InstallCommands()
+        public async Task InstallCommandsAsync()
         {
             // Hook the MessageReceived Event into our Command Handler
-            _client.MessageReceived += HandleCommand;
-            _client.UserJoined += UserJoined;
+            _client.MessageReceived += HandleCommandAsync;
+            _client.UserJoined += UserJoinedAsync;
 
             foreach (var module in _settings.Modules)
             {
-                // TODO:  Move to config in the driver APP
                 var modulePath = Path.Combine(AppContext.BaseDirectory, $"{module}.dll");
                 var moduleAssembly = AssemblyLoadContext.Default.LoadFromAssemblyPath(modulePath);
 
@@ -105,7 +104,7 @@ namespace PolonyBot.Core
         }
 
         [Command("join", RunMode = RunMode.Async)]
-        private async Task UserJoined(SocketGuildUser arg)
+        private async Task UserJoinedAsync(SocketGuildUser arg)
         {
             var responseString = "";
             try
@@ -123,19 +122,18 @@ namespace PolonyBot.Core
                 {
                     await arg.Guild.AddBanAsync(arg.Id, 1, $"Banned: {responseObject["reason"].Value<string>()}");
                 }
-
-
             }
             catch (Exception e)
             {
-                var channel = _client.GetChannel(PolonyPlayGroundId) as SocketTextChannel;
-
-                await channel?.SendMessageAsync($"I could not check if {arg.Username} is a known offender ({e.Message})");
-                await channel?.SendMessageAsync($"Response was: {responseString}");
+                if (_client.GetChannel(PolonyPlayGroundId) is SocketTextChannel channel)
+                { 
+                    await channel.SendMessageAsync($"I could not check if {arg.Username} is a known offender ({e.Message})");
+                    await channel.SendMessageAsync($"Response was: {responseString}");
+                }
             }
         }
 
-        public async Task HandleCommand(SocketMessage messageParam)
+        public async Task HandleCommandAsync(SocketMessage messageParam)
         {
             // Don't process the command if it was a System Message
             if (!(messageParam is SocketUserMessage message)) return;

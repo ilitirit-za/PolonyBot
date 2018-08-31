@@ -77,7 +77,7 @@ namespace PolonyBot.Modules.LFG
             var gameLabel = ConvertGameNameToLabel(game);
             if (gameLabel != GameLabel.BlankLabel)
             {
-                var filteredUsers = guildUsers.Where(u => u.Activity?.Name == gameLabel.UserStatusLabel);
+                var filteredUsers = users.Where(u => u.Activity?.Name == gameLabel.UserStatusLabel).ToList();
                 if (filteredUsers.Any())
                 {
                     response += $"The following players are playing {gameLabel}: " + Environment.NewLine;
@@ -89,11 +89,15 @@ namespace PolonyBot.Modules.LFG
             }
             else
             {
-                var filteredUsers = guildUsers.Where(u => fgUserGameList.Contains(u.Activity?.Name)).OrderBy(u => (u.Activity?.Name ?? ""));
-                response += $"The following players are playing: " + Environment.NewLine;
-                foreach (var user in filteredUsers)
-                {
-                    response += $"{user.Username} ({user.Activity})" + Environment.NewLine;
+                var filteredUsers = users.Where(u => fgUserGameList.Contains(u.Activity?.Name))
+                    .OrderBy(u => (u.Activity?.Name ?? "")).ToList();
+                if (filteredUsers.Any())
+                { 
+                    response += $"The following players are playing: " + Environment.NewLine;
+                    foreach (var user in filteredUsers)
+                    {
+                        response += $"{user.Username} ({user.Activity})" + Environment.NewLine;
+                    }
                 }
             }
 
@@ -179,7 +183,7 @@ namespace PolonyBot.Modules.LFG
                 LastMentioned = new DateTime(),
             });
 
-            var response = $"{user.Username} is now looking for {description} games";
+            var response = $"{user.Username} is now looking for {description} games 🕹️";
             response += Environment.NewLine;
             response += Environment.NewLine;
 
@@ -206,7 +210,7 @@ namespace PolonyBot.Modules.LFG
                         : lfg.User.Username) + $" [{Math.Ceiling((lfg.Expiry - DateTime.Now).TotalMinutes)} mins]")
                     .ToList();
 
-                if (users != null && users.Count > 0)
+                if (users.Count > 0)
                 {
                     response += $"{_games[key]}: " + users.Aggregate((current, next) => current + " " + next);
                     response += Environment.NewLine;
@@ -227,10 +231,9 @@ namespace PolonyBot.Modules.LFG
                 }
             }
 
-            var extra = excludeCurrentUser ? " else " : " ";
-            if (String.IsNullOrWhiteSpace(response))
+            if (!excludeCurrentUser && String.IsNullOrWhiteSpace(response))
             {
-                response = $"Noone{extra}is looking for games right now.";
+                response = $"Noone is looking for games right now.";
                 response += Environment.NewLine;
             }
             response += Environment.NewLine;
