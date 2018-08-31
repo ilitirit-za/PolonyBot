@@ -3,7 +3,6 @@
     "CommandPrefix": ".",
     "Modules": [
       "PolonyBot.Modules.LFG",
-      "PolonyBot.Modules.Challonge"
     ]
   }
 }

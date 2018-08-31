@@ -77,7 +77,7 @@ namespace PolonyBot.Modules.LFG
             var gameLabel = ConvertGameNameToLabel(game);
             if (gameLabel != GameLabel.BlankLabel)
             {
-                var filteredUsers = guildUsers.Where(u => u.Game?.Name == gameLabel.UserStatusLabel);
+                var filteredUsers = guildUsers.Where(u => u.Activity?.Name == gameLabel.UserStatusLabel);
                 if (filteredUsers.Any())
                 {
                     response += $"The following players are playing {gameLabel}: " + Environment.NewLine;
@@ -89,11 +89,11 @@ namespace PolonyBot.Modules.LFG
             }
             else
             {
-                var filteredUsers = guildUsers.Where(u => fgUserGameList.Contains(u.Game?.Name)).OrderBy(u => (u.Game?.Name ?? ""));
+                var filteredUsers = guildUsers.Where(u => fgUserGameList.Contains(u.Activity?.Name)).OrderBy(u => (u.Activity?.Name ?? ""));
                 response += $"The following players are playing: " + Environment.NewLine;
                 foreach (var user in filteredUsers)
                 {
-                    response += $"{user.Username} ({user.Game})" + Environment.NewLine;
+                    response += $"{user.Username} ({user.Activity})" + Environment.NewLine;
                 }
             }
 
