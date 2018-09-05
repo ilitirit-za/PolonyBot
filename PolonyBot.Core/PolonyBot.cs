@@ -1,17 +1,18 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.IO;
+using System.Net.Http;
 using System.Runtime.Loader;
 using System.Threading.Tasks;
 using Discord;
 using Discord.Commands;
 using Discord.WebSocket;
 using Microsoft.Extensions.DependencyInjection;
-using System.Collections.Generic;
-using System.Net.Http;
-using Newtonsoft.Json;
+using Microsoft.Extensions.Configuration;
 using Newtonsoft.Json.Linq;
+using PolonyBot.Core.Configuration;
 
-namespace Polony.NetCore.Core
+namespace PolonyBot.Core
 {
     public class PolonyBot
     {
@@ -20,15 +21,23 @@ namespace Polony.NetCore.Core
         private const ulong PolonyPlayGroundId = 229951183882551303;
 
         private readonly string _botToken;
-        private readonly char _commandPrefix;
+        private readonly PolonyBotSettings _settings;
         private CommandService _commands;
         private DiscordSocketClient _client;
         private IServiceProvider _services;
 
-        public PolonyBot(string botToken, char commandPrefix = '.')
+        public PolonyBot(string botToken)
         {
             _botToken = botToken;
-            _commandPrefix = commandPrefix;
+            
+            var builder = new ConfigurationBuilder()
+                .SetBasePath(Directory.GetCurrentDirectory())
+                .AddJsonFile("PolonyBot.settings.json", optional: false, reloadOnChange: true);
+            
+            var configuration = builder.Build();
+            _settings = configuration
+                .GetSection(nameof(PolonyBotSettings))
+                .Get<PolonyBotSettings>();
         }
 
         public async Task Start()
@@ -40,7 +49,7 @@ namespace Polony.NetCore.Core
 
             await InstallCommands();
 
-            
+
             await _client.LoginAsync(TokenType.Bot, _botToken);
             await _client.SetStatusAsync(UserStatus.Online);
             await _client.StartAsync();
@@ -82,72 +91,59 @@ namespace Polony.NetCore.Core
             _client.MessageReceived += HandleCommand;
             _client.UserJoined += UserJoined;
 
-            // TODO:  Move to config in the driver APP
-            var modulePath = Path.Combine(AppContext.BaseDirectory, @"PolonyBot.Modules.LFG.dll");
-            var moduleAssembly = AssemblyLoadContext.Default.LoadFromAssemblyPath(modulePath);
+            foreach (var module in _settings.Modules)
+            {
+                // TODO:  Move to config in the driver APP
+                var modulePath = Path.Combine(AppContext.BaseDirectory, $"{module}.dll");
+                var moduleAssembly = AssemblyLoadContext.Default.LoadFromAssemblyPath(modulePath);
 
-            // Discover all of the commands in this assembly and load them.
-            await _commands.AddModulesAsync(moduleAssembly);
-
-            // Disabled in master until ready
-            //var challongeModulePath = Path.Combine(AppContext.BaseDirectory, @"PolonyBot.Modules.Challonge.dll");
-            //var challongeModuleAssembly = AssemblyLoadContext.Default.LoadFromAssemblyPath(challongeModulePath);
-
-            //// Discover all of the commands in this assembly and load them.
-            //await _commands.AddModulesAsync(challongeModuleAssembly);
-
+                // Discover all of the commands in this assembly and load them.
+                await _commands.AddModulesAsync(moduleAssembly);
+            }
         }
 
         [Command("join", RunMode = RunMode.Async)]
         private async Task UserJoined(SocketGuildUser arg)
         {
+            var responseString = "";
             try
             {
                 var userId = arg.Id.ToString();
                 var httpClient = new HttpClient();
 
-                var values = new Dictionary<string, string>
-                {
-                    { "token", BanListToken },
-                    { "userid", userId }
-                };
-
-                var content = new FormUrlEncodedContent(values);
                 httpClient.DefaultRequestHeaders.Authorization = new System.Net.Http.Headers.AuthenticationHeaderValue(BanListToken);
-
-                //var response = await httpClient.PostAsync(PublicDiscordBansApiUrl, content);
                 var response = await httpClient.GetAsync(String.Format(PublicDiscordBansApiUrl, userId));
 
-                var responseString = await response.Content.ReadAsStringAsync();
+                responseString = await response.Content.ReadAsStringAsync();
 
-                var responseObject = JObject.Parse(responseString);
+                var responseObject = JArray.Parse(responseString)[0];
                 if (responseObject["banned"].Value<string>().Equals("1"))
                 {
                     await arg.Guild.AddBanAsync(arg.Id, 1, $"Banned: {responseObject["reason"].Value<string>()}");
                 }
-                
-                    
+
+
             }
             catch (Exception e)
             {
                 var channel = _client.GetChannel(PolonyPlayGroundId) as SocketTextChannel;
 
-                await channel?.SendMessageAsync($"I could not check if {arg.Username} is a known offender.  Please be cautious when interacting!");
+                await channel?.SendMessageAsync($"I could not check if {arg.Username} is a known offender ({e.Message})");
+                await channel?.SendMessageAsync($"Response was: {responseString}");
             }
         }
-        
+
         public async Task HandleCommand(SocketMessage messageParam)
         {
             // Don't process the command if it was a System Message
-            var message = messageParam as SocketUserMessage;
-            if (message == null) return;
+            if (!(messageParam is SocketUserMessage message)) return;
 
 
             // Create a number to track where the prefix ends and the command begins
             int argPos = 0;
 
             // Determine if the message is a command, based on if it starts with '!' or a mention prefix
-            if (!(message.HasCharPrefix(_commandPrefix, ref argPos) || message.HasMentionPrefix(_client.CurrentUser, ref argPos))) return;
+            if (!(message.HasCharPrefix(_settings.CommandPrefix, ref argPos) || message.HasMentionPrefix(_client.CurrentUser, ref argPos))) return;
 
             // Create a Command Context
             var context = new CommandContext(_client, message);
@@ -156,11 +152,9 @@ namespace Polony.NetCore.Core
             // rather an object stating if the command executed successfully)
             var result = await _commands.ExecuteAsync(context, argPos, _services);
             if (!result.IsSuccess && result.Error != CommandError.UnknownCommand)
-            { 
+            {
                 await context.Channel.SendMessageAsync(result.ErrorReason);
             }
         }
     }
 }
-
-

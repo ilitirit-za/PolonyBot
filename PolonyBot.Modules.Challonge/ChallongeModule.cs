@@ -9,6 +9,7 @@ using Challonge.Infrastructure;
 using Challonge.Models;
 using Discord;
 using Discord.Commands;
+using Discord.WebSocket;
 
 namespace PolonyBot.Modules.Challonge
 {
@@ -24,6 +25,10 @@ namespace PolonyBot.Modules.Challonge
         [Command("chal"), Summary("Challonge")]
         public async Task Chal(string url = null, string command = null)
         {
+            var user = Context.User as SocketGuildUser;
+            if (!user.Roles.Any(r => r.Name == "PolonyAdmin" || r.Name == "PolonyBot-Dev"))
+                return;
+
             if (String.IsNullOrEmpty(url))
             {
                 await ReplyAsync($"Please supply a tournament ID");
@@ -53,14 +58,14 @@ namespace PolonyBot.Modules.Challonge
                 .WithTimestamp(new DateTimeOffset(DateTime.Now))
                 .WithUrl(tournament.full_challonge_url)
                 .WithThumbnailUrl("https://i2.wp.com/s3.amazonaws.com/challonge_app/misc/challonge_fireball_gray.png")
-                .AddInlineField("Game", tournament.game_name)
-                .AddInlineField("Status", tournament.state ?? "Unknown")
+                .AddField("Game", tournament.game_name, true)
+                .AddField("Status", tournament.state ?? "Unknown", true)
                 .AddField("Planned Start Date", String.IsNullOrWhiteSpace(tournament.start_at) 
                     ? "Unknown"
                     : DateTime.Parse(tournament.start_at).ToString(CultureInfo.CurrentCulture))
                 .AddField($"Participants ({participants.Count()})", String.Join(Environment.NewLine, participants));
 
-            await Context.Channel.SendMessageAsync("", false, builder);
+            await Context.Channel.SendMessageAsync("", false, builder.Build());
         }
 
         private async Task<ChallongeTournament> ShowTournamentAsync(string tournamentId)
