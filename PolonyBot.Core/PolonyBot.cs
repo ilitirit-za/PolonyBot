@@ -89,7 +89,6 @@ namespace PolonyBot.Core
         {
             // Hook the MessageReceived Event into our Command Handler
             _client.MessageReceived += HandleCommand;
-            _client.UserJoined += UserJoined;
 
             foreach (var module in _settings.Modules)
             {
@@ -99,59 +98,6 @@ namespace PolonyBot.Core
 
                 // Discover all of the commands in this assembly and load them.
                 await _commands.AddModulesAsync(moduleAssembly);
-            }
-        }
-
-        [Command("join", RunMode = RunMode.Async)]
-        private async Task UserJoined(SocketGuildUser arg)
-        {
-
-            var responseString = "";
-            var logChannel = _client.GetChannel(TheButcheryChannelId) as SocketTextChannel;
-            try {
-                var userId = arg.Id.ToString();
-                var httpClient = new HttpClient();
-
-                httpClient.DefaultRequestHeaders.Authorization = new System.Net.Http.Headers.AuthenticationHeaderValue(BanListToken);
-
-                await _client_Log(new LogMessage(LogSeverity.Info, "DBANS", $"DBAN query for userid {arg.Id}: {String.Format(PublicDiscordBansApiUrl, userId)}"));
-                var response = await httpClient.GetAsync(String.Format(PublicDiscordBansApiUrl, userId));
-
-                if (response.IsSuccessStatusCode)
-                {
-                    responseString = await response.Content.ReadAsStringAsync();
-                    await _client_Log(new LogMessage(LogSeverity.Info, "DBANS", $"DBAN response on userid {arg.Id} : {responseString}"));
-                    await logChannel?.SendMessageAsync($"Response was: {response.StatusCode} | {responseString}");
-
-                    var responseObject = JArray.Parse(responseString)[0];
-                    if (responseObject["banned"] != null && responseObject["banned"].Value<string>().Equals("1"))
-                    { 
-                        await arg.Guild.AddBanAsync(arg.Id, 1, $"Banned: {responseObject["reason"].Value<string>()}");
-                    }
-                    else if (responseObject["error"] != null) 
-                    {
-                        await _client_Log(new LogMessage(LogSeverity.Warning, "DBANS", $"DBAN error when checking userid {arg.Id} : {responseObject["error"].Value<string>()}"));
-                        
-                        await logChannel?.SendMessageAsync($"API error when checking bans for userid {arg.Id}.");
-                        await logChannel?.SendMessageAsync($"Response was: {response.StatusCode} | {responseObject["error"].Value<string>()}");
-
-                    }
-                    else
-                    {
-                        await _client_Log(new LogMessage(LogSeverity.Warning, "DBANS", $"No ban found for user {arg.Nickname} : {responseString}"));
-                        await logChannel?.SendMessageAsync($"No ban found for userid {arg.Id} : {responseString}.");
-                    }
-                }
-                else
-                {
-                    await _client_Log(new LogMessage(LogSeverity.Info, "DBANS", $"DBAN HTTP API error on userid {arg.Id} : {response.StatusCode} : {response.ReasonPhrase}"));
-
-                    await logChannel?.SendMessageAsync($"API error when checking bans for userid {arg.Id}.");
-                    await logChannel?.SendMessageAsync($"Response was: {response.StatusCode} | {response.ReasonPhrase}");
-                }
-            }
-            catch (Exception e) {
-                await logChannel?.SendMessageAsync($"Unexpected error occured when checking bans for user {arg.Id} : ({e.Message})");
             }
         }
 
