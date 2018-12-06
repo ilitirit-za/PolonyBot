@@ -26,6 +26,7 @@ SC6-PC|Soul Calibur 6 on PC|SOULCALIBUR VI
 SC6-PS4|Soul Calibur on PS4|
 SFV|Street Fighter V|Street Fighter V
 SG|Skullgirls on PC|Skullgirls
+SMASH|Super Smash Bros. Ultimate on Switch|
 ST|Super Street Fighter 2 Turbo on Fightcade|FightCade
 SVC|SNK vs Capcom Chaos on Fightcade|FightCade
 T7-PC|Tekken 7 on PC|TEKKEN 7
