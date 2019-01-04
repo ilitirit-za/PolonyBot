@@ -5,10 +5,12 @@ using System.Threading.Tasks;
 using Discord;
 using Discord.Commands;
 using System.IO;
+using Discord.WebSocket;
+using PolonyBot.Modules.LFG.DAL;
+using PolonyBot.Modules.LFG.Utils;
 
 namespace PolonyBot.Modules.LFG
 {
-    // Create a module with no prefix
     public class LfgModule : ModuleBase
     {
         private class GameLabel
@@ -16,18 +18,22 @@ namespace PolonyBot.Modules.LFG
             public static readonly GameLabel BlankLabel = new GameLabel { Label = "", UserStatusLabel = "" };
             public string Label { get; set; }
             public string UserStatusLabel { get; set; }
-
-
+         
             public override string ToString()
             {
                 return Label;
             }
         }
+
         private readonly Dictionary<string, GameLabel> _games = new Dictionary<string, GameLabel>(StringComparer.OrdinalIgnoreCase);
-        private static readonly List<string> fgUserGameList = new List<string> { };
+        private static readonly List<string> FgUserGameList = new List<string>();
+        private static LfgDao _dao = new LfgDao();
+
         public LfgModule()
         {
             LoadGameList();
+            
+            _dao.Init();
         }
 
         private static readonly List<LfgEntry> LfgList = new List<LfgEntry>();
@@ -41,43 +47,79 @@ namespace PolonyBot.Modules.LFG
 
             if (String.IsNullOrWhiteSpace(game))
             {
-                response = await ListPlayersLookingForGamesAsync();
-                await Context.User.SendMessageAsync(response);
+                response = await ListPlayersLookingForGamesAsync().ConfigureAwait(false);
+                await _dao.InsertCommand(Context.User.Id, Context.User.Username, "LIST-QUEUES", "").ConfigureAwait(false);
+                await Context.User.SendMessageAsync(response).ConfigureAwait(false);
             }
-            else if (game == "?")
+            else switch (game)
             {
-                response = ListSupportedGames();
-                await Context.User.SendMessageAsync($"```{response}```");
-            }
-            else if (game == "help")
-            {
-                response = GetHelpMessage();
-                await Context.User.SendMessageAsync(response);
-            }
-            else if (game == "-")
-            {
-                LfgList.RemoveAll(x => x.User.Id == Context.User.Id);
-                await Context.User.SendMessageAsync($"You have been removed from all LFG queues");
-            }
-            else
-            {
-                response = await RegisterPlayerAsync(Context.User, game, (command ?? "").Trim());
-                await ReplyAsync(response);
-            }
+                case "stats":
+                    var guildUser = Context.User as SocketGuildUser;
+                    if (guildUser?.Roles.Any(r => r.Name == "PolonyBot-Dev" || r.Name == "PolonyBot-Tester" || r.Name == "Moderator") == true)
+                    {
+                        response = await GetStats(command).ConfigureAwait(false);
+                        await _dao.InsertCommand(Context.User.Id, Context.User.Username, "STATS", "").ConfigureAwait(false);
+                        await Context.User.SendMessageAsync($"```{response}```").ConfigureAwait(false);
+                    }
+                    break;
+
+                case "?":
+                    response = ListSupportedGames();
+                    await _dao.InsertCommand(Context.User.Id, Context.User.Username, "LIST-SUPPORTED-GAMES", "").ConfigureAwait(false);
+                    await Context.User.SendMessageAsync($"```{response}```").ConfigureAwait(false);
+                    break;
+                case "help":
+                    response = GetHelpMessage();
+                    await _dao.InsertCommand(Context.User.Id, Context.User.Username, "HELP", "").ConfigureAwait(false);
+                    await Context.User.SendMessageAsync(response).ConfigureAwait(false);
+                    break;
+                case "-":
+                    LfgList.RemoveAll(x => x.User.Id == Context.User.Id);
+                    await _dao.InsertCommand(Context.User.Id, Context.User.Username, "REMOVE", "").ConfigureAwait(false);
+                    await Context.User.SendMessageAsync($"You have been removed from all LFG queues").ConfigureAwait(false);
+                    break;
+                default:
+                    if (!_games.TryGetValue(game, out GameLabel description))
+                    {
+                        response = $"Game {game} is not supported. Use the \"lfg ?\" command to list supported games";
+                    }
+                    else
+                    {
+                        response = await RegisterPlayerAsync(Context.User, game, description, (command ?? "").Trim()).ConfigureAwait(false);
+                        if (command == "-")
+                            await _dao.InsertCommand(Context.User.Id, Context.User.Username, "REMOVE", game).ConfigureAwait(false);
+                        else
+                            await _dao.InsertCommand(Context.User.Id, Context.User.Username, "ADD", game).ConfigureAwait(false);
+                    }
+
+                    await ReplyAsync(response).ConfigureAwait(false);
+                    break;
+                }
         }
 
-        private async Task<string> ListGuildUsersPlayingAsync(string game = null, bool excludeCurrentUser = true)
+        private async Task<string> GetStats(string statsCommand)
         {
-            var guildUsers = await Context.Guild.GetUsersAsync();       //Retrieve all users (+ statuses) from server.
-            var users = guildUsers
-                .Where(user => !user.IsBot) // No bots
-                .Where(user => user.Id != Context.User.Id); // Ignore current user
+            var statsTable = await _dao.GetGeneralStats();
+            if (statsTable.Rows.Count > 0)
+                return AsciiTableGenerator.CreateAsciiTableFromDataTable(statsTable).ToString();
+            else
+                return "No stats available yet";
+        }
+
+        private async Task<string> ListGuildUsersPlayingAsync(string game = null)
+        {
+            // Retrieve all users (+ statuses) from server.
+            var guildUsers = await Context.Guild.GetUsersAsync().ConfigureAwait(false);
 
             var response = "";
             var gameLabel = ConvertGameNameToLabel(game);
             if (gameLabel != GameLabel.BlankLabel)
             {
-                var filteredUsers = guildUsers.Where(u => u.Activity?.Name == gameLabel.UserStatusLabel);
+                var filteredUsers = guildUsers
+                    .Where(u => u.Activity?.Name == gameLabel.UserStatusLabel)
+                    .Where(user => user.Id != Context.User.Id)
+                    .ToList();
+
                 if (filteredUsers.Any())
                 {
                     response += $"The following players are playing {gameLabel}: " + Environment.NewLine;
@@ -89,7 +131,7 @@ namespace PolonyBot.Modules.LFG
             }
             else
             {
-                var filteredUsers = guildUsers.Where(u => fgUserGameList.Contains(u.Activity?.Name)).OrderBy(u => (u.Activity?.Name ?? ""));
+                var filteredUsers = guildUsers.Where(u => FgUserGameList.Contains(u.Activity?.Name)).OrderBy(u => (u.Activity?.Name ?? ""));
                 response += $"The following players are playing: " + Environment.NewLine;
                 foreach (var user in filteredUsers)
                 {
@@ -108,7 +150,7 @@ namespace PolonyBot.Modules.LFG
             return gameLabel;
         }
 
-        private void LoadGameList()
+        private async void LoadGameList()
         {
             _games.Clear();
             try
@@ -122,15 +164,16 @@ namespace PolonyBot.Modules.LFG
                     split[2] = split[2].Trim();
 
                     _games.Add(split[0], new GameLabel { Label = split[1], UserStatusLabel = split[2] });
-                    if (!String.IsNullOrEmpty(split[2]) || !fgUserGameList.Contains(split[2]))
+                    if (!String.IsNullOrEmpty(split[2]) || !FgUserGameList.Contains(split[2]))
                     {
-                        fgUserGameList.Add(split[2]);
+                        FgUserGameList.Add(split[2]);
                     }
                 }
             }
             catch (Exception e)
             {
-                ReplyAsync($"Could not load game list.  Tell ilitirit about this! ({e.Message})");
+                await ReplyAsync($"Could not load game list.  Tell ilitirit or pwNBait about this! ({e.Message})")
+                    .ConfigureAwait(false);
             }
 
         }
@@ -155,12 +198,8 @@ namespace PolonyBot.Modules.LFG
             return $"```{response}```";
         }
 
-        private async Task<string> RegisterPlayerAsync(IUser user, string game, string command)
+        private async Task<string> RegisterPlayerAsync(IUser user, string game, GameLabel description, string command)
         {
-            if (!_games.TryGetValue(game, out GameLabel description))
-            {
-                return $"Game {game} is not supported. Use the \"lfg ?\" command to list supported games";
-            }
             game = game.ToUpper();
 
             LfgList.RemoveAll(x => x.User.Id == Context.User.Id && x.Game == game);
@@ -183,7 +222,7 @@ namespace PolonyBot.Modules.LFG
             response += Environment.NewLine;
             response += Environment.NewLine;
 
-            response += await ListPlayersLookingForGamesAsync(game, true, true);
+            response += await ListPlayersLookingForGamesAsync(game, true, true).ConfigureAwait(false);
             response += Environment.NewLine;
 
             return response;
@@ -194,7 +233,7 @@ namespace PolonyBot.Modules.LFG
         {
             var response = "";
             var gameFilter = (game == null) ? (Func<string, bool>)((x) => true) : ((x) => x == game);
-            var userFilter = excludeCurrentUser ? (Func<LfgEntry, bool>)((x) => x.User.Id != Context.User.Id) : ((x) => true);
+            var userFilter = excludeCurrentUser ? (Func<LfgEntry, bool>)((x) => x.User.Id != Context.User.Id) : x => true;
 
             foreach (var key in _games.Keys.Where(gameFilter))
             {
@@ -206,7 +245,7 @@ namespace PolonyBot.Modules.LFG
                         : lfg.User.Username) + $" [{Math.Ceiling((lfg.Expiry - DateTime.Now).TotalMinutes)} mins]")
                     .ToList();
 
-                if (users != null && users.Count > 0)
+                if (users.Count > 0)
                 {
                     response += $"{_games[key]}: " + users.Aggregate((current, next) => current + " " + next);
                     response += Environment.NewLine;
@@ -235,7 +274,7 @@ namespace PolonyBot.Modules.LFG
             }
             response += Environment.NewLine;
 
-            response += await ListGuildUsersPlayingAsync(game);
+            response += await ListGuildUsersPlayingAsync(game).ConfigureAwait(false);
 
             return response;
         }

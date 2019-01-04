@@ -6,7 +6,7 @@ namespace PolonyBot.ConsoleApp
 {
     class Program
     {
-        public static void Main(string[] args) => new Program().Start().GetAwaiter().GetResult();
+        public static void Main() => new Program().Start().GetAwaiter().GetResult();
 
         public async Task Start()
         {
@@ -15,8 +15,8 @@ namespace PolonyBot.ConsoleApp
                 var key = File.ReadAllText("PolonyBot.key").Trim();
 
                 var polonyBot = new Core.PolonyBot(key);
-                await polonyBot.Start();
-                await Task.Delay(-1);
+                await polonyBot.Start().ConfigureAwait(false);
+                await Task.Delay(-1).ConfigureAwait(false);
             }
             catch (Exception e)
             {

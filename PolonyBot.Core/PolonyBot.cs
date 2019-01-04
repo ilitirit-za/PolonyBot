@@ -1,7 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.IO;
-using System.Net.Http;
 using System.Runtime.Loader;
 using System.Threading.Tasks;
 using Discord;
@@ -9,15 +7,12 @@ using Discord.Commands;
 using Discord.WebSocket;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Configuration;
-using Newtonsoft.Json.Linq;
 using PolonyBot.Core.Configuration;
 
 namespace PolonyBot.Core
 {
     public class PolonyBot
     {
-        private const string BanListToken = "GVnPX_UmfTTE7yLA6TGHDsC4nptgnKFaljlWuuwtBog";
-        private const string PublicDiscordBansApiUrl = "https://bans.discord.id/api/check.php?user_id={0}";
         private const ulong TheButcheryChannelId = 479947815989149699;
 
         private readonly string _botToken;
@@ -46,21 +41,18 @@ namespace PolonyBot.Core
             _commands = new CommandService();
 
             _services = new ServiceCollection().BuildServiceProvider();
+            
+            await InstallCommands(_services).ConfigureAwait(false);
 
-            await InstallCommands();
-
-
-            await _client.LoginAsync(TokenType.Bot, _botToken);
-            await _client.SetStatusAsync(UserStatus.Online);
-            await _client.StartAsync();
+            await _client.LoginAsync(TokenType.Bot, _botToken).ConfigureAwait(false);
+            await _client.SetStatusAsync(UserStatus.Online).ConfigureAwait(false);
+            await _client.StartAsync().ConfigureAwait(false);
 
             _client.Log += _client_Log;
-            //await Task.Delay(-1);
         }
 
-        private Task _client_Log(LogMessage message)
+        private static Task _client_Log(LogMessage message)
         {
-
             var cc = Console.ForegroundColor;
             switch (message.Severity)
             {
@@ -85,7 +77,7 @@ namespace PolonyBot.Core
             return Task.CompletedTask;
         }
 
-        public async Task InstallCommands()
+        public async Task InstallCommands(IServiceProvider services)
         {
             // Hook the MessageReceived Event into our Command Handler
             _client.MessageReceived += HandleCommand;
@@ -97,18 +89,18 @@ namespace PolonyBot.Core
                 var moduleAssembly = AssemblyLoadContext.Default.LoadFromAssemblyPath(modulePath);
 
                 // Discover all of the commands in this assembly and load them.
-                await _commands.AddModulesAsync(moduleAssembly);
+                await _commands.AddModulesAsync(moduleAssembly, services).ConfigureAwait(false);
             }
         }
 
         public async Task HandleCommand(SocketMessage messageParam)
         {
             // Don't process the command if it was a System Message
-            if (!(messageParam is SocketUserMessage message)) return;
-
+            if (!(messageParam is SocketUserMessage message))
+                return;
 
             // Create a number to track where the prefix ends and the command begins
-            int argPos = 0;
+            var argPos = 0;
 
             // Determine if the message is a command, based on if it starts with '!' or a mention prefix
             if (!(message.HasCharPrefix(_settings.CommandPrefix, ref argPos) || message.HasMentionPrefix(_client.CurrentUser, ref argPos))) return;
@@ -118,10 +110,10 @@ namespace PolonyBot.Core
 
             // Execute the command. (result does not indicate a return value, 
             // rather an object stating if the command executed successfully)
-            var result = await _commands.ExecuteAsync(context, argPos, _services);
+            var result = await _commands.ExecuteAsync(context, argPos, _services).ConfigureAwait(false);
             if (!result.IsSuccess && result.Error != CommandError.UnknownCommand)
             {
-                await context.Channel.SendMessageAsync(result.ErrorReason);
+                await context.Channel.SendMessageAsync(result.ErrorReason).ConfigureAwait(false);
             }
         }
     }
