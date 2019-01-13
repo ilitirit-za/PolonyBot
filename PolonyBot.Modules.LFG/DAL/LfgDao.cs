@@ -77,6 +77,7 @@ namespace PolonyBot.Modules.LFG.DAL
         {
             const string commandText = @"SELECT lfg1.Game
 , COUNT(*) AS TimesRequested
+, COUNT(DISTINCT Userid) AS UniqueUsersRequested
 , (SELECT Max(Timestamp) FROM LFG lfg2 WHERE lfg2.Game = lfg1.Game) AS LastRequested
 , (	SELECT  lfg3.UserName || ' (' || COUNT(*) || ')' 
 	FROM LFG lfg3 
