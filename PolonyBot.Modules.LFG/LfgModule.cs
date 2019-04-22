@@ -64,7 +64,7 @@ namespace PolonyBot.Modules.LFG
                     break;
 
                 case "?":
-                    response = ListSupportedGames().AsDiscordResponse();
+                    response = ListSupportedGames();
                     await _dao.InsertCommand(Context.User.Id, Context.User.Username, "LIST-SUPPORTED-GAMES", "").ConfigureAwait(false);
                     await CustomSendMessageAsync($"```{response}```").ConfigureAwait(false);
                     break;
