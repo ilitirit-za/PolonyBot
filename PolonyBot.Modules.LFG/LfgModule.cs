@@ -49,7 +49,7 @@ namespace PolonyBot.Modules.LFG
             {
                 response = await ListPlayersLookingForGamesAsync().ConfigureAwait(false);
                 await _dao.InsertCommand(Context.User.Id, Context.User.Username, "LIST-QUEUES", "").ConfigureAwait(false);
-                await Context.User.SendMessageAsync(response).ConfigureAwait(false);
+                await CustomSendMessageAsync(response).ConfigureAwait(false);
             }
             else switch (game)
             {
@@ -59,24 +59,24 @@ namespace PolonyBot.Modules.LFG
                     {
                         response = await GetStats(command).ConfigureAwait(false);
                         await _dao.InsertCommand(Context.User.Id, Context.User.Username, "STATS", "").ConfigureAwait(false);
-                        await Context.User.SendMessageAsync($"```{response}```").ConfigureAwait(false);
+                        await CustomSendMessageAsync($"```{response}```").ConfigureAwait(false);
                     }
                     break;
 
                 case "?":
-                    response = ListSupportedGames();
+                    response = ListSupportedGames().AsDiscordResponse();
                     await _dao.InsertCommand(Context.User.Id, Context.User.Username, "LIST-SUPPORTED-GAMES", "").ConfigureAwait(false);
-                    await Context.User.SendMessageAsync($"```{response}```").ConfigureAwait(false);
+                    await CustomSendMessageAsync($"```{response}```").ConfigureAwait(false);
                     break;
                 case "help":
                     response = GetHelpMessage();
                     await _dao.InsertCommand(Context.User.Id, Context.User.Username, "HELP", "").ConfigureAwait(false);
-                    await Context.User.SendMessageAsync(response).ConfigureAwait(false);
+                    await CustomSendMessageAsync(response).ConfigureAwait(false);
                     break;
                 case "-":
                     LfgList.RemoveAll(x => x.User.Id == Context.User.Id);
                     await _dao.InsertCommand(Context.User.Id, Context.User.Username, "REMOVE", "").ConfigureAwait(false);
-                    await Context.User.SendMessageAsync($"You have been removed from all LFG queues").ConfigureAwait(false);
+                    await CustomSendMessageAsync($"You have been removed from all LFG queues").ConfigureAwait(false);
                     break;
                 default:
                     if (!_games.TryGetValue(game, out GameLabel description))
@@ -92,7 +92,7 @@ namespace PolonyBot.Modules.LFG
                             await _dao.InsertCommand(Context.User.Id, Context.User.Username, "ADD", game).ConfigureAwait(false);
                     }
 
-                    await ReplyAsync(response).ConfigureAwait(false);
+                    await CustomReplyAsync(response).ConfigureAwait(false);
                     break;
                 }
         }
@@ -172,7 +172,7 @@ namespace PolonyBot.Modules.LFG
             }
             catch (Exception e)
             {
-                await ReplyAsync($"Could not load game list.  Tell ilitirit or pwNBait about this! ({e.Message})")
+                await CustomReplyAsync($"Could not load game list.  Tell ilitirit or pwNBait about this! ({e.Message})")
                     .ConfigureAwait(false);
             }
 
@@ -291,6 +291,16 @@ namespace PolonyBot.Modules.LFG
             }
 
             return response;
+        }
+
+        private Task<IUserMessage> CustomSendMessageAsync(string message)
+        {
+            return Context.User.SendMessageAsync(message.AsDiscordResponse());
+        }
+
+        private Task<IUserMessage> CustomReplyAsync(string message)
+        {
+            return ReplyAsync(message.AsDiscordResponse());
         }
     }
 }
