@@ -22,6 +22,7 @@ MKX-PS4|Mortal Kombat X on PS4|
 MKX-X|Mortal Kombat X on Xbox One|
 MVCI-PC|Marvel vs Capcom Infinite on PC|Marvel vs Capcom : Infinite
 MVCI-PS4|Marvel vs Capcom Infinite on PS4|
+SAMSHO|Samurai Shodown on PS4|
 SC6-PC|Soul Calibur 6 on PC|SOULCALIBUR VI
 SC6-PS4|Soul Calibur on PS4|
 SFV|Street Fighter V|Street Fighter V
