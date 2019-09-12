@@ -64,9 +64,9 @@ namespace PolonyBot.Modules.LFG
                         foreach (var table in statsTableResponse)
                         {
                             response = table;
-                            await _dao.InsertCommand(Context.User.Id, Context.User.Username, "STATS", "").ConfigureAwait(false);
                             await CustomSendMessageAsync($"```{response}```").ConfigureAwait(false);
                         }
+                        await _dao.InsertCommand(Context.User.Id, Context.User.Username, "STATS", "").ConfigureAwait(false);
                     }
                     break;
 
