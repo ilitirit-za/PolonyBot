@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Linq;
 using System.Threading.Tasks;
 using Discord;
@@ -13,6 +14,8 @@ namespace PolonyBot.Modules.LFG
 {
     public class LfgModule : ModuleBase
     {
+        private const int MessageLengthLimit = 1980;
+
         private class GameLabel
         {
             public static readonly GameLabel BlankLabel = new GameLabel { Label = "", UserStatusLabel = "" };
@@ -57,9 +60,13 @@ namespace PolonyBot.Modules.LFG
                     var guildUser = Context.User as SocketGuildUser;
                     if (guildUser?.Roles.Any(r => r.Name == "PolonyBot-Dev" || r.Name == "PolonyBot-Tester" || r.Name == "Moderator") == true)
                     {
-                        response = await GetStats(command).ConfigureAwait(false);
-                        await _dao.InsertCommand(Context.User.Id, Context.User.Username, "STATS", "").ConfigureAwait(false);
-                        await CustomSendMessageAsync($"```{response}```").ConfigureAwait(false);
+                        var statsTableResponse = await GetStats(command).ConfigureAwait(false);
+                        foreach (var table in statsTableResponse)
+                        {
+                            response = table;
+                            await _dao.InsertCommand(Context.User.Id, Context.User.Username, "STATS", "").ConfigureAwait(false);
+                            await CustomSendMessageAsync($"```{response}```").ConfigureAwait(false);
+                        }
                     }
                     break;
 
@@ -97,13 +104,56 @@ namespace PolonyBot.Modules.LFG
                 }
         }
 
-        private async Task<string> GetStats(string statsCommand)
+        private async Task<List<string>> GetStats(string statsCommand)
         {
+            var tablesToRender = new List<DataTable>();
             var statsTable = await _dao.GetGeneralStats();
-            if (statsTable.Rows.Count > 0)
-                return AsciiTableGenerator.CreateAsciiTableFromDataTable(statsTable).ToString();
-            else
-                return "No stats available yet";
+
+            // Very naive implementation but IDC
+
+            // If we reach this number of iterations in the
+            // loop then something is probably wrong
+            var hardLimit = 100;
+            var iteration = 0;
+            
+            var tableDataIsBeingMovedTo = default(DataTable);
+            tablesToRender.Add(statsTable);
+
+            while (iteration++ < hardLimit &&
+                   AsciiTableGenerator.GetEstimatedTableSizeInCharacters(statsTable) > MessageLengthLimit)
+            {
+                if (tableDataIsBeingMovedTo == null)
+                {
+                    tableDataIsBeingMovedTo = statsTable.Clone();
+                }
+
+                var lastRowIndex = statsTable.Rows.Count - 1;
+                var destinationRow = tableDataIsBeingMovedTo.NewRow();
+                var sourceRow = statsTable.Rows[lastRowIndex];
+                destinationRow.ItemArray = (object[])sourceRow.ItemArray.Clone();
+                tableDataIsBeingMovedTo.Rows.InsertAt(destinationRow, 0);
+                statsTable.Rows.RemoveAt(lastRowIndex);
+
+                if (AsciiTableGenerator.GetEstimatedTableSizeInCharacters(tableDataIsBeingMovedTo) > MessageLengthLimit)
+                {
+                    tablesToRender.Add(tableDataIsBeingMovedTo);
+                    tableDataIsBeingMovedTo = null;
+                }
+            }
+
+            if (tableDataIsBeingMovedTo != null)
+            {
+                tablesToRender.Add(tableDataIsBeingMovedTo);
+            }
+
+            var tables = new List<string>();
+            foreach (var dataTable in tablesToRender)
+            {
+                if (dataTable.Rows.Count > 0)
+                    tables.Add(AsciiTableGenerator.CreateAsciiTableFromDataTable(dataTable).ToString());
+            }
+
+            return tables;
         }
 
         private async Task<string> ListGuildUsersPlayingAsync(string game = null)

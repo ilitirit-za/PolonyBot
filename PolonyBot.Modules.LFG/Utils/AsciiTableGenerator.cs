@@ -10,13 +10,25 @@ namespace PolonyBot.Modules.LFG.Utils
     // https://github.com/tarikguney/ascii-table-creator
     public class AsciiTableGenerator
     {
+        public static int GetEstimatedTableSizeInCharacters(DataTable table)
+        {
+            var lengthByColumnDictionary = GetTotalSpaceForEachColumn(table);
+            
+            // Sum of Column Sizes + 3 chars per column for lines/spacing + 2 chars for \r\n
+            var rowLength = lengthByColumnDictionary.Values.Sum() + (table.Columns.Count * 3) + 2;
+            
+            // Add 1 for header and one for line spacer
+            return rowLength * (table.Rows.Count + 2);
+        }
+
         public static StringBuilder CreateAsciiTableFromDataTable(DataTable table)
         {
             var lengthByColumnDictionary = GetTotalSpaceForEachColumn(table);
-
+            
             var tableBuilder = new StringBuilder();
             AppendColumns(table, tableBuilder, lengthByColumnDictionary);
             AppendRows(table, lengthByColumnDictionary, tableBuilder);
+
             return tableBuilder;
         }
 
