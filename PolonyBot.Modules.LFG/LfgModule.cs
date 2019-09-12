@@ -14,7 +14,7 @@ namespace PolonyBot.Modules.LFG
 {
     public class LfgModule : ModuleBase
     {
-        private const int MessageLengthLimit = 1980;
+        private const int MaxMessageLength = 1980;
 
         private class GameLabel
         {
@@ -120,7 +120,7 @@ namespace PolonyBot.Modules.LFG
             tablesToRender.Add(statsTable);
 
             while (iteration++ < hardLimit &&
-                   AsciiTableGenerator.GetEstimatedTableSizeInCharacters(statsTable) > MessageLengthLimit)
+                   AsciiTableGenerator.GetEstimatedTableSizeInCharacters(statsTable) > MaxMessageLength)
             {
                 if (tableDataIsBeingMovedTo == null)
                 {
@@ -134,7 +134,7 @@ namespace PolonyBot.Modules.LFG
                 tableDataIsBeingMovedTo.Rows.InsertAt(destinationRow, 0);
                 statsTable.Rows.RemoveAt(lastRowIndex);
 
-                if (AsciiTableGenerator.GetEstimatedTableSizeInCharacters(tableDataIsBeingMovedTo) > MessageLengthLimit)
+                if (AsciiTableGenerator.GetEstimatedTableSizeInCharacters(tableDataIsBeingMovedTo) > MaxMessageLength)
                 {
                     tablesToRender.Add(tableDataIsBeingMovedTo);
                     tableDataIsBeingMovedTo = null;
