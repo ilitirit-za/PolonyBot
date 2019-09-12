@@ -136,6 +136,10 @@ namespace PolonyBot.Modules.LFG
 
                 if (AsciiTableGenerator.GetEstimatedTableSizeInCharacters(tableDataIsBeingMovedTo) > MaxMessageLength)
                 {
+                    //Reverse last transfer
+                    statsTable.Rows.Add(destinationRow.ItemArray.Clone());
+                    tableDataIsBeingMovedTo.Rows.RemoveAt(0);
+
                     tablesToRender.Add(tableDataIsBeingMovedTo);
                     tableDataIsBeingMovedTo = null;
                 }
