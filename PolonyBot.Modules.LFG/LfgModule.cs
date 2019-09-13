@@ -6,16 +6,16 @@ using System.Threading.Tasks;
 using Discord;
 using Discord.Commands;
 using System.IO;
-using Discord.WebSocket;
+using System.Runtime.CompilerServices;
 using PolonyBot.Modules.LFG.DAL;
 using PolonyBot.Modules.LFG.Utils;
 
+[assembly:InternalsVisibleTo("PolonyBot.UnitTests")]
 namespace PolonyBot.Modules.LFG
 {
     public class LfgModule : ModuleBase
     {
         public const int MaxMessageLength = 1980;
-        private ICommandContext CommandContext { get; set; }
         private class GameLabel
         {
             public static readonly GameLabel BlankLabel = new GameLabel { Label = "", UserStatusLabel = "" };
@@ -30,15 +30,43 @@ namespace PolonyBot.Modules.LFG
 
         private readonly Dictionary<string, GameLabel> _games = new Dictionary<string, GameLabel>(StringComparer.OrdinalIgnoreCase);
         private static readonly List<string> FgUserGameList = new List<string>();
-        
-        private static ILfgDao _dao;
 
-        public LfgModule(ILfgDao dao = null, ICommandContext commandContext = null)
+        private ILfgDao _dao;
+        internal ILfgDao Dao
+        {
+            get
+            {
+                if (_dao == null)
+                {
+                    _dao = new LfgDao();
+                    _dao.Init();
+                }
+
+                return _dao;
+            }
+
+            set => _dao = value;
+        }
+
+        private ICommandContext _commandContext;
+        internal ICommandContext CommandContext
+        {
+            get
+            {
+                if (_commandContext == null)
+                {
+                    CommandContext = Context;
+                }
+
+                return _commandContext;
+            }
+
+            set => _commandContext = value;
+        }
+
+        public LfgModule()
         {
             LoadGameList();
-            _dao = dao ?? new LfgDao();
-            _dao.Init();
-            CommandContext = commandContext ?? CommandContext;
         }
 
         private static readonly List<LfgEntry> LfgList = new List<LfgEntry>();
@@ -53,7 +81,7 @@ namespace PolonyBot.Modules.LFG
             if (String.IsNullOrWhiteSpace(game))
             {
                 response = await ListPlayersLookingForGamesAsync().ConfigureAwait(false);
-                await _dao.InsertCommand(CommandContext.User.Id, CommandContext.User.Username, "LIST-QUEUES", "").ConfigureAwait(false);
+                await Dao.InsertCommand(CommandContext.User.Id, CommandContext.User.Username, "LIST-QUEUES", "").ConfigureAwait(false);
                 await CustomSendMessageAsync(response).ConfigureAwait(false);
             }
             else switch (game)
@@ -71,23 +99,23 @@ namespace PolonyBot.Modules.LFG
                             response = table;
                             await CustomSendMessageAsync($"```{response}```").ConfigureAwait(false);
                         }
-                        await _dao.InsertCommand(CommandContext.User.Id, CommandContext.User.Username, "STATS", "").ConfigureAwait(false);
+                        await Dao.InsertCommand(CommandContext.User.Id, CommandContext.User.Username, "STATS", "").ConfigureAwait(false);
                     }
                     break;
 
                 case "?":
                     response = ListSupportedGames();
-                    await _dao.InsertCommand(CommandContext.User.Id, CommandContext.User.Username, "LIST-SUPPORTED-GAMES", "").ConfigureAwait(false);
+                    await Dao.InsertCommand(CommandContext.User.Id, CommandContext.User.Username, "LIST-SUPPORTED-GAMES", "").ConfigureAwait(false);
                     await CustomSendMessageAsync($"```{response}```").ConfigureAwait(false);
                     break;
                 case "help":
                     response = GetHelpMessage();
-                    await _dao.InsertCommand(CommandContext.User.Id, CommandContext.User.Username, "HELP", "").ConfigureAwait(false);
+                    await Dao.InsertCommand(CommandContext.User.Id, CommandContext.User.Username, "HELP", "").ConfigureAwait(false);
                     await CustomSendMessageAsync(response).ConfigureAwait(false);
                     break;
                 case "-":
                     LfgList.RemoveAll(x => x.User.Id == CommandContext.User.Id);
-                    await _dao.InsertCommand(CommandContext.User.Id, CommandContext.User.Username, "REMOVE", "").ConfigureAwait(false);
+                    await Dao.InsertCommand(CommandContext.User.Id, CommandContext.User.Username, "REMOVE", "").ConfigureAwait(false);
                     await CustomSendMessageAsync($"You have been removed from all LFG queues").ConfigureAwait(false);
                     break;
                 default:
@@ -99,9 +127,9 @@ namespace PolonyBot.Modules.LFG
                     {
                         response = await RegisterPlayerAsync(CommandContext.User, game, description, (command ?? "").Trim()).ConfigureAwait(false);
                         if (command == "-")
-                            await _dao.InsertCommand(CommandContext.User.Id, CommandContext.User.Username, "REMOVE", game).ConfigureAwait(false);
+                            await Dao.InsertCommand(CommandContext.User.Id, CommandContext.User.Username, "REMOVE", game).ConfigureAwait(false);
                         else
-                            await _dao.InsertCommand(CommandContext.User.Id, CommandContext.User.Username, "ADD", game).ConfigureAwait(false);
+                            await Dao.InsertCommand(CommandContext.User.Id, CommandContext.User.Username, "ADD", game).ConfigureAwait(false);
                     }
 
                     await CustomReplyAsync(response).ConfigureAwait(false);
@@ -112,7 +140,7 @@ namespace PolonyBot.Modules.LFG
         public async Task<List<string>> GetStats()
         {
             var tablesToRender = new List<DataTable>();
-            var statsTable = await _dao.GetGeneralStats();
+            var statsTable = await Dao.GetGeneralStats();
 
             if (statsTable.Rows.Count == 0)
                 return new List<string> { "No stats available" };

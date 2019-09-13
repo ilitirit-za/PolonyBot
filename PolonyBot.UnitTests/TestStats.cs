@@ -14,9 +14,10 @@ namespace PolonyBot.UnitTests
 {
     public class TestStats
     {
+        private LfgModule _lfg;
+        private ILfgDao _dao;
         private ICommandContext _commandContext;
         private IGuildUser _user;
-        private IGuild _guild;
         private IDMChannel _channel;
 
         private const ulong DevRoleId = 1;
@@ -27,6 +28,7 @@ namespace PolonyBot.UnitTests
         [SetUp]
         public void Setup()
         {
+            _dao = Substitute.For<ILfgDao>();
             _user = Substitute.For<IGuildUser>();
             _user.RoleIds.Returns(r => new List<ulong> { ModRoleId } );
             _channel = Substitute.For<IDMChannel>();
@@ -39,14 +41,21 @@ namespace PolonyBot.UnitTests
                 new MockRole("User", UserRoleId),
             };
             
-            _guild = Substitute.For<IGuild>();
-            _guild.Roles.Returns(validRoles);
-
-            
+            var guild = Substitute.For<IGuild>();
+            guild.Roles.Returns(validRoles);
 
             _commandContext = Substitute.For<ICommandContext>();
             _commandContext.User.Returns(_user);
-            _commandContext.Guild.Returns(_guild);
+            _commandContext.Guild.Returns(guild);
+
+            // Discord.Net isn't designed with simple
+            // testability in mind so we have to jump
+            // through hoops like these...
+            _lfg = new LfgModule
+            {
+                Dao = _dao,
+                CommandContext = _commandContext
+            };
         }
 
         private DataTable CreateTestDataTable(int columns, int rows)
@@ -77,29 +86,24 @@ namespace PolonyBot.UnitTests
         [TestCase(99u, 0)]
         public async Task OnlyAllowedUsersCanGetStats(ulong roleId, int expectedReceivedCalls)
         {
-            var dao = Substitute.For<ILfgDao>();
-            dao.GetGeneralStats().Returns(CreateTestDataTable(1, 0));
+            _dao.GetGeneralStats().Returns(CreateTestDataTable(1, 0));
             var userRoles = new [] { roleId };
             _user.RoleIds.Returns(r => userRoles);
 
-            var lfg = new LfgModule(dao, _commandContext);
+            await _lfg.Lfg("stats");
 
-            await lfg.Lfg("stats");
-
-            await dao.Received(expectedReceivedCalls).GetGeneralStats();
+            await _dao.Received(expectedReceivedCalls).GetGeneralStats();
 
             if (expectedReceivedCalls == 0)
-                await dao.Received(0).InsertCommand(Arg.Any<ulong>(), Arg.Any<string>(), Arg.Any<string>(), Arg.Any<string>());
+                await _dao.Received(0).InsertCommand(Arg.Any<ulong>(), Arg.Any<string>(), Arg.Any<string>(), Arg.Any<string>());
         }
 
         [Test]
         public async Task ReturnsAppropriateMessageWhenNoStatsAreAvailable()
         {
-            var dao = Substitute.For<ILfgDao>();
-            dao.GetGeneralStats().Returns(CreateTestDataTable(1, 0));
-            var lfg = new LfgModule(dao, _commandContext);
+            _dao.GetGeneralStats().Returns(CreateTestDataTable(1, 0));
             
-            await lfg.Lfg("stats");
+            await _lfg.Lfg("stats");
 
             await _channel.Received(1).SendMessageAsync(Arg.Is("```No stats available```"));
         }
@@ -111,14 +115,11 @@ namespace PolonyBot.UnitTests
         [TestCase(5, 99, 4)]
         public async Task SplitsTablesCorrectly(int columns, int rows, int expectedTables)
         {
-            var dao = Substitute.For<ILfgDao>();
-            dao.GetGeneralStats().Returns(CreateTestDataTable(columns, rows));
+            _dao.GetGeneralStats().Returns(CreateTestDataTable(columns, rows));
             var messages = new List<string>();
             await _channel.SendMessageAsync(Arg.Do<string>(m => messages.Add(m)));
 
-            var lfg = new LfgModule(dao, _commandContext);
-            
-            await lfg.Lfg("stats");
+            await _lfg.Lfg("stats");
             
             Assert.AreEqual(expectedTables, messages.Count);
 
@@ -151,10 +152,8 @@ namespace PolonyBot.UnitTests
         [Test]
         public void ThrowsExceptionForLargeResultSets()
         {
-            var dao = Substitute.For<ILfgDao>();
-            dao.GetGeneralStats().Returns(CreateTestDataTable(5, 350));
-            var lfg = new LfgModule(dao, _commandContext);
-            var exception = Assert.ThrowsAsync<Exception>(async () => await lfg.Lfg("stats"));
+            _dao.GetGeneralStats().Returns(CreateTestDataTable(5, 350));
+            var exception = Assert.ThrowsAsync<Exception>(async () => await _lfg.Lfg("stats"));
             Assert.IsTrue(exception.Message.StartsWith("Stats data estimation too big: "));
         }
     }
