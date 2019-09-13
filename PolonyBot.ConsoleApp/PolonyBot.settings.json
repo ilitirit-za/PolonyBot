@@ -1,6 +1,6 @@
 {
   "PolonyBotSettings": {
-    "CommandPrefix": "$",
+    "CommandPrefix": ".",
     "Modules": [
       "PolonyBot.Modules.LFG",
     ]
