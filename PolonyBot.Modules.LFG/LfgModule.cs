@@ -1,18 +1,21 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Linq;
 using System.Threading.Tasks;
 using Discord;
 using Discord.Commands;
 using System.IO;
-using Discord.WebSocket;
+using System.Runtime.CompilerServices;
 using PolonyBot.Modules.LFG.DAL;
 using PolonyBot.Modules.LFG.Utils;
 
+[assembly:InternalsVisibleTo("PolonyBot.UnitTests")]
 namespace PolonyBot.Modules.LFG
 {
     public class LfgModule : ModuleBase
     {
+        public const int MaxMessageLength = 1980;
         private class GameLabel
         {
             public static readonly GameLabel BlankLabel = new GameLabel { Label = "", UserStatusLabel = "" };
@@ -27,13 +30,43 @@ namespace PolonyBot.Modules.LFG
 
         private readonly Dictionary<string, GameLabel> _games = new Dictionary<string, GameLabel>(StringComparer.OrdinalIgnoreCase);
         private static readonly List<string> FgUserGameList = new List<string>();
-        private static LfgDao _dao = new LfgDao();
+
+        private ILfgDao _dao;
+        internal ILfgDao Dao
+        {
+            get
+            {
+                if (_dao == null)
+                {
+                    _dao = new LfgDao();
+                    _dao.Init();
+                }
+
+                return _dao;
+            }
+
+            set => _dao = value;
+        }
+
+        private ICommandContext _commandContext;
+        internal ICommandContext CommandContext
+        {
+            get
+            {
+                if (_commandContext == null)
+                {
+                    CommandContext = Context;
+                }
+
+                return _commandContext;
+            }
+
+            set => _commandContext = value;
+        }
 
         public LfgModule()
         {
             LoadGameList();
-            
-            _dao.Init();
         }
 
         private static readonly List<LfgEntry> LfgList = new List<LfgEntry>();
@@ -48,34 +81,41 @@ namespace PolonyBot.Modules.LFG
             if (String.IsNullOrWhiteSpace(game))
             {
                 response = await ListPlayersLookingForGamesAsync().ConfigureAwait(false);
-                await _dao.InsertCommand(Context.User.Id, Context.User.Username, "LIST-QUEUES", "").ConfigureAwait(false);
+                await Dao.InsertCommand(CommandContext.User.Id, CommandContext.User.Username, "LIST-QUEUES", "").ConfigureAwait(false);
                 await CustomSendMessageAsync(response).ConfigureAwait(false);
             }
             else switch (game)
             {
                 case "stats":
-                    var guildUser = Context.User as SocketGuildUser;
-                    if (guildUser?.Roles.Any(r => r.Name == "PolonyBot-Dev" || r.Name == "PolonyBot-Tester" || r.Name == "Moderator") == true)
+                    var guildUser = CommandContext.User as IGuildUser;
+                    var validRoles = CommandContext.Guild.Roles
+                        .Where(r => r.Name == "PolonyBot-Dev" || r.Name == "PolonyBot-Tester" || r.Name == "Moderator");
+
+                    if (guildUser?.RoleIds.Any(r => validRoles.Any(v => v.Id == r)) == true)
                     {
-                        response = await GetStats(command).ConfigureAwait(false);
-                        await _dao.InsertCommand(Context.User.Id, Context.User.Username, "STATS", "").ConfigureAwait(false);
-                        await CustomSendMessageAsync($"```{response}```").ConfigureAwait(false);
+                        var statsTableResponse = await GetStats().ConfigureAwait(false);
+                        foreach (var table in statsTableResponse)
+                        {
+                            response = table;
+                            await CustomSendMessageAsync($"```{response}```").ConfigureAwait(false);
+                        }
+                        await Dao.InsertCommand(CommandContext.User.Id, CommandContext.User.Username, "STATS", "").ConfigureAwait(false);
                     }
                     break;
 
                 case "?":
                     response = ListSupportedGames();
-                    await _dao.InsertCommand(Context.User.Id, Context.User.Username, "LIST-SUPPORTED-GAMES", "").ConfigureAwait(false);
+                    await Dao.InsertCommand(CommandContext.User.Id, CommandContext.User.Username, "LIST-SUPPORTED-GAMES", "").ConfigureAwait(false);
                     await CustomSendMessageAsync($"```{response}```").ConfigureAwait(false);
                     break;
                 case "help":
                     response = GetHelpMessage();
-                    await _dao.InsertCommand(Context.User.Id, Context.User.Username, "HELP", "").ConfigureAwait(false);
+                    await Dao.InsertCommand(CommandContext.User.Id, CommandContext.User.Username, "HELP", "").ConfigureAwait(false);
                     await CustomSendMessageAsync(response).ConfigureAwait(false);
                     break;
                 case "-":
-                    LfgList.RemoveAll(x => x.User.Id == Context.User.Id);
-                    await _dao.InsertCommand(Context.User.Id, Context.User.Username, "REMOVE", "").ConfigureAwait(false);
+                    LfgList.RemoveAll(x => x.User.Id == CommandContext.User.Id);
+                    await Dao.InsertCommand(CommandContext.User.Id, CommandContext.User.Username, "REMOVE", "").ConfigureAwait(false);
                     await CustomSendMessageAsync($"You have been removed from all LFG queues").ConfigureAwait(false);
                     break;
                 default:
@@ -85,11 +125,11 @@ namespace PolonyBot.Modules.LFG
                     }
                     else
                     {
-                        response = await RegisterPlayerAsync(Context.User, game, description, (command ?? "").Trim()).ConfigureAwait(false);
+                        response = await RegisterPlayerAsync(CommandContext.User, game, description, (command ?? "").Trim()).ConfigureAwait(false);
                         if (command == "-")
-                            await _dao.InsertCommand(Context.User.Id, Context.User.Username, "REMOVE", game).ConfigureAwait(false);
+                            await Dao.InsertCommand(CommandContext.User.Id, CommandContext.User.Username, "REMOVE", game).ConfigureAwait(false);
                         else
-                            await _dao.InsertCommand(Context.User.Id, Context.User.Username, "ADD", game).ConfigureAwait(false);
+                            await Dao.InsertCommand(CommandContext.User.Id, CommandContext.User.Username, "ADD", game).ConfigureAwait(false);
                     }
 
                     await CustomReplyAsync(response).ConfigureAwait(false);
@@ -97,19 +137,79 @@ namespace PolonyBot.Modules.LFG
                 }
         }
 
-        private async Task<string> GetStats(string statsCommand)
+        public async Task<List<string>> GetStats()
         {
-            var statsTable = await _dao.GetGeneralStats();
-            if (statsTable.Rows.Count > 0)
-                return AsciiTableGenerator.CreateAsciiTableFromDataTable(statsTable).ToString();
-            else
-                return "No stats available yet";
+            var tablesToRender = new List<DataTable>();
+            var statsTable = await Dao.GetGeneralStats();
+
+            if (statsTable.Rows.Count == 0)
+                return new List<string> { "No stats available" };
+
+            var statsTableSize = AsciiTableGenerator.GetEstimatedTableSizeInCharacters(statsTable);
+
+            var byteLimitSize = 20000;
+            if (statsTableSize > byteLimitSize)
+                throw new Exception($"Stats data estimation too big: {statsTableSize}");
+
+            // The table will fit into one post so just return it
+            if (statsTableSize < MaxMessageLength)
+                return new List<string>
+                {
+                    AsciiTableGenerator.CreateAsciiTableFromDataTable(statsTable).ToString()
+                };
+            
+            // If we reach this number of iterations in the
+            // loop then something is probably wrong with the code
+            // and/or data - we don't have 100's of games
+            var hardLimit = 200;
+            var iteration = 0;
+            
+            var bufferTable = statsTable.Clone();
+            while (iteration++ < hardLimit)
+            {
+                // Nothing left to move
+                if (statsTable.Rows.Count == 0)
+                {
+                    if (bufferTable.Rows.Count > 0)
+                        tablesToRender.Add(bufferTable);
+
+                    break;
+                }
+
+                bufferTable.Rows.Add(statsTable.Rows[0].ItemArray);
+                statsTable.Rows.RemoveAt(0);
+
+                var bufferTableSize = AsciiTableGenerator.GetEstimatedTableSizeInCharacters(bufferTable);
+                if (bufferTableSize > MaxMessageLength)
+                {
+                    // Reverse the last addition
+                    var lastRowIndex = bufferTable.Rows.Count - 1;
+                    var reversedRow = statsTable.NewRow();
+                    reversedRow.ItemArray = bufferTable.Rows[lastRowIndex].ItemArray;
+                    statsTable.Rows.InsertAt(reversedRow, 0);
+                    bufferTable.Rows.RemoveAt(lastRowIndex);
+
+                    // The buffer table is full so add it to the list
+                    // and create a new one
+                    tablesToRender.Add(bufferTable);
+                    bufferTable = statsTable.Clone();
+                }
+            }
+
+            var tables = new List<string>();
+            foreach (var dataTable in tablesToRender)
+            {
+                if (dataTable.Rows.Count > 0)
+                    tables.Add(AsciiTableGenerator.CreateAsciiTableFromDataTable(dataTable).ToString());
+            }
+
+            return tables;
         }
 
         private async Task<string> ListGuildUsersPlayingAsync(string game = null)
         {
             // Retrieve all users (+ statuses) from server.
-            var guildUsers = await Context.Guild.GetUsersAsync().ConfigureAwait(false);
+            var guildUsers = await CommandContext.Guild.GetUsersAsync().ConfigureAwait(false);
 
             var response = "";
             var gameLabel = ConvertGameNameToLabel(game);
@@ -117,7 +217,7 @@ namespace PolonyBot.Modules.LFG
             {
                 var filteredUsers = guildUsers
                     .Where(u => u.Activity?.Name == gameLabel.UserStatusLabel)
-                    .Where(user => user.Id != Context.User.Id)
+                    .Where(user => user.Id != CommandContext.User.Id)
                     .ToList();
 
                 if (filteredUsers.Any())
@@ -202,11 +302,11 @@ namespace PolonyBot.Modules.LFG
         {
             game = game.ToUpper();
 
-            LfgList.RemoveAll(x => x.User.Id == Context.User.Id && x.Game == game);
+            LfgList.RemoveAll(x => x.User.Id == CommandContext.User.Id && x.Game == game);
 
             if (command == "-")
             {
-                return $"{Context.User.Username} is no longer looking for {description} games";
+                return $"{CommandContext.User.Username} is no longer looking for {description} games";
             }
 
             LfgList.Add(new LfgEntry
@@ -233,7 +333,7 @@ namespace PolonyBot.Modules.LFG
         {
             var response = "";
             var gameFilter = (game == null) ? (Func<string, bool>)((x) => true) : ((x) => x == game);
-            var userFilter = excludeCurrentUser ? (Func<LfgEntry, bool>)((x) => x.User.Id != Context.User.Id) : x => true;
+            var userFilter = excludeCurrentUser ? (Func<LfgEntry, bool>)((x) => x.User.Id != CommandContext.User.Id) : x => true;
 
             foreach (var key in _games.Keys.Where(gameFilter))
             {
@@ -295,7 +395,7 @@ namespace PolonyBot.Modules.LFG
 
         private Task<IUserMessage> CustomSendMessageAsync(string message)
         {
-            return Context.User.SendMessageAsync(message.AsDiscordResponse());
+            return CommandContext.User.SendMessageAsync(message.AsDiscordResponse());
         }
 
         private Task<IUserMessage> CustomReplyAsync(string message)

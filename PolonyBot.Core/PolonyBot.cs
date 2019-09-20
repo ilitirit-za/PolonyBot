@@ -13,8 +13,6 @@ namespace PolonyBot.Core
 {
     public class PolonyBot
     {
-        private const ulong TheButcheryChannelId = 479947815989149699;
-
         private readonly string _botToken;
         private readonly PolonyBotSettings _settings;
         private CommandService _commands;
