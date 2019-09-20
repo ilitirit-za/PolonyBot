@@ -137,6 +137,12 @@ namespace PolonyBot.Modules.LFG
                 }
         }
 
+        [Command("ifg"), Summary("Iooking for games?")]
+        public async Task Ifg(string game = null, string command = null)
+        {
+            await CustomReplyAsync("```.Ifg is not a valid command.  The command for \"Looking For Games\" is .lfg```").ConfigureAwait(false);
+        }
+
         public async Task<List<string>> GetStats()
         {
             var tablesToRender = new List<DataTable>();
