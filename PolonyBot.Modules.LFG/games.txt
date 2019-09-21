@@ -17,9 +17,10 @@ KOF13|King of Fighters 13 on PC|THE KING OF FIGHTERS XIII STEAM EDITION
 KOF14-PC|King Of Fighters 14 on PC|THE KING OF FIGHTERS XIV STEAM EDITION
 KOF14-PS4|King Of Fighters 14 on PS4|
 LB2|Last Blade 2 on Fightcade|FightCade
-MKX-PC|Mortal Kombat X on PC|
-MKX-PS4|Mortal Kombat X on PS4|
-MKX-X|Mortal Kombat X on Xbox One|
+MK11-PC|Mortal Kombat 11 on PC|Mortal Kombat 11
+MK11-PS4|Mortal Kombat 11 on PS4|
+MK11-X|Mortal Kombat 11 on Xbox One|
+MK11-S|Mortal Kombat 11 on Switch|
 MVCI-PC|Marvel vs Capcom Infinite on PC|Marvel vs Capcom : Infinite
 MVCI-PS4|Marvel vs Capcom Infinite on PS4|
 SAMSHO|Samurai Shodown on PS4|

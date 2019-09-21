@@ -1,15 +1,19 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Data;
+﻿using System.Data;
 using System.Data.Common;
 using System.Data.SQLite;
 using System.IO;
-using System.Text;
 using System.Threading.Tasks;
 
 namespace PolonyBot.Modules.LFG.DAL
 {
-    internal class LfgDao
+    public interface ILfgDao
+    {
+        void Init();
+        Task InsertCommand(ulong userId, string userName, string lfgCommand, string game);
+        Task<DataTable> GetGeneralStats();
+    }
+
+    internal class LfgDao : ILfgDao
     {
         private const string DataBaseName = "PolonyBot.db";
 
