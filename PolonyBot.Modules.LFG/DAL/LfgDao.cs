@@ -61,7 +61,7 @@ namespace PolonyBot.Modules.LFG.DAL
 
                 var userNameParm = command.CreateParameter();
                 userNameParm.DbType = DbType.AnsiString;
-                userNameParm.Value = userName;
+                userNameParm.Value = userName ?? "<Invisible>";
 
                 var commandParm = command.CreateParameter();
                 commandParm.DbType = DbType.AnsiString;
