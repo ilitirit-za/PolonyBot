@@ -35,7 +35,13 @@ namespace PolonyBot.Core
 
         public async Task Start()
         {
-            _client = new DiscordSocketClient();
+            // Enables retrieving "invisible" users' details 
+            var config = new DiscordSocketConfig
+            {
+                AlwaysDownloadUsers = true
+            };
+
+            _client = new DiscordSocketClient(config);
             _commands = new CommandService();
 
             _services = new ServiceCollection().BuildServiceProvider();
