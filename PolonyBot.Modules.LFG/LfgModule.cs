@@ -107,17 +107,17 @@ namespace PolonyBot.Modules.LFG
                 case "?":
                     response = ListSupportedGames();
                     await Dao.InsertCommand(CommandContext.User.Id, CommandContext.User.Username, "LIST-SUPPORTED-GAMES", "").ConfigureAwait(false);
-                    await CustomSendMessageAsync($"```{response}```").ConfigureAwait(false);
+                    await CustomSendMessageAsync($"```{response}```", fallbackToChannelOnFail: true).ConfigureAwait(false);
                     break;
                 case "help":
                     response = GetHelpMessage();
                     await Dao.InsertCommand(CommandContext.User.Id, CommandContext.User.Username, "HELP", "").ConfigureAwait(false);
-                    await CustomSendMessageAsync(response).ConfigureAwait(false);
+                    await CustomSendMessageAsync(response, fallbackToChannelOnFail: true).ConfigureAwait(false);
                     break;
                 case "-":
                     LfgList.RemoveAll(x => x.User.Id == CommandContext.User.Id);
                     await Dao.InsertCommand(CommandContext.User.Id, CommandContext.User.Username, "REMOVE", "").ConfigureAwait(false);
-                    await CustomSendMessageAsync($"You have been removed from all LFG queues").ConfigureAwait(false);
+                    await CustomSendMessageAsync($"You have been removed from all LFG queues", fallbackToChannelOnFail: true).ConfigureAwait(false);
                     break;
                 default:
                     if (!_games.TryGetValue(game, out GameLabel description))
@@ -394,7 +394,7 @@ namespace PolonyBot.Modules.LFG
             return response;
         }
 
-        private async Task CustomSendMessageAsync(string message)
+        private async Task CustomSendMessageAsync(string message, bool fallbackToChannelOnFail = false)
         {
             try
             {
@@ -404,7 +404,10 @@ namespace PolonyBot.Modules.LFG
             {
                 if (e.DiscordCode == 50007)
                 {
-                    await CommandContext.Channel.SendMessageAsync(message.AsDiscordResponse());
+                    if (fallbackToChannelOnFail)
+                    {
+                        await CommandContext.Channel.SendMessageAsync(message.AsDiscordResponse());
+                    }
                 }
                 else
                 {
