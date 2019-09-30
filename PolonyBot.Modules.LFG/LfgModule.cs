@@ -410,7 +410,7 @@ namespace PolonyBot.Modules.LFG
                     }
                     else
                     {
-                        await CommandContext.Channel.SendMessageAsync("Unable to respond to your command via DM. Please check your privacy settings to receive the message.");
+                        await CommandContext.Channel.SendMessageAsync("Unable to respond to your command via DM. Please check your privacy settings.");
                     }
                 }
                 else
