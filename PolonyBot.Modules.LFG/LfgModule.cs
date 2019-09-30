@@ -408,6 +408,10 @@ namespace PolonyBot.Modules.LFG
                     {
                         await CommandContext.Channel.SendMessageAsync(message.AsDiscordResponse());
                     }
+                    else
+                    {
+                        await CommandContext.Channel.SendMessageAsync("Unable to respond to your command via DM. Please check your privacy settings to receive the message.");
+                    }
                 }
                 else
                 {
