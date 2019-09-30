@@ -9,6 +9,7 @@ using System.IO;
 using System.Runtime.CompilerServices;
 using PolonyBot.Modules.LFG.DAL;
 using PolonyBot.Modules.LFG.Utils;
+using Discord.Net;
 
 [assembly:InternalsVisibleTo("PolonyBot.UnitTests")]
 namespace PolonyBot.Modules.LFG
@@ -393,9 +394,23 @@ namespace PolonyBot.Modules.LFG
             return response;
         }
 
-        private Task<IUserMessage> CustomSendMessageAsync(string message)
+        private async Task CustomSendMessageAsync(string message)
         {
-            return CommandContext.User.SendMessageAsync(message.AsDiscordResponse());
+            try
+            {
+                await CommandContext.User.SendMessageAsync(message.AsDiscordResponse());
+            }
+            catch (HttpException e)
+            {
+                if (e.DiscordCode == 50007)
+                {
+                    await CommandContext.Channel.SendMessageAsync(message.AsDiscordResponse());
+                }
+                else
+                {
+                    throw e;
+                }
+            }
         }
 
         private Task<IUserMessage> CustomReplyAsync(string message)
