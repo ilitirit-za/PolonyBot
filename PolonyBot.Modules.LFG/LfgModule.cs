@@ -415,7 +415,7 @@ namespace PolonyBot.Modules.LFG
                 }
                 else
                 {
-                    throw e;
+                    throw;
                 }
             }
         }
