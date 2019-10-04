@@ -406,11 +406,11 @@ namespace PolonyBot.Modules.LFG
                 {
                     if (fallbackToChannelOnFail)
                     {
-                        await CommandContext.Channel.SendMessageAsync(message.AsDiscordResponse());
+                        await CustomReplyAsync(message.AsDiscordResponse());
                     }
                     else
                     {
-                        await CommandContext.Channel.SendMessageAsync("Unable to respond to your command via DM. Please check your privacy settings.");
+                        await CustomReplyAsync("Unable to respond to your command via DM. Please check your privacy settings.");
                     }
                 }
                 else
