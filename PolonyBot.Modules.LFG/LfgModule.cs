@@ -404,14 +404,9 @@ namespace PolonyBot.Modules.LFG
             {
                 if (e.DiscordCode == 50007)
                 {
-                    if (fallbackToChannelOnFail)
-                    {
-                        await CustomReplyAsync(message.AsDiscordResponse());
-                    }
-                    else
-                    {
-                        await CustomReplyAsync("Unable to respond to your command via DM. Please check your privacy settings.");
-                    }
+                    string response = fallbackToChannelOnFail ? message.AsDiscordResponse() : "Unable to respond to your command via DM. Please check your privacy settings.";
+
+                    await CustomReplyAsync(response);
                 }
                 else
                 {
