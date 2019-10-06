@@ -9,6 +9,7 @@ using System.IO;
 using System.Runtime.CompilerServices;
 using PolonyBot.Modules.LFG.DAL;
 using PolonyBot.Modules.LFG.Utils;
+using Discord.Net;
 
 [assembly:InternalsVisibleTo("PolonyBot.UnitTests")]
 namespace PolonyBot.Modules.LFG
@@ -106,17 +107,17 @@ namespace PolonyBot.Modules.LFG
                 case "?":
                     response = ListSupportedGames();
                     await Dao.InsertCommand(CommandContext.User.Id, CommandContext.User.Username, "LIST-SUPPORTED-GAMES", "").ConfigureAwait(false);
-                    await CustomSendMessageAsync($"```{response}```").ConfigureAwait(false);
+                    await CustomSendMessageAsync($"```{response}```", fallbackToChannelOnFail: true).ConfigureAwait(false);
                     break;
                 case "help":
                     response = GetHelpMessage();
                     await Dao.InsertCommand(CommandContext.User.Id, CommandContext.User.Username, "HELP", "").ConfigureAwait(false);
-                    await CustomSendMessageAsync(response).ConfigureAwait(false);
+                    await CustomSendMessageAsync(response, fallbackToChannelOnFail: true).ConfigureAwait(false);
                     break;
                 case "-":
                     LfgList.RemoveAll(x => x.User.Id == CommandContext.User.Id);
                     await Dao.InsertCommand(CommandContext.User.Id, CommandContext.User.Username, "REMOVE", "").ConfigureAwait(false);
-                    await CustomSendMessageAsync($"You have been removed from all LFG queues").ConfigureAwait(false);
+                    await CustomSendMessageAsync($"You have been removed from all LFG queues", fallbackToChannelOnFail: true).ConfigureAwait(false);
                     break;
                 default:
                     if (!_games.TryGetValue(game, out GameLabel description))
@@ -399,9 +400,25 @@ namespace PolonyBot.Modules.LFG
             return response;
         }
 
-        private Task<IUserMessage> CustomSendMessageAsync(string message)
+        private async Task CustomSendMessageAsync(string message, bool fallbackToChannelOnFail = false)
         {
-            return CommandContext.User.SendMessageAsync(message.AsDiscordResponse());
+            try
+            {
+                await CommandContext.User.SendMessageAsync(message.AsDiscordResponse());
+            }
+            catch (HttpException e)
+            {
+                if (e.DiscordCode == 50007)
+                {
+                    string response = fallbackToChannelOnFail ? message.AsDiscordResponse() : "Unable to respond to your command via DM. Please check your privacy settings.";
+
+                    await CustomReplyAsync(response);
+                }
+                else
+                {
+                    throw;
+                }
+            }
         }
 
         private Task<IUserMessage> CustomReplyAsync(string message)
