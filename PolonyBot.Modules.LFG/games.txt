@@ -11,6 +11,7 @@ BB-X|Blazblue on Xbox One|
 DBZ-PC|Dragon Ball FighterZ on PC|DRAGON BALL FighterZ
 DBZ-PS4|Dragon Ball FighterZ on PS4|
 FC|Any game on Fightcade|FightCade
+GBVS-PS4|Granblue Fantasy Versus on PS4|PS4
 I2-PS4|Injustice 2 on PS4|
 I2-X|Injustice 2 on Xbox One|
 KOF13|King of Fighters 13 on PC|THE KING OF FIGHTERS XIII STEAM EDITION
