@@ -5,6 +5,7 @@
 98UM|King Of Fighters 2002 Ultimate Match on PC|The King Of Fighters 98 Ultimate Match
 A2|Street Fighter Alpha 2 on Fightcade|FightCade
 A3|Street Fighter Alpha 3 on Fightcade|FightCade
+ACPR|Guilty Gear XX Accent Core Plus R on PC|GUILTY GEAR XX ACCENT CORE PLUS R
 BB-PC|Blazblue on PC|BlazBlue Central Fiction
 BB-PS4|Blazblue on PS4|
 BB-X|Blazblue on Xbox One|
