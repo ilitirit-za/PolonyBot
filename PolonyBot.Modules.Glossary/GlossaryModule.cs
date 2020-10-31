@@ -45,7 +45,7 @@ namespace PolonyBot.Modules.Glossary
                     .OrderBy(tuple => tuple.Item2)
                     .Take(3)
                     .Select(tuple => tuple.Item1)
-                    .Aggregate((current, next) => $"{current}, {next}")
+                    .AggregateAsync((current, next) => $"{current}, {next}")
                     .Result;
 
                 response = $"No definition found for {term}.  Suggestions: {possible}";
