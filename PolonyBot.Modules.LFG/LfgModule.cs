@@ -239,10 +239,17 @@ namespace PolonyBot.Modules.LFG
             else
             {
                 var filteredUsers = guildUsers.Where(u => FgUserGameList.Contains(u.Activity?.Name)).OrderBy(u => (u.Activity?.Name ?? ""));
-                response += $"The following players are playing: " + Environment.NewLine;
-                foreach (var user in filteredUsers)
+                if (filteredUsers.Any())
                 {
-                    response += $"{user.Username} ({user.Activity})" + Environment.NewLine;
+                    response += $"The following players are playing: " + Environment.NewLine;
+                    foreach (var user in filteredUsers)
+                    {
+                        response += $"{user.Username} ({user.Activity})" + Environment.NewLine;
+                    }
+                }
+                else
+                {
+                    response += $"Noone is playing right now." + Environment.NewLine;
                 }
             }
 
